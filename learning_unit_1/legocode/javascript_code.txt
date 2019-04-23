@@ -1,0 +1,52 @@
+let currentIndexPattern = 0
+let patternMode = false
+let line_number = 0
+let bufferPattern: number[] = []
+sensors.color3.onColorDetected(ColorSensorColor.Green, function () {
+    if (patternMode && currentIndexPattern < 3) {
+        bufferPattern[currentIndexPattern] = 1
+        currentIndexPattern = currentIndexPattern + 1
+    }
+})
+sensors.color3.onColorDetected(ColorSensorColor.Red, function () {
+    if (!(patternMode)) {
+        patternMode = true
+        bufferPattern[0] = 99
+        currentIndexPattern = currentIndexPattern + 1
+    } else {
+        if (patternMode && currentIndexPattern < 3) {
+            bufferPattern[currentIndexPattern] = 99
+        }
+        currentIndexPattern = currentIndexPattern + 1
+    }
+})
+sensors.color3.onColorDetected(ColorSensorColor.Blue, function () {
+    if (patternMode && currentIndexPattern < 3) {
+        bufferPattern[currentIndexPattern] = 2
+        currentIndexPattern = currentIndexPattern + 1
+    }
+})
+sensors.color3.onColorDetected(ColorSensorColor.Yellow, function () {
+    if (patternMode && currentIndexPattern < 3) {
+        bufferPattern[currentIndexPattern] = 3
+        currentIndexPattern = currentIndexPattern + 1
+    }
+})
+sensors.color3.onColorDetected(ColorSensorColor.Black, function () {
+    if (patternMode) {
+        bufferPattern = [0, 0, 0]
+        patternMode = false
+        currentIndexPattern = 0
+    }
+})
+bufferPattern = [0, 0, 0]
+patternMode = false
+currentIndexPattern = 0
+forever(function () {
+    line_number = 1
+    for (let value of bufferPattern) {
+        brick.showNumber(value, line_number)
+        line_number = line_number + 1
+    }
+    line_number = 1
+})
