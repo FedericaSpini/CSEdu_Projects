@@ -1,0 +1,20 @@
+
+
+
+
+Nella relazione bisogna scrivere che:
+-Come si usa dal punto di vista didattico:
+	-I percorsi sono di difficoltà crescente
+	-Il lavoro può essere programmato e non usato da ragazzi di fine medie- inizio superiori: funzionalità base del mindstorm+ alla fine, se so proprio eccezionali, i pattern (cioè le liste come argomento)
+	-L'attività didattica è legata alla storia romana, ma è molto versatile per altri argomenti di storia e geografia (esempi), ragazzi di diverse età potrebbero fare le cartine a mano o anche fare delle ricerche prima
+
+-Spiegare come noi abbiamo programmato:
+	-il seguire la linea
+	-il pattern recognition (Perché non va messo di fila più volte lo stesso colore)
+	-gli eventi
+	-la "pipeline" del codice che dovrebbe fare un ragazzo
+
+-Problemi del robot
+	-C'è un solo sensore di colore (risolto con bianco e verde ai lati)
+	-Riconosce pochi colori (solo 6)
+	-Larghezza delle linee richieste, tempi di campionamento del colore che vincolano la velocità
