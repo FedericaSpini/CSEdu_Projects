@@ -1,0 +1,91 @@
+let line_number = 0
+let currentIndexPattern = 0
+let acceso = false
+let ratio = 0
+let patternMode = false
+let speed = 0
+let bufferPattern: number[] = []
+sensors.color3.onColorDetected(ColorSensorColor.Green, function () {
+    brick.showString("Verde", 5)
+    speed = 5
+    ratio = -100
+})
+sensors.color3.onColorDetected(ColorSensorColor.White, function () {
+    brick.showString("Bianco", 5)
+    speed = 5
+    ratio = 100
+})
+sensors.color3.onColorDetected(ColorSensorColor.Black, function () {
+    brick.showString("Nero", 7)
+    if (patternMode) {
+        bufferPattern = [0, 0, 0]
+        patternMode = false
+        currentIndexPattern = 0
+    }
+    speed = 15
+    ratio = 0
+})
+function arrivo() {
+    speed = 0
+    acceso = false
+}
+function partenza() {
+    speed = 10
+    ratio = 0
+    acceso = true
+}
+sensors.infrared1.onEvent(InfraredSensorEvent.ObjectNear, function () {
+    speed = 0
+    acceso = false
+})
+sensors.color3.onColorDetected(ColorSensorColor.Blue, function () {
+    brick.showString("Blu", 7)
+    if (patternMode && currentIndexPattern < 3) {
+        bufferPattern[currentIndexPattern] = 2
+        currentIndexPattern = currentIndexPattern + 1
+    }
+})
+brick.buttonDown.onEvent(ButtonEvent.Pressed, function () {
+    arrivo()
+})
+brick.buttonUp.onEvent(ButtonEvent.Pressed, function () {
+    partenza()
+})
+sensors.color3.onColorDetected(ColorSensorColor.Red, function () {
+    brick.showString("Rosso", 7)
+    if (!(patternMode)) {
+        patternMode = true
+        speed = 4
+        bufferPattern[0] = 99
+        currentIndexPattern = currentIndexPattern + 1
+    } else {
+        if (patternMode && currentIndexPattern < 3) {
+            bufferPattern[currentIndexPattern] = 99
+        }
+        currentIndexPattern = currentIndexPattern + 1
+    }
+})
+sensors.color3.onColorDetected(ColorSensorColor.Yellow, function () {
+    brick.showString("Giallo", 7)
+    if (patternMode && currentIndexPattern < 3) {
+        bufferPattern[currentIndexPattern] = 3
+        currentIndexPattern = currentIndexPattern + 1
+    }
+})
+bufferPattern = [0, 0, 0]
+patternMode = false
+currentIndexPattern = 0
+speed = 0
+ratio = 0
+forever(function () {
+    motors.largeBC.steer(ratio, speed)
+    if (acceso == true) {
+    	
+    }
+    line_number = 1
+    for (let value of bufferPattern) {
+        brick.showNumber(value, line_number)
+        line_number = line_number + 1
+    }
+    line_number = 1
+})
