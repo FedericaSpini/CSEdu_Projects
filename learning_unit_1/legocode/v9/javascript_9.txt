@@ -1,0 +1,236 @@
+let blueValue = 0
+let yellowValue = 0
+let redValue = 0
+let currentIndexPattern = 0
+let pattern = 0
+let indicePattern = 0
+let patternMode = false
+let acceso = false
+let cittavisitate = 0
+let bufferPattern: number[] = []
+let line_number = 0
+let mostra_disegni = false
+let normalSpeed = 0
+let swap = 0
+let speed = 0
+let ratioverde = 0
+let ratiobianco = 0
+let ratio = 0
+
+
+
+
+function t1_t2_sei_in_citta() {
+    arrivo()
+}
+function t2_partenza() {
+    ratiobianco = 100
+    ratioverde = -100
+    speed = 10
+    ratio = 0
+    acceso = true
+    CambiaDirezione()
+}
+function t3_sei_in_città() {
+    if (cittavisitate == 2) {
+        CambiaDirezione()
+    } else if (cittavisitate == 3) {
+        arrivo()
+        cittavisitate = 0
+        CambiaDirezione()
+    }
+}
+function rossogialloblu() {
+    if (!(mostra_disegni)) {
+        brick.showString("rosso giallo blu", 8)
+    }
+    accendifuoco()
+}
+function CambiaDirezione() {
+    swap = ratiobianco
+    ratiobianco = ratioverde
+    ratioverde = swap
+    swap = 0
+}
+function t4_sei_in_città() {
+    if (cittavisitate == 2) {
+        arrivo()
+    }
+}
+function accendifuoco() {
+    music.playSoundEffect(sounds.animalsDogGrowl)
+    mostra_disegni = true
+    if (mostra_disegni) {
+        brick.showImage(images.objectsFire)
+    }
+    brick.setStatusLight(StatusLight.Red)
+}
+function rossoblurosso() {
+    if (!(mostra_disegni)) {
+        brick.showString("rosso blu rosso", 8)
+    }
+    Scappa()
+}
+sensors.color3.onColorDetected(ColorSensorColor.Red, function () {
+    if (!(mostra_disegni)) {
+        brick.showString("Rosso", 5)
+    }
+    ratio = 0
+    if (!(patternMode)) {
+        patternMode = true
+        speed = 4
+        bufferPattern[0] = redValue
+        currentIndexPattern = currentIndexPattern + 1
+    } else {
+        if (bufferPattern[currentIndexPattern - 1] != redValue && currentIndexPattern < 3) {
+            bufferPattern[currentIndexPattern] = redValue
+            currentIndexPattern = currentIndexPattern + 1
+        }
+    }
+})
+sensors.color3.onColorDetected(ColorSensorColor.Brown, function () {
+    if (!(mostra_disegni)) {
+        brick.showString("Marrone", 5)
+    }
+})
+sensors.color3.onColorDetected(ColorSensorColor.Green, function () {
+    if (!(mostra_disegni)) {
+        brick.showString("Verde", 5)
+    }
+    speed = 5
+    ratio = ratioverde
+})
+function sei_in_città() {
+    if (cittavisitate == 2) {
+        arrivo()
+    }
+}
+sensors.color3.onColorDetected(ColorSensorColor.White, function () {
+    if (!(mostra_disegni)) {
+        brick.showString("Bianco", 5)
+    }
+    speed = 5
+    ratio = ratiobianco
+})
+function Scappa() {
+    normalSpeed = 20
+}
+function partenza() {
+    ratiobianco = 100
+    ratioverde = -100
+    CambiaDirezione()
+    if (!(mostra_disegni)) {
+        brick.showString("", 8)
+    }
+    speed = 10
+    ratio = 0
+    acceso = true
+    brick.setStatusLight(StatusLight.Off)
+}
+sensors.color3.onColorDetected(ColorSensorColor.Yellow, function () {
+    if (!(mostra_disegni)) {
+        brick.showString("Giallo", 5)
+    }
+    ratio = 0
+    if (!(patternMode)) {
+        cittavisitate = cittavisitate + 1
+        sei_in_città()
+    } else {
+        if (bufferPattern[currentIndexPattern - 1] != yellowValue && currentIndexPattern < 3) {
+            bufferPattern[currentIndexPattern] = yellowValue
+            currentIndexPattern = currentIndexPattern + 1
+        }
+    }
+})
+function arrivo() {
+    CambiaDirezione()
+    cittavisitate = 0
+    speed = 0
+    acceso = false
+    bufferPattern = [0, 0, 0]
+    music.playSoundEffect(sounds.expressionsFanfare)
+    brick.setStatusLight(StatusLight.GreenFlash)
+}
+brick.buttonDown.onEvent(ButtonEvent.Pressed, function () {
+    arrivo()
+    acceso = false
+})
+sensors.color3.onColorDetected(ColorSensorColor.Blue, function () {
+    if (!(mostra_disegni)) {
+        brick.showString("Blu", 5)
+    }
+    ratio = 0
+    if (!(patternMode)) {
+    	
+    } else {
+        if (bufferPattern[currentIndexPattern - 1] != blueValue && currentIndexPattern < 3) {
+            bufferPattern[currentIndexPattern] = blueValue
+            currentIndexPattern = currentIndexPattern + 1
+        }
+    }
+})
+sensors.color3.onColorDetected(ColorSensorColor.Black, function () {
+    if (!(mostra_disegni)) {
+        brick.showString("Nero", 5)
+    }
+    if (patternMode) {
+        indicePattern = 1
+        pattern = 0
+        for (let value2 of bufferPattern) {
+            pattern = pattern + value2 * indicePattern
+            indicePattern = indicePattern + 1
+        }
+        currentIndexPattern = 0
+        patternMode = false
+        bufferPattern = [0, 0, 0]
+        if (!(mostra_disegni)) {
+            brick.showNumber(pattern, 10)
+        }
+        if (pattern == 434) {
+            rossoblurosso()
+        } else {
+            if (pattern == 176) {
+                rossogialloblu()
+            }
+        }
+    } else {
+        mostra_disegni = false
+        normalSpeed = 10
+        brick.setStatusLight(StatusLight.Off)
+    }
+    speed = normalSpeed
+    ratio = 0
+})
+brick.buttonUp.onEvent(ButtonEvent.Pressed, function () {
+    partenza()
+    acceso = true
+})
+brick.setStatusLight(StatusLight.Off)
+bufferPattern = [0, 0, 0]
+patternMode = false
+mostra_disegni = false
+currentIndexPattern = 0
+normalSpeed = 10
+speed = 0
+ratio = 0
+ratiobianco = 100
+ratioverde = -100
+yellowValue = 5
+redValue = 97
+blueValue = 23
+cittavisitate = 0
+forever(function () {
+    if (acceso == true) {
+        motors.largeBC.steer(ratio, speed)
+    } else {
+        motors.largeBC.steer(ratio, 0)
+    }
+    line_number = 1
+    for (let value3 of bufferPattern) {
+        if (!(mostra_disegni)) {
+            brick.showNumber(value3, line_number)
+        }
+        line_number = line_number + 1
+    }
+    line_number = 1
+})
