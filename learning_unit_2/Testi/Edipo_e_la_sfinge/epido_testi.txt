@@ -1,0 +1,27 @@
+TESTO0:
+
+	EDIPO E LA SFINGE
+
+	Anni or sono Laio, re di Tebe, ebbe un terribile responso dall'oracolo di Delfi... Il figlio avuto dalla moglie Giocasta lo avrebbe ucciso! Per evitare l'avverarsi della profezia nefasta consegnò il bimbo, ancora in fasce, ad un pastore affinché lo abbandonasse sul Monte Citerone.
+	Il bambino venne però trovato e cresciuto da Polibo, il re di Corinto e non seppe nulla di tutto ciò, almeno finora...
+
+OPZIONI0:
+	0 per iniziare a giocare
+
+TESTO1:
+	
+	Il giovane principe Edipo fu molto turbato quando, quelli che credeva essere i suoi genitori, gli rivelarono che non era così. Lo avevano trovato ancora in fasce su di un monte e lo avevano allevato, ma per questo il trono di Corinto, non sarebbe spettato a lui. Adesso cosa avrebbe dovuto fare il ragazzo?
+
+OPZIONI1:
+	0 Edipo lasciò Corinto...Lì non c'era più nulla per lui											--> TESTO2
+	1 Edipo si recò dall'Oracolo di Delfi...forse avrebbe avuto delle certezze						--> TESTO3
+	2 Il trono di Corinto gli spettava dopo tutti quegli anni: se lo sarebbe preso con la forza		--> TESTO4
+
+TESTO2:
+	Non sapendo bene dove andare, Edipo si mise in cammnino per Tebe non sapendo che si trattava della sua città natale. Lungo la via, un carro percorreva la strada in senso contrario e un uomo di mezza età, palesemente un passeggero molto ricco, gli disse di farsi da parte per lasciarli passare con disprezzo e arroganza. Edipo protestò, dicendo che la strada era di tutti, ma l'uomo lo minaccia di farlo uccidere dai propri uomini. Allora Edipo...
+
+TESTO3:
+	Una volta a Delfi però la profezia fu tutt'altro che buona! Ohimé, Edipo seppe che il proprio destino era quello di uccidere il proprio padre e di sposare la propria madre. Sconfortato da queste amare notizie Edipo...
+
+TESTO4:
+	Il trono di Corinto gli spettava di diritto e per quanto lo riguardava il non essere figlio di Polibio poteva essere una menzogna! Avrebbe ucciso la famiglia reale, prima che si spargessero quelle false voci e sarebbe divenuto lui il re! (MODIFICA---E' UN FINALE)
