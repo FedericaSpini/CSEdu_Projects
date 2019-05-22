@@ -12,16 +12,59 @@ TESTO1:
 	
 	Il giovane principe Edipo fu molto turbato quando, quelli che credeva essere i suoi genitori, gli rivelarono che non era così. Lo avevano trovato ancora in fasce su di un monte e lo avevano allevato, ma per questo il trono di Corinto, non sarebbe spettato a lui. Adesso cosa avrebbe dovuto fare il ragazzo?
 
-OPZIONI1:
-	0 Edipo lasciò Corinto...Lì non c'era più nulla per lui											--> TESTO2
-	1 Edipo si recò dall'Oracolo di Delfi...forse avrebbe avuto delle certezze						--> TESTO3
-	2 Il trono di Corinto gli spettava dopo tutti quegli anni: se lo sarebbe preso con la forza		--> TESTO4
+	OPZIONI1:
+		0 Edipo lasciò Corinto...Lì non c'era più nulla per lui	(OPZIONE1)
+			--> TESTO2
+		1 Edipo si recò dall'Oracolo di Delfi...forse avrebbe avuto delle certezze (OPZIONE2)		--> TESTO3
+		2 Il trono di Corinto gli spettava dopo tutti quegli anni: se lo sarebbe preso con la forza (OPZIONE3)
+			--> TESTO4
 
 TESTO2:
 	Non sapendo bene dove andare, Edipo si mise in cammnino per Tebe non sapendo che si trattava della sua città natale. Lungo la via, un carro percorreva la strada in senso contrario e un uomo di mezza età, palesemente un passeggero molto ricco, gli disse di farsi da parte per lasciarli passare con disprezzo e arroganza. Edipo protestò, dicendo che la strada era di tutti, ma l'uomo lo minaccia di farlo uccidere dai propri uomini. Allora Edipo...
+		0 fece un po' di trainig autogeno e si fece da parte: già la sua vita era un disastro, non aveva senso attaccare briga. L'avrebbe data vinta allo straniero (OPZIONE5)
+			-->TESTO5
+		1 decise di insegnare cosa fosse il buoncostume a quell'arrogante e sfoderò la spada per battersi spavaldamente (OPZIONE6)
+			-->TESTO6
 
 TESTO3:
-	Una volta a Delfi però la profezia fu tutt'altro che buona! Ohimé, Edipo seppe che il proprio destino era quello di uccidere il proprio padre e di sposare la propria madre. Sconfortato da queste amare notizie Edipo...
+	Una volta a Delfi però la profezia fu tutt'altro che buona! Ohimé, Edipo seppe che il proprio destino era quello di uccidere il proprio padre e di sposare la propria madre. Sconfortato da queste amare notizie ...
+
+	OPZIONI1:
+		0 Edipo lasciò Corinto...Lì non c'era più nulla per lui (OPZIONE1)
+			--> TESTO2
+		1 Edipo pensò fosse destino: tornò a casa, a Corinto, per uccidere suo padre e prendersi il trono che gli spettava. (OPZIONE4)
+				--> TESTO4
 
 TESTO4:
-	Il trono di Corinto gli spettava di diritto e per quanto lo riguardava il non essere figlio di Polibio poteva essere una menzogna! Avrebbe ucciso la famiglia reale, prima che si spargessero quelle false voci e sarebbe divenuto lui il re! (MODIFICA---E' UN FINALE)
+	Edipo, nel corso della notte, andò armato nella camera di quelli che credeva fossero i suoi genitori. Mentre quelli dormivano levò la spada, ma suo fratello, il vero erede del trono di Corinto entrò e con una freccia lo uccise.
+			-->FINALE1
+
+TESTO5:
+	Edipo continuò per la sua strada verso la città di Tebe. Quell'uomo gli ricordava qualcuno, ma proprio non avrebbe saputo dire chi.
+		-->TESTO7
+
+TESTO6:
+	Edipo era un valoroso guerriero e si batté contro gli avversari eliminandoli uno ad uno. Alla fine uccise anche l'uomo arrogante che gli aveva intimato di togliersi dalla strada. Passando oltre il carro Edipo continuò verso la città di Tebe, ignaro di aver già compiuto parte della profezia, poiché l'uomo era suo padre...
+		-->TESTO7
+
+TESTO7:
+	Edipo arrivò a percorrere la via, in mezzo ad una valle, che portava a Tebe quando una terribile creatura gli si parò davanti: era un mostro con testa di donna, il corpo di leone, una coda di serpente e delle ali di rapace. Edipo non lo sapeva, ma quella creatura, la Sfinge, divorava la gente di Tebe da mesi e non sapevano più come liberarsene. La creatura tuttavia non attaccò Edipo, ma gli disse che lo avrebbe lasciato andare se lui avesse risolto il suo enigma:
+		0 Edipo decise di cambiare strada: ci doveva essere un altro modo per giungere a Tebe (OPZIONE7)
+			-->FINALE2
+		1 Edipo non voleva perdere tempo con dei giochetti: si sarebbe battuto con la creatura! (OPZIONE8)
+			-->FINALE3
+		2 Edipo non seppe resistere alla sfida ed accettò di ascoltare l'indovinello (OPZIONE9)
+			-->TESTO8
+
+TESTO8:
+	
+
+
+FINALE1:
+	Edipo è morto, ma il vero personaggio mitologico non avrebbe mai fatto una simile strage! Rileggi come è andata e gioca ancora
+
+FINALE2:
+	La Sfinge era una creatura mitologica dalla forza incredibile! Non appena Edipo si voltò gli saltò alle spalle e lo divorò, perché solo un uomo abbastanza acuto da indovinare la risposta dell'enigma sarebbe stato risparmiato! In realtà Edipo sarebbe dovuto essere quell'uomo... Sicuro di aver studiato?
+
+FINALE3:
+	La Sfinge era una creatura mitologica dalla forza incredibile! Non appena Edipo estrasse la spada dal fodero gli saltò contro e lo divorò, perché solo un uomo abbastanza acuto da indovinare la risposta dell'enigma sarebbe stato risparmiato! In realtà Edipo sarebbe dovuto essere quell'uomo... Sicuro di aver studiato?
