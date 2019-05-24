@@ -4,10 +4,11 @@
         <attribute name="name" value=""/>
         <attribute name="authors" value="Federica"/>
         <attribute name="about" value=""/>
-        <attribute name="saved" value="2019-05-23 12:51:56 "/>
+        <attribute name="saved" value="2019-05-24 10:00:53 "/>
         <attribute name="created" value="RmVkZXJpY2E7REVTS1RPUC0wT0FQVTZTOzIwMTktMDUtMjI7IjEwOjI5OjUxICI7MzA1OA=="/>
         <attribute name="edited" value="YW5kcmU7REVTS1RPUC1PUzc5VDMwOzIwMTktMDUtMjI7IjA4OjM4OjU3ICI7MTsyODc3"/>
-        <attribute name="edited" value="RmVkZXJpY2E7REVTS1RPUC0wT0FQVTZTOzIwMTktMDUtMjM7IjEyOjUxOjU2ICI7NTszMTcz"/>
+        <attribute name="edited" value="RmVkZXJpY2E7REVTS1RPUC0wT0FQVTZTOzIwMTktMDUtMjQ7IjA0OjI4OjM1ICI7MjthbmRyZTtERVNLVE9QLU9TNzlUMzA7MjAxOS0wNS0yMzsiMDE6Mjg6MjcgIjtwcm9sb2dvdGVzdC5mcHJnOzc3NDU="/>
+        <attribute name="edited" value="RmVkZXJpY2E7REVTS1RPUC0wT0FQVTZTOzIwMTktMDUtMjQ7IjEwOjAwOjUzICI7OTszMTY3"/>
     </attributes>
     <function name="Main" type="None" variable="">
         <parameters/>
@@ -16,14 +17,15 @@
             <declare name="opzione" type="String" array="True" size="1"/>
             <declare name="treOpzioni" type="String" array="True" size="3"/>
             <declare name="dueOpzioni" type="String" array="True" size="2"/>
-            <declare name="testo2, testo3, testo4, testo5, testo6, testo7" type="String" array="False" size=""/>
+            <declare name="testo2, testo3, testo4, testo5, testo6, testo7, testo8" type="String" array="False" size=""/>
             <assign variable="testo2" expression="&quot;Non sapendo bene dove andare, Edipo si mise in cammnino per Tebe non sapendo che si trattava della sua citt&#224; natale. Lungo la via, un carro percorreva la strada in senso contrario e un uomo di mezza et&#224;, palesemente un passeggero molto ricco, gli disse di farsi da parte per lasciarli passare con disprezzo e arroganza. Edipo protest&#242;, dicendo che la strada era di tutti, ma l'uomo lo minaccia di farlo uccidere dai propri uomini. Allora Edipo...&quot;"/>
             <assign variable="testo3" expression="&quot;Una volta a Delfi per&#242; la profezia fu tutt'altro che buona! Ohim&#233;, Edipo seppe che il proprio destino era quello di uccidere il proprio padre e di sposare la propria madre. Sconfortato da queste amare notizie Edipo...&quot;"/>
             <assign variable="testo4" expression="&quot;Edipo, nel corso della notte, and&#242; armato nella camera di quelli che credeva fossero i suoi genitori. Mentre quelli dormivano lev&#242; la spada, ma suo fratello, il vero erede del trono di Corinto entr&#242; e con una freccia lo uccise.&quot;"/>
             <assign variable="testo5" expression="&quot;Edipo continu&#242; per la sua strada verso la citt&#224; di Tebe. Quell'uomo gli ricordava qualcuno, ma proprio non avrebbe saputo dire chi.&quot;"/>
             <assign variable="testo6" expression="&quot;Edipo era un valoroso guerriero e si batt&#233; contro gli avversari eliminandoli uno ad uno. Alla fine uccise anche l'uomo arrogante che gli aveva intimato di togliersi dalla strada. Passando oltre il carro Edipo continu&#242; verso la citt&#224; di Tebe, ignaro di aver gi&#224; compiuto parte della profezia, poich&#233; l'uomo era suo padre...&quot;"/>
             <assign variable="testo7" expression="&quot;Edipo arriv&#242; a percorrere la via, in mezzo ad una valle, che portava a Tebe quando una terribile creatura gli si par&#242; davanti: era un mostro con testa di donna, il corpo di leone, una coda di serpente e delle ali di rapace. Edipo non lo sapeva, ma quella creatura, la Sfinge, divorava la gente di Tebe da mesi e non sapevano pi&#249; come liberarsene. La creatura tuttavia non attacc&#242; Edipo, ma gli disse che lo avrebbe lasciato andare se lui avesse risolto il suo enigma:&quot;"/>
-            <declare name="opzione0, opzione1, opzione2, opzione3, opzione4, opzione5, opzione6, opzione7, opzione8, opzione9" type="String" array="False" size=""/>
+            <assign variable="testo8" expression="&quot;Compiaciuta perch&#233; il ragazzo aveva accettato la sfida, la Sfinge sorrise enigmatica &lt;&lt;Qual &#232; l'animale che di mattina cammina con quattro zampe, di giorno con due e la sera con tre zampe?&gt;&gt; chiese&quot;"/>
+            <declare name="opzione0, opzione1, opzione2, opzione3, opzione4, opzione5, opzione6, opzione7, opzione8, opzione9, opzione10, opzione11, opzione12" type="String" array="False" size=""/>
             <assign variable="opzione0" expression="&quot;0 per iniziare a giocare&quot;"/>
             <assign variable="opzione1" expression="&quot;0 Edipo lasci&#242; Corinto...L&#236; non c'era pi&#249; nulla per lui&quot;"/>
             <assign variable="opzione2" expression="&quot;1 Edipo si rec&#242; dall'Oracolo di Delfi...forse avrebbe avuto delle certezze&quot;"/>
@@ -34,19 +36,29 @@
             <assign variable="opzione7" expression="&quot;0 Edipo decise di cambiare strada: ci doveva essere un altro modo per giungere a Tebe&quot;"/>
             <assign variable="opzione8" expression="&quot;1 Edipo non voleva perdere tempo con dei giochetti: si sarebbe battuto con la creatura!&quot;"/>
             <assign variable="opzione9" expression="&quot;2 Edipo non seppe resistere alla sfida ed accett&#242; di ascoltare l'indovinello&quot;"/>
-            <declare name="finaleSelezionato, finale1, finale2, finale3" type="String" array="False" size=""/>
+            <assign variable="opzione10" expression="&quot;0 Edipo non aveva idea di quale fosse la risposta: era meglio andarsene e cercare un'altra strada per Tebe&quot;"/>
+            <assign variable="opzione11" expression="&quot;1 &lt;&lt;Il polipo&gt;&gt; rispose Edipo &lt;&lt;Solo lui &#232; un animale dal numero di zampe cos&#236; mutevole&gt;&gt;&quot;"/>
+            <assign variable="opzione12" expression="&quot;2 &lt;&lt;L'uomo?&gt;&gt; rispose Edipo&quot;"/>
+            <declare name="finaleSelezionato, finale1, finale2, finale3, finale4, finale5" type="String" array="False" size=""/>
             <assign variable="finale1" expression="&quot;Edipo &#232; morto, ma il vero personaggio mitologico non avrebbe mai fatto una simile strage! Rileggi come &#232; andata e gioca ancora&quot;"/>
             <assign variable="finale2" expression="&quot;La Sfinge era una creatura mitologica dalla forza incredibile! Non appena Edipo si volt&#242; gli salt&#242; alle spalle e lo divor&#242;, perch&#233; solo un uomo abbastanza acuto da indovinare la risposta dell'enigma sarebbe stato risparmiato! In realt&#224; Edipo sarebbe dovuto essere quell'uomo... Sicuro di aver studiato?&quot;"/>
             <assign variable="finale3" expression="&quot;La Sfinge era una creatura mitologica dalla forza incredibile! Non appena Edipo estrasse la spada dal fodero gli salt&#242; contro e lo divor&#242;, perch&#233; solo un uomo abbastanza acuto da indovinare la risposta dell'enigma sarebbe stato risparmiato! In realt&#224; Edipo sarebbe dovuto essere quell'uomo... Sicuro di aver studiato?&quot;"/>
+            <assign variable="finale4" expression="&quot;La Sfinge rise con aria vittoriosa &lt;&lt;Anche tu, come tutti gli altri, sei stato solo un povero stolto! La risposta giusta &#232; un'altra!&gt;&gt; quindi, prima che Edipo se ne potesse rendere conto, gli fu addosso e lo divor&#242;. Tuttavia, nella vera storia, Edipo risponde in modo corretto...Io andrei a rileggere come &#232; andata davvero al tuo posto&quot;"/>
+            <assign variable="finale5" expression="&quot;La Sfinge guard&#242; Edipo con un misto di incredulit&#224; e di rabbia, poi rugg&#236; forte e vol&#242; via, furiosa perch&#233; Edipo aveva risolto il suo enigma. Quando giunse a Tebe scopr&#236; di aver liberato la citt&#224; dal mostro che divorava i cittadini da mesi.&quot;"/>
             <assign variable="finaleSelezionato" expression="&quot;Non hai raggiunto un finale&quot;"/>
+            <comment text="Introduzione"/>
             <output expression="&quot;EDIPO E LA SFINGE&quot;" newline="True"/>
             <output expression="&quot;Anni or sono Laio, re di Tebe, ebbe un terribile responso dall'oracolo di Delfi... Il figlio avuto dalla moglie Giocasta lo avrebbe ucciso! Per evitare l'avverarsi della profezia nefasta consegn&#242; il bimbo, ancora in fasce, ad un pastore affinch&#233; lo abbandonasse sul Monte Citerone. Il bambino venne per&#242; trovato e cresciuto da Polibo, il re di Corinto e non seppe nulla di tutto ci&#242;, almeno finora...&quot;" newline="True"/>
+            <comment text="Si descrive qual &#232; l'unica opzione disponibile"/>
             <assign variable="opzione[0]" expression="opzione0"/>
+            <comment text="La funzione &quot;scegli&quot; permette all'utente di effettuare una scelta, tra l'ultima lista di opzioni mostrata. Il parametro all'interno &#232; il numero di opzioni presenti e serve per controllare che il numero dell'opzione selezionata sia valido."/>
             <output expression="opzione[0]" newline="True"/>
             <assign variable="scelta" expression="scegli(1)"/>
             <output expression="&quot;Il giovane principe Edipo fu molto turbato quando, quelli che credeva essere i suoi genitori, gli rivelarono che non era cos&#236;. Lo avevano trovato ancora in fasce su di un monte e lo avevano allevato, ma per questo il trono di Corinto, non sarebbe spettato a lui. Adesso cosa avrebbe dovuto fare il ragazzo?&quot;" newline="True"/>
+            <comment text="Stavolta l'utente dovr&#224; scegliere tra 3 opzioni differenti. La funzione &quot;impostaTreOpzioni&quot; serve per registrare e mostrare quali sono le opzioni disponibili."/>
             <call expression="impostaTreOpzioni(opzione1, opzione2, opzione3, treOpzioni)"/>
             <assign variable="scelta" expression="scegli(3)"/>
+            <comment text="Adesso, a seconda di quale delle tre opzioni &#232; stata scelta, la storia andr&#224; avanti in diversi modi."/>
             <if expression="scelta == 0">
                 <then>
                     <output expression="testo2" newline="True"/>
@@ -54,6 +66,7 @@
                 <else>
                     <if expression="scelta==1">
                         <then>
+                            <comment text="La seconda opzione, al bivio precedente, fa in modo che il giocatore abbia un'opzione in pi&#249;. Ci&#242; vuol dire che non tutti i percorsi possibili sono della stessa lunghezza. Inoltre, in questa decisione aggiuntiva, si presenta una delle opzioni presenti al passo precedente, questo perch&#233; le situazioni possono ripetersi e quindi essere &quot;riciclate&quot;. C'&#232; comunque un maggiore score finale se Edipo sceglie di andare a sentire la profezia, perch&#233; &#232; pi&#249; coerente con la storia originale."/>
                             <output expression="testo3" newline="True"/>
                             <call expression="impostaDueOpzioni(opzione1, opzione4, dueOpzioni)"/>
                             <assign variable="scelta" expression="scegli(2)"/>
@@ -68,14 +81,17 @@
                             </if>
                         </then>
                         <else>
+                            <comment text="Se si sceglie la terza opzione al precedente bivio si arriva qui. Dopo aver mostrato un testo si seleziona il finale: il gioco &#232; finito, nel resto del diagramma verranno effettuati dei controlli e nel caso in cui sia stato impostato un finale non si far&#224; pi&#249; nulla."/>
                             <output expression="testo4" newline="True"/>
                             <assign variable="finaleSelezionato" expression="finale1"/>
                         </else>
                     </if>
                 </else>
             </if>
+            <comment text="La storia continua solo se non &#232; stato raggiunto un finale."/>
             <if expression="finaleSelezionato==&quot;Non hai raggiunto un finale&quot;">
                 <then>
+                    <comment text="Nel caso del prossimo bivio le decisioni influiscono solo sul punteggio ottenuto."/>
                     <call expression="impostaDueOpzioni(opzione5, opzione6, dueOpzioni)"/>
                     <assign variable="scelta" expression="scegli(2)"/>
                     <if expression="scelta==0">
@@ -102,11 +118,33 @@
                             </if>
                         </else>
                     </if>
+                    <if expression="finaleSelezionato==&quot;Non hai raggiunto un finale&quot;">
+                        <then>
+                            <output expression="testo8" newline="True"/>
+                            <call expression="impostaTreOpzioni(opzione10, opzione11, opzione12, treOpzioni)"/>
+                            <assign variable="scelta" expression="scegli(3)"/>
+                            <if expression="scelta==0">
+                                <then>
+                                    <assign variable="finaleSelezionato" expression="finale2"/>
+                                </then>
+                                <else>
+                                    <if expression="scelta==1">
+                                        <then>
+                                            <assign variable="finaleSelezionato" expression="finale4"/>
+                                        </then>
+                                        <else>
+                                            <assign variable="finaleSelezionato" expression="finale5"/>
+                                        </else>
+                                    </if>
+                                </else>
+                            </if>
+                        </then>
+                        <else/>
+                    </if>
                 </then>
-                <else>
-                    <comment text="Non aggiungere nulla"/>
-                </else>
+                <else/>
             </if>
+            <comment text="A questo punto, se non abbiamo fatto errori, sar&#224; sicuramente stato selezionato un finale."/>
             <output expression="finaleSelezionato" newline="True"/>
         </body>
     </function>

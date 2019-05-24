@@ -57,7 +57,14 @@ TESTO7:
 			-->TESTO8
 
 TESTO8:
-	
+	Compiaciuta perché il ragazzo aveva accettato la sfida, la Sfinge sorrise enigmatica <<Qual è l'animale che di mattina cammina con quattro zampe, di giorno con due e la sera con tre zampe?>> chiese
+
+		0 Edipo non aveva idea di quale fosse la risposta: era meglio andarsene e cercare un'altra strada per Tebe (OPZIONE10)
+			-->FINALE2
+		1 <<Il polipo>> rispose Edipo <<Solo lui è un animale dal numero di zampe così mutevole>> (OPZIONE11)
+			-->FINALE4
+		2 <<L'uomo?>> rispose Edipo (OPZIONE12)
+			-->FINALE5
 
 
 FINALE1:
@@ -68,3 +75,9 @@ FINALE2:
 
 FINALE3:
 	La Sfinge era una creatura mitologica dalla forza incredibile! Non appena Edipo estrasse la spada dal fodero gli saltò contro e lo divorò, perché solo un uomo abbastanza acuto da indovinare la risposta dell'enigma sarebbe stato risparmiato! In realtà Edipo sarebbe dovuto essere quell'uomo... Sicuro di aver studiato?
+
+FINALE4:
+	La Sfinge rise con aria vittoriosa <<Anche tu, come tutti gli altri, sei stato solo un povero stolto! La risposta giusta è un'altra!>> quindi, prima che Edipo se ne potesse rendere conto, gli fu addosso e lo divorò. Tuttavia, nella vera storia, Edipo risponde in modo corretto...Io andrei a rileggere come è andata davvero al tuo posto.
+
+FINALE5:
+	La Sfinge guardò Edipo con un misto di incredulità e di rabbia, poi ruggì forte e volò via, furiosa perché Edipo aveva risolto il suo enigma. Quando giunse a Tebe scoprì di aver liberato la città dal mostro che divorava i cittadini da mesi.
