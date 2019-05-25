@@ -1,1 +1,7 @@
-No ASCII ART [non vuole underscore o @ nelle stringhe (forse prima backslash?)]
+No ASCII ART [non vuole underscore o @ nelle stringhe (forse prima backslash?)] 
+ 
+NO VARIABILI GLOBALI 
+ 
+Non si possono creare librerie 
+ 
+Niente istruzioni di pausa/attesa
