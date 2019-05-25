@@ -1,0 +1,174 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="andre"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2019-05-25 12:47:19 "/>
+        <attribute name="created" value="YW5kcmU7REVTS1RPUC1PUzc5VDMwOzIwMTktMDUtMjM7IjAxOjI4OjI3ICI7Mjc1OQ=="/>
+        <attribute name="edited" value="YW5kcmU7REVTS1RPUC1PUzc5VDMwOzIwMTktMDUtMjM7IjAyOjE5OjExICI7NDsyODY0"/>
+        <attribute name="edited" value="RmVkZXJpY2E7REVTS1RPUC0wT0FQVTZTOzIwMTktMDUtMjU7IjEyOjIxOjQ5ICI7NDtGZWRlcmljYTtERVNLVE9QLTBPQVBVNlM7MjAxOS0wNS0yMjsiMTA6Mjk6NTEgIjtsaWJyb0dhbWVfZWRpcG8uZnByZzs4MzY0"/>
+        <attribute name="edited" value="RmVkZXJpY2E7REVTS1RPUC0wT0FQVTZTOzIwMTktMDUtMjU7IjEyOjQ3OjE5ICI7MjszMTc2"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="scelta" type="Integer" array="False" size=""/>
+            <declare name="dueOpzioni" type="String" array="True" size="2"/>
+            <comment text="L'introduzione &#232; un pezzo della storia messo in una funzione a parte: non varia il corso della storia, ma presenta comunque delle interazioni con il giocatore."/>
+        </body>
+    </function>
+    <function name="controllaRisposta" type="Boolean" variable="controllo">
+        <parameters>
+            <parameter name="opzioni" type="String" array="True"/>
+            <parameter name="opzione" type="String" array="False"/>
+            <parameter name="fraseErrore" type="String" array="False"/>
+        </parameters>
+        <body>
+            <declare name="controllo" type="Boolean" array="False" size=""/>
+            <declare name="i" type="Integer" array="False" size=""/>
+            <assign variable="controllo" expression="false"/>
+            <for variable="i" start="0" end="Size(opzioni) - 1" direction="inc" step="1">
+                <if expression="opzioni[i] == opzione">
+                    <then>
+                        <assign variable="controllo" expression="true"/>
+                    </then>
+                    <else/>
+                </if>
+            </for>
+            <if expression="controllo">
+                <then/>
+                <else>
+                    <output expression="fraseErrore" newline="True"/>
+                </else>
+            </if>
+        </body>
+    </function>
+    <function name="controllaRispostaAperta" type="Boolean" variable="controllo">
+        <parameters>
+            <parameter name="rispData" type="String" array="False"/>
+            <parameter name="rispGiusta" type="String" array="False"/>
+            <parameter name="fraseErrore" type="String" array="False"/>
+        </parameters>
+        <body>
+            <declare name="controllo" type="Boolean" array="False" size=""/>
+            <assign variable="controllo" expression="false"/>
+            <if expression="rispData == RispGiusta">
+                <then>
+                    <assign variable="controllo" expression="true"/>
+                </then>
+                <else>
+                    <output expression="fraseErrore" newline="True"/>
+                </else>
+            </if>
+        </body>
+    </function>
+    <function name="controllaRispostaIntero" type="Integer" variable="opzioneSelezionata">
+        <parameters>
+            <parameter name="numeroOpzioni" type="Integer" array="False"/>
+        </parameters>
+        <body>
+            <declare name="opzioneSelezionata" type="Integer" array="False" size=""/>
+            <input variable="opzioneSelezionata"/>
+            <while expression="opzioneSelezionata&lt;0 or opzioneSelezionata&gt;=numeroOpzioni">
+                <output expression="&quot;Opzione selezionata non valida&quot;" newline="True"/>
+                <input variable="opzioneSelezionata"/>
+            </while>
+        </body>
+    </function>
+    <function name="impostaDueOpzioni" type="None" variable="">
+        <parameters>
+            <parameter name="primaOpzione" type="String" array="False"/>
+            <parameter name="secondaOpzione" type="String" array="False"/>
+            <parameter name="dueOpzioni" type="String" array="True"/>
+        </parameters>
+        <body>
+            <assign variable="dueOpzioni[0]" expression="primaOpzione"/>
+            <assign variable="dueOpzioni[1]" expression="secondaOpzione"/>
+            <declare name="numeroOpzione" type="Integer" array="False" size=""/>
+            <for variable="numeroOpzione" start="0" end="1" direction="inc" step="1">
+                <output expression="dueOpzioni[numeroOpzione]" newline="True"/>
+            </for>
+        </body>
+    </function>
+    <function name="introduzione" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="scelta" type="Integer" array="False" size=""/>
+            <declare name="dueOpzioni" type="String" array="True" size="2"/>
+            <declare name="nome" type="String" array="False" size=""/>
+            <declare name="rispTesto" type="String" array="False" size=""/>
+            <declare name="opzioneSiNo" type="String" array="True" size="2"/>
+            <assign variable="opzioneSiNo[0]" expression="&quot;si&quot;"/>
+            <assign variable="opzioneSiNo[1]" expression="&quot;no&quot;"/>
+            <output expression="&quot;Marinaio1: Heeey, si sta svegliando!&quot;" newline="True"/>
+            <output expression="&quot;Marinaio2: Hey capitano, ci sei? Sei con noi? rispondimi si o no.&quot;" newline="True"/>
+            <do expression="!controllaRisposta(opzioneSiNo,rispTesto, &quot;Eh? che hai detto?&quot;)">
+                <input variable="rispTesto"/>
+                <assign variable="rispTesto" expression="tuttominuscolo(rispTesto)"/>
+            </do>
+            <if expression="rispTesto == &quot;si&quot;">
+                <then>
+                    <output expression="&quot;Marinaio2: Bene, ti stai riprendendo!&quot;" newline="True"/>
+                </then>
+                <else>
+                    <output expression="&quot;Marinaio1: Capitano non &#232; il momento di scherzare!&quot;" newline="True"/>
+                </else>
+            </if>
+            <output expression="&quot;Marinaio3: Forza, alzati in piedi&quot;" newline="True"/>
+            <output expression="&quot;Marinaio1: Ora ti far&#242; tre semplici domande per vedere se ti sei ripreso con la testa capitano&quot;" newline="True"/>
+            <output expression="&quot;Marinaio1: Da dove siamo salpati?&quot;" newline="True"/>
+            <do expression="!controllaRispostaAperta(rispTesto, &quot;troia&quot;, &quot;Marinaio1: Sul serio non te lo ricordi? Guarda che finch&#232; non mi dici da dove siamo partiti non ti lascio andare.&quot;)">
+                <input variable="rispTesto"/>
+                <assign variable="rispTesto" expression="tuttominuscolo(rispTesto)"/>
+            </do>
+            <output expression="&quot;Bene, e invece dove siamo diretti per tornare a casa?&quot;" newline="True"/>
+            <do expression="!controllaRispostaAperta(rispTesto, &quot;itaca&quot;, &quot;Marinaio1: E dai su, lo so che pensi sempre a casa nostra a a tua moglie Penelope, dimmi come si chiama la nostra patria!&quot;)">
+                <input variable="rispTesto"/>
+                <assign variable="rispTesto" expression="tuttominuscolo(rispTesto)"/>
+            </do>
+            <output expression="&quot;Ottimo, ora l'ultima domanda, come ti chiami?&quot;" newline="True"/>
+            <do expression="!controllaRispostaAperta(rispTesto, &quot;ulisse&quot;, &quot;Marinaio2: Cavolo, se non ricorda il proprio nome deve essere pi&#249; grave del previsto...&quot;)">
+                <input variable="rispTesto"/>
+                <assign variable="rispTesto" expression="tuttominuscolo(rispTesto)"/>
+            </do>
+            <output expression="&quot;Marinaio1: Vedo che finalmente ti sei ripreso capitano Ulisse! Stiamo per attraccare per fare rifornimenti&quot;" newline="True"/>
+            <output expression="&quot;Ulisse e i suoi uomini sbarcarono e si avventurarono per quelle terre sconosciute. Dopo aver camminato un bel po' trovarono una caverna il cui interno era colmo di cibo: gigantesche forme di formaggio...&quot;" newline="True"/>
+            <output expression="&quot;Marinaio2: Signore, entriamo e approfittiamo di questo dono degli Dei!&quot;" newline="True"/>
+            <call expression="impostaDueOpzioni(&quot;0 Non mi sembra una buona idea...Potrebbe essere una trappola&quot;, &quot;1 Ma certo uomini! Io stesso ho una gran fame&quot;, dueOpzioni)"/>
+            <assign variable="scelta" expression="controllaRispostaIntero(2)"/>
+            <if expression="scelta==0">
+                <then>
+                    <output expression="&quot;Nonostante gli avvertimenti del loro capitano i marinai, che da mesi non vedevano cibo fresco, si precipitarono nella grotta a banchettare. Ulisse, dubbioso, li segu&#236;.&quot;" newline="True"/>
+                </then>
+                <else>
+                    <output expression="&quot;Gioendo per la fortuna che avevano avuto Ulisse e i suoi si precipitarono nella grotta per abbuffarsi&quot;" newline="True"/>
+                </else>
+            </if>
+        </body>
+    </function>
+    <function name="tuttominuscolo" type="String" variable="minstringa">
+        <parameters>
+            <parameter name="stringa" type="String" array="False"/>
+        </parameters>
+        <body>
+            <declare name="minstringa" type="String" array="False" size=""/>
+            <assign variable="minStringa" expression="&quot;&quot;"/>
+            <declare name="i" type="Integer" array="False" size=""/>
+            <for variable="i" start="0" end="len(stringa) - 1" direction="inc" step="1">
+                <declare name="carattereCorrente" type="String" array="False" size=""/>
+                <assign variable="carattereCorrente" expression="char(stringa, i)"/>
+                <if expression="ToCode(carattereCorrente) &lt; 97">
+                    <then>
+                        <declare name="nuovoCarattere" type="Integer" array="False" size=""/>
+                        <assign variable="nuovoCarattere" expression="0"/>
+                        <assign variable="nuovoCarattere" expression="ToCode(carattereCorrente) + 32"/>
+                        <assign variable="carattereCorrente" expression="ToChar(nuovoCarattere)"/>
+                    </then>
+                    <else/>
+                </if>
+                <assign variable="minstringa" expression="minstringa &amp; carattereCorrente"/>
+            </for>
+        </body>
+    </function>
+</flowgorithm>

@@ -4,11 +4,11 @@
         <attribute name="name" value=""/>
         <attribute name="authors" value="Federica"/>
         <attribute name="about" value=""/>
-        <attribute name="saved" value="2019-05-24 10:00:53 "/>
+        <attribute name="saved" value="2019-05-25 12:47:32 "/>
         <attribute name="created" value="RmVkZXJpY2E7REVTS1RPUC0wT0FQVTZTOzIwMTktMDUtMjI7IjEwOjI5OjUxICI7MzA1OA=="/>
         <attribute name="edited" value="YW5kcmU7REVTS1RPUC1PUzc5VDMwOzIwMTktMDUtMjI7IjA4OjM4OjU3ICI7MTsyODc3"/>
         <attribute name="edited" value="RmVkZXJpY2E7REVTS1RPUC0wT0FQVTZTOzIwMTktMDUtMjQ7IjA0OjI4OjM1ICI7MjthbmRyZTtERVNLVE9QLU9TNzlUMzA7MjAxOS0wNS0yMzsiMDE6Mjg6MjcgIjtwcm9sb2dvdGVzdC5mcHJnOzc3NDU="/>
-        <attribute name="edited" value="RmVkZXJpY2E7REVTS1RPUC0wT0FQVTZTOzIwMTktMDUtMjQ7IjEwOjAwOjUzICI7OTszMTY3"/>
+        <attribute name="edited" value="RmVkZXJpY2E7REVTS1RPUC0wT0FQVTZTOzIwMTktMDUtMjU7IjEyOjQ3OjMyICI7MTA7MzIxOA=="/>
     </attributes>
     <function name="Main" type="None" variable="">
         <parameters/>
@@ -186,8 +186,9 @@
         </parameters>
         <body>
             <declare name="opzioneSelezionata" type="Integer" array="False" size=""/>
-            <assign variable="opzioneSelezionata" expression="-1"/>
+            <input variable="opzioneSelezionata"/>
             <while expression="opzioneSelezionata&lt;0 or opzioneSelezionata&gt;=numeroOpzioni">
+                <output expression="&quot;Opzione selezionata non valida&quot;" newline="True"/>
                 <input variable="opzioneSelezionata"/>
             </while>
         </body>

@@ -1,0 +1,43 @@
+-Non andiamo nella caverna
+-Andiamo nella caverna
+-Ricambiamo col vino e andiamo  -> pezzo narrativo da aggiungere in cui si portano il vino (metti a true un booleano, perché sennò polifemo non si ubriaco)
+
+
+
+-pezzo narrativo in cui arriva polifemo: alcuni riescono a nascondersi, altri no e marinaio2 rip
+
+-Ulisse si palesa (dialogo con Polifemo in cui gli chiede come si chiama) ---> variabile con il nome di ulisse (quello giusto è nessuno)
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+SCELTA
+	-Cerca di scappare
+	-Cerca di ingannare (lo convinci a mandarti sulla nave, scappi, ma abbandoni i tuoi uomini....sei un infame) FINALE
+	-(!solo se hai preso il vino)Invita a bere ---> LOOP tra continua a far bere Polifemo (se lo fai 5 volte poi è finito il vino e Polifemo si addormenta)
+							---> Facci discorsi da bevute e digli che lì lui è sprecato
+									---> Si apre un filone di discorsi assurdi e alla fine arruoli Polifemo FINALE
+							---> Cerca una via di fuga mentre beve aggirandoti nella caverna
+									--->Polifemo si arrabbia perché ha capito che vuole scappare e se lo mangia FINALE
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+-Piano di Ulisse (prendi il palo, affilalo, arroventalo e cava l'occhio al ciclope addormentato) (sottofunzione tipo l'introduzione)
+- Polifemo si arrabbia tantissimo, stappa la caverna e inizia a gridare "NOMEDIULISSE mi ha accecato!"
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+	-> se NOMEDIULISSE != "nessuno" gli altri ciclopi si incazzano
+			->Ti trovano e ti mangiano
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+	-> se NOMEDIULISSE == "nessuno"
+			->Non aiutato dagli altri cicloppi Polifemo vi cerca tastando.
+			SCELTA:
+				--->Ordina ai tuoi uomini di aggrapparsi sotto la pancia delle pecore
+					--->Scappi e vai alle navi FINALE
+				--->Aspettare nella caverna che Polifemo esce
+					--->Se i ciclopi ti stavano cercando arrivano e muori
+					--->Altrimenti scappi e vai alle navi FINALE
+				--->Correre molto veloce
+					--->Muori schiacciato da Polifemo FINALE
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
