@@ -4,18 +4,50 @@
         <attribute name="name" value=""/>
         <attribute name="authors" value="andre"/>
         <attribute name="about" value=""/>
-        <attribute name="saved" value="2019-05-25 12:47:19 "/>
+        <attribute name="saved" value="2019-05-26 12:54:26 "/>
         <attribute name="created" value="YW5kcmU7REVTS1RPUC1PUzc5VDMwOzIwMTktMDUtMjM7IjAxOjI4OjI3ICI7Mjc1OQ=="/>
-        <attribute name="edited" value="YW5kcmU7REVTS1RPUC1PUzc5VDMwOzIwMTktMDUtMjM7IjAyOjE5OjExICI7NDsyODY0"/>
         <attribute name="edited" value="RmVkZXJpY2E7REVTS1RPUC0wT0FQVTZTOzIwMTktMDUtMjU7IjEyOjIxOjQ5ICI7NDtGZWRlcmljYTtERVNLVE9QLTBPQVBVNlM7MjAxOS0wNS0yMjsiMTA6Mjk6NTEgIjtsaWJyb0dhbWVfZWRpcG8uZnByZzs4MzY0"/>
         <attribute name="edited" value="RmVkZXJpY2E7REVTS1RPUC0wT0FQVTZTOzIwMTktMDUtMjU7IjEyOjQ3OjE5ICI7MjszMTc2"/>
+        <attribute name="edited" value="YW5kcmU7REVTS1RPUC1PUzc5VDMwOzIwMTktMDUtMjY7IjEyOjU0OjI2ICI7OTsyODc4"/>
     </attributes>
     <function name="Main" type="None" variable="">
         <parameters/>
         <body>
             <declare name="scelta" type="Integer" array="False" size=""/>
             <declare name="dueOpzioni" type="String" array="True" size="2"/>
+            <declare name="vino" type="Boolean" array="False" size=""/>
+            <assign variable="vino" expression="false"/>
             <comment text="L'introduzione &#232; un pezzo della storia messo in una funzione a parte: non varia il corso della storia, ma presenta comunque delle interazioni con il giocatore."/>
+            <assign variable="vino" expression="arrivoAllaGrotta()"/>
+        </body>
+    </function>
+    <function name="arrivoAllaGrotta" type="Boolean" variable="vino">
+        <parameters/>
+        <body>
+            <declare name="vino" type="Boolean" array="False" size=""/>
+            <assign variable="vino" expression="false"/>
+            <declare name="scelta" type="Integer" array="False" size=""/>
+            <declare name="treOpzioni" type="String" array="True" size="3"/>
+            <output expression="&quot;Ulisse e i suoi uomini sbarcarono e si avventurarono per quelle terre sconosciute. Dopo aver camminato un bel po' trovarono una caverna il cui interno era colmo di cibo: gigantesche forme di formaggio...&quot;" newline="True"/>
+            <output expression="&quot;Marinaio2: Signore, entriamo e approfittiamo di questo dono degli Dei!&quot;" newline="True"/>
+            <call expression="impostaTreOpzioni(&quot;0 Non mi sembra una buona idea...Potrebbe essere una trappola&quot;, &quot;1 Ma certo uomini! Io stesso ho una gran fame&quot;, &quot;2 Forse &#232; il caso di non entrare a mani vuote visto che potrebbe esserci il proprietario dentro, voi due tornate alla nave a prendere le scorte di vino&quot;, treOpzioni)"/>
+            <assign variable="scelta" expression="controllaRispostaIntero(Size(treOpzioni))"/>
+            <if expression="scelta==0">
+                <then>
+                    <output expression="&quot;Nonostante gli avvertimenti del loro capitano i marinai, che da mesi non vedevano cibo fresco, si precipitarono nella grotta a banchettare. Ulisse, dubbioso, li segu&#236;.&quot;" newline="True"/>
+                </then>
+                <else>
+                    <if expression="scelta==1">
+                        <then>
+                            <output expression="&quot;Gioendo per la fortuna che avevano avuto Ulisse e i suoi si precipitarono nella grotta per abbuffarsi&quot;" newline="True"/>
+                        </then>
+                        <else>
+                            <output expression="&quot;Marinaio2: &#200; una grandissima idea capitano (cos&#236; nemmeno rischiamo di strozzarci mentre ci abbuffiamo)&quot;" newline="True"/>
+                            <assign variable="vino" expression="true"/>
+                        </else>
+                    </if>
+                </else>
+            </if>
         </body>
     </function>
     <function name="controllaRisposta" type="Boolean" variable="controllo">
@@ -86,16 +118,31 @@
             <assign variable="dueOpzioni[0]" expression="primaOpzione"/>
             <assign variable="dueOpzioni[1]" expression="secondaOpzione"/>
             <declare name="numeroOpzione" type="Integer" array="False" size=""/>
-            <for variable="numeroOpzione" start="0" end="1" direction="inc" step="1">
+            <for variable="numeroOpzione" start="0" end="Size(dueOpzioni) - 1" direction="inc" step="1">
                 <output expression="dueOpzioni[numeroOpzione]" newline="True"/>
+            </for>
+        </body>
+    </function>
+    <function name="impostaTreOpzioni" type="None" variable="">
+        <parameters>
+            <parameter name="primaOpzione" type="String" array="False"/>
+            <parameter name="secondaOpzione" type="String" array="False"/>
+            <parameter name="terzaOpzione" type="String" array="False"/>
+            <parameter name="treOpzioni" type="String" array="True"/>
+        </parameters>
+        <body>
+            <assign variable="treOpzioni[0]" expression="primaOpzione"/>
+            <assign variable="treOpzioni[1]" expression="secondaOpzione"/>
+            <assign variable="treOpzioni[2]" expression="terzaOpzione"/>
+            <declare name="numeroOpzione" type="Integer" array="False" size=""/>
+            <for variable="numeroOpzione" start="0" end="Size(treOpzioni) - 1" direction="inc" step="1">
+                <output expression="treOpzioni[numeroOpzione]" newline="True"/>
             </for>
         </body>
     </function>
     <function name="introduzione" type="None" variable="">
         <parameters/>
         <body>
-            <declare name="scelta" type="Integer" array="False" size=""/>
-            <declare name="dueOpzioni" type="String" array="True" size="2"/>
             <declare name="nome" type="String" array="False" size=""/>
             <declare name="rispTesto" type="String" array="False" size=""/>
             <declare name="opzioneSiNo" type="String" array="True" size="2"/>
