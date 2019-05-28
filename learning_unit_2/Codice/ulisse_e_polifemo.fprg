@@ -4,11 +4,11 @@
         <attribute name="name" value=""/>
         <attribute name="authors" value="andre"/>
         <attribute name="about" value=""/>
-        <attribute name="saved" value="2019-05-28 10:42:07 "/>
+        <attribute name="saved" value="2019-05-28 02:58:46 "/>
         <attribute name="created" value="YW5kcmU7REVTS1RPUC1PUzc5VDMwOzIwMTktMDUtMjM7IjAxOjI4OjI3ICI7Mjc1OQ=="/>
         <attribute name="edited" value="RmVkZXJpY2E7REVTS1RPUC0wT0FQVTZTOzIwMTktMDUtMjU7IjEyOjIxOjQ5ICI7NDtGZWRlcmljYTtERVNLVE9QLTBPQVBVNlM7MjAxOS0wNS0yMjsiMTA6Mjk6NTEgIjtsaWJyb0dhbWVfZWRpcG8uZnByZzs4MzY0"/>
         <attribute name="edited" value="YW5kcmU7REVTS1RPUC1PUzc5VDMwOzIwMTktMDUtMjY7IjEyOjU0OjI2ICI7OTsyODc4"/>
-        <attribute name="edited" value="RmVkZXJpY2E7REVTS1RPUC0wT0FQVTZTOzIwMTktMDUtMjg7IjEwOjQyOjA3ICI7NDszMTcx"/>
+        <attribute name="edited" value="RmVkZXJpY2E7REVTS1RPUC0wT0FQVTZTOzIwMTktMDUtMjg7IjAyOjU4OjQ2ICI7NTszMTgz"/>
     </attributes>
     <function name="Main" type="None" variable="">
         <parameters/>
@@ -17,6 +17,8 @@
             <declare name="dueOpzioni" type="String" array="True" size="2"/>
             <declare name="vino" type="Boolean" array="False" size=""/>
             <assign variable="vino" expression="false"/>
+            <declare name="finaleRaggiunto" type="Boolean" array="False" size=""/>
+            <assign variable="finaleRaggiunto" expression="false"/>
             <comment text="L'introduzione &#232; un pezzo della storia messo in una funzione a parte: non varia il corso della storia, ma presenta comunque delle interazioni con il giocatore."/>
             <assign variable="vino" expression="arrivoAllaGrotta()"/>
         </body>
@@ -28,6 +30,7 @@
             <assign variable="vino" expression="false"/>
             <declare name="scelta" type="Integer" array="False" size=""/>
             <declare name="finaleRaggiunto" type="Boolean" array="False" size=""/>
+            <assign variable="finaleRaggiunto" expression="false"/>
             <declare name="numeroMarinai" type="Integer" array="False" size=""/>
             <declare name="treOpzioni" type="String" array="True" size="3"/>
             <declare name="dueOpzioni" type="String" array="True" size="2"/>
@@ -71,6 +74,14 @@
                     <assign variable="finaleRaggiunto" expression="true"/>
                 </then>
                 <else/>
+            </if>
+            <if expression="finaleRaggiunto==false">
+                <then>
+                    <assign variable="finaleRaggiunto" expression="ulisseParlaConPolifemo(vino)"/>
+                </then>
+                <else>
+                    <comment text="E' gi&#224; stato raggiunto un finale, non fare niente"/>
+                </else>
             </if>
         </body>
     </function>
@@ -172,6 +183,8 @@
             <declare name="opzioneSiNo" type="String" array="True" size="2"/>
             <assign variable="opzioneSiNo[0]" expression="&quot;si&quot;"/>
             <assign variable="opzioneSiNo[1]" expression="&quot;no&quot;"/>
+            <declare name="dueOpzioni" type="String" array="True" size="2"/>
+            <declare name="scelta" type="Integer" array="False" size=""/>
             <output expression="&quot;Marinaio1: Heeey, si sta svegliando!&quot;" newline="True"/>
             <output expression="&quot;Marinaio2: Hey capitano, ci sei? Sei con noi? rispondimi si o no.&quot;" newline="True"/>
             <do expression="!controllaRisposta(opzioneSiNo,rispTesto, &quot;Eh? che hai detto?&quot;)">
@@ -218,6 +231,25 @@
             </if>
         </body>
     </function>
+    <function name="polifemoBeve" type="None" variable="">
+        <parameters>
+            <parameter name="raggiuntoFinale" type="Boolean" array="False"/>
+            <parameter name="nomeUlisse" type="String" array="False"/>
+        </parameters>
+        <body>
+            <declare name="numeroBevute" type="Integer" array="False" size=""/>
+            <assign variable="numeroBevute" expression="0"/>
+            <declare name="scelta" type="Integer" array="False" size=""/>
+            <declare name="treOpzioni" type="String" array="True" size="3"/>
+            <declare name="dueOpzioni" type="String" array="True" size="2"/>
+            <assign variable="scelta" expression="-1"/>
+            <output expression="&quot;Polifemo accett&#242; di buon grado la proposta di Ulisse di bere e si scol&#242; un'intera botte d vino&quot;" newline="True"/>
+            <while expression="scelta!=0 and scelta!=2">
+                <call expression="impostaTreOpzioni(&quot;0 Non mi sembra una buona idea...Potrebbe essere una trappola&quot;, &quot;1 Ma certo uomini! Io stesso ho una gran fame&quot;, &quot;2 Forse &#232; il caso di non entrare a mani vuote visto che potrebbe esserci il proprietario dentro, voi due tornate alla nave a prendere le scorte di vino&quot;, treOpzioni)"/>
+                <assign variable="scelta" expression="controllaRispostaIntero(Size(treOpzioni))"/>
+            </while>
+        </body>
+    </function>
     <function name="tuttominuscolo" type="String" variable="minstringa">
         <parameters>
             <parameter name="stringa" type="String" array="False"/>
@@ -240,6 +272,50 @@
                 </if>
                 <assign variable="minstringa" expression="minstringa &amp; carattereCorrente"/>
             </for>
+        </body>
+    </function>
+    <function name="ulisseParlaConPolifemo" type="Boolean" variable="raggiuntoFinale">
+        <parameters>
+            <parameter name="vino" type="Boolean" array="False"/>
+        </parameters>
+        <body>
+            <declare name="scelta" type="Integer" array="False" size=""/>
+            <declare name="raggiuntoFinale" type="Boolean" array="False" size=""/>
+            <assign variable="raggiuntoFinale" expression="false"/>
+            <declare name="nomeUlisse" type="String" array="False" size=""/>
+            <declare name="treOpzioni" type="String" array="True" size="3"/>
+            <output expression="&quot;Ulisse avanz&#242;, fuori dal suo nascondiglio, verso il ciclope...&quot;" newline="True"/>
+            <output expression="&quot;Polifemo: E tu chi saresti, omino?&quot;" newline="True"/>
+            <input variable="nomeUlisse"/>
+            <output expression="&quot;Polifemo: &quot;&amp;nomeUlisse&amp;&quot; ,che nome patetico... Credo che sarai proprio il mio prossimo spuntino! Poi mi occuper&#242; degli altri tuoi amici ladruncoli, cheancora si nascondono nella mia grotta&quot;" newline="True"/>
+            <call expression="impostaTreOpzioni(&quot;0 Ulisse cerc&#242; di scappare: magari l'uscita della grotta non era chiusa cos&#236; bene&quot;, &quot;1 Ulisse decise di provare ad ingannare Polifemo per mandarlo sulla sua nave&quot;, &quot;2 Ulisse decise di offrire a Polifemo il vino che avevano portato&quot;, treOpzioni)"/>
+            <assign variable="scelta" expression="controllaRispostaIntero(Size(treOpzioni))"/>
+            <if expression="scelta==0">
+                <then>
+                    <output expression="&quot;Ulisse, in preda al panico, tent&#242; di correre verso l'uscita della caverna, ma Polifemo lo afferr&#242; &lt;&lt;Hahahaha&gt;&gt; grid&#242; trionfante &lt;&lt;Sei proprio patetico caro il mio &quot;&amp;nomeUlisse&amp; &quot;!&gt;&gt; Quindi lo divor&#242;&quot;" newline="True"/>
+                    <assign variable="raggiuntoFinale" expression="true"/>
+                </then>
+                <else>
+                    <if expression="scelta==1">
+                        <then>
+                            <output expression="&quot;&lt;&lt;Perch&#233; non mi lasci tornare alla mia nave?&gt;&gt; grid&#242; Ulisse, mentre il gigante lo fissava con l'unico occhio &lt;&lt;Potrei portarti...&gt;&gt;&quot;" newline="True"/>
+                            <output expression="&quot;&lt;&lt;CREDI FORSE CHE IL CICLOPE POLIFEMO, FIGLIO DEL GRANDE POSEIDONE, SI LASCI INGANNARE DA UNA NULLITA' COME TE?!&gt;&gt; Tuono il mostro facendo gelare il sangue nelle vene di Ulisse. Poi lo afferr&#242; e lo divor&#242;&quot;" newline="True"/>
+                            <assign variable="raggiuntoFinale" expression="true"/>
+                        </then>
+                        <else>
+                            <if expression="vino==true">
+                                <then>
+                                    <call expression="polifemoBeve(raggiuntoFinale, nomeUlisse)"/>
+                                </then>
+                                <else>
+                                    <assign variable="raggiuntoFinale" expression="true"/>
+                                    <output expression="&quot;Solo in quel momento Ulisse si ricordo di non essere andato a prendere il vino con i suoi uomini... Polifemo accett&#242; la proposta, ma quando cap&#236; che il re di Itaca gli aveva mentito lo divor&#242;.&quot;" newline="True"/>
+                                </else>
+                            </if>
+                        </else>
+                    </if>
+                </else>
+            </if>
         </body>
     </function>
 </flowgorithm>
