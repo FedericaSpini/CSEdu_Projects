@@ -4,11 +4,11 @@
         <attribute name="name" value=""/>
         <attribute name="authors" value="andre"/>
         <attribute name="about" value=""/>
-        <attribute name="saved" value="2019-05-28 02:58:46 "/>
+        <attribute name="saved" value="2019-05-28 06:22:04 "/>
         <attribute name="created" value="YW5kcmU7REVTS1RPUC1PUzc5VDMwOzIwMTktMDUtMjM7IjAxOjI4OjI3ICI7Mjc1OQ=="/>
         <attribute name="edited" value="RmVkZXJpY2E7REVTS1RPUC0wT0FQVTZTOzIwMTktMDUtMjU7IjEyOjIxOjQ5ICI7NDtGZWRlcmljYTtERVNLVE9QLTBPQVBVNlM7MjAxOS0wNS0yMjsiMTA6Mjk6NTEgIjtsaWJyb0dhbWVfZWRpcG8uZnByZzs4MzY0"/>
         <attribute name="edited" value="YW5kcmU7REVTS1RPUC1PUzc5VDMwOzIwMTktMDUtMjY7IjEyOjU0OjI2ICI7OTsyODc4"/>
-        <attribute name="edited" value="RmVkZXJpY2E7REVTS1RPUC0wT0FQVTZTOzIwMTktMDUtMjg7IjAyOjU4OjQ2ICI7NTszMTgz"/>
+        <attribute name="edited" value="RmVkZXJpY2E7REVTS1RPUC0wT0FQVTZTOzIwMTktMDUtMjg7IjA2OjIyOjA0ICI7ODszMTc1"/>
     </attributes>
     <function name="Main" type="None" variable="">
         <parameters/>
@@ -20,6 +20,7 @@
             <declare name="finaleRaggiunto" type="Boolean" array="False" size=""/>
             <assign variable="finaleRaggiunto" expression="false"/>
             <comment text="L'introduzione &#232; un pezzo della storia messo in una funzione a parte: non varia il corso della storia, ma presenta comunque delle interazioni con il giocatore."/>
+            <call expression="introduzione()"/>
             <assign variable="vino" expression="arrivoAllaGrotta()"/>
         </body>
     </function>
@@ -143,6 +144,18 @@
             </while>
         </body>
     </function>
+    <function name="discorsi" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="treOpzioni" type="String" array="True" size="3"/>
+            <declare name="scelta" type="Integer" array="False" size=""/>
+            <call expression="impostaTreOpzioni(&quot;0 Ma non pensi di essere sprecato per passare la tua vita a badare alle pecore?&quot;, &quot;1 In realt&#224;, cos&#236; da vicino, sembri uno in gamba&quot;, &quot;2 Secondo me dovresti smetterla di mangiare gli uomini&quot;, treOpzioni)"/>
+            <assign variable="scelta" expression="controllaRispostaIntero(Size(treOpzioni))"/>
+            <output expression="&quot;Polifemo: (sob!) Io vorrei viaggiare e vedere il mondo... Ma poi gli uomini mi additano come un mostro e allora ho voglia di fargliela pagare e me li mangio&quot;" newline="True"/>
+            <call expression="impostaTreOpzioni(&quot;0 Non dire cos&#236;, a me non sembri un mostro&quot;, &quot;1 E grazie che ti trattano come un mostro! Mangi la gente appena la vedi&quot;, &quot;2 Dovresti pensare a cambiare vita anzi che piangerti addosso&quot;, treOpzioni)"/>
+            <assign variable="scelta" expression="controllaRispostaIntero(Size(treOpzioni))"/>
+        </body>
+    </function>
     <function name="impostaDueOpzioni" type="None" variable="">
         <parameters>
             <parameter name="primaOpzione" type="String" array="False"/>
@@ -244,10 +257,29 @@
             <declare name="dueOpzioni" type="String" array="True" size="2"/>
             <assign variable="scelta" expression="-1"/>
             <output expression="&quot;Polifemo accett&#242; di buon grado la proposta di Ulisse di bere e si scol&#242; un'intera botte d vino&quot;" newline="True"/>
-            <while expression="scelta!=0 and scelta!=2">
-                <call expression="impostaTreOpzioni(&quot;0 Non mi sembra una buona idea...Potrebbe essere una trappola&quot;, &quot;1 Ma certo uomini! Io stesso ho una gran fame&quot;, &quot;2 Forse &#232; il caso di non entrare a mani vuote visto che potrebbe esserci il proprietario dentro, voi due tornate alla nave a prendere le scorte di vino&quot;, treOpzioni)"/>
+            <while expression="scelta!=0 and scelta!=2 and numeroBevute&lt;=5">
+                <assign variable="numeroBevute" expression="numeroBevute+1"/>
+                <output expression="&quot;Per la miseria se beveva di gusto!&quot;" newline="True"/>
+                <call expression="impostaTreOpzioni(&quot;0 Ulisse tent&#242; di fuggire dal gigante, mentre questo beveva&quot;, &quot;1 Ulisse offr&#236; altro vino a Polifemo&quot;, &quot;2 Ulisse inizi&#242; a parlare con il ciclope&quot;, treOpzioni)"/>
                 <assign variable="scelta" expression="controllaRispostaIntero(Size(treOpzioni))"/>
             </while>
+            <if expression="scelta==1">
+                <then>
+                    <output expression="&quot;Alla fine dell'ennesima bevuta, il ciclope croll&#242; a terra, profondamente addormentato&quot;" newline="True"/>
+                </then>
+                <else>
+                    <if expression="scelta==0">
+                        <then>
+                            <assign variable="raggiuntoFinale" expression="true"/>
+                            <output expression="&quot;Tentando di approfittare della distrazione di Polifemo Ulisse inizi&#242; ad aggirarsi per la caverna in cerca di una via di fuga, ma il gigante, non ancora ubriaco, lo vide &lt;&lt;CERCARVI DI FREGARMI!&gt;&gt; tuon&#242;. Quindi afferr&#242; l'uomo e lo divor&#242;&quot;" newline="True"/>
+                        </then>
+                        <else>
+                            <assign variable="raggiuntoFinale" expression="true"/>
+                            <call expression="discorsi()"/>
+                        </else>
+                    </if>
+                </else>
+            </if>
         </body>
     </function>
     <function name="tuttominuscolo" type="String" variable="minstringa">
