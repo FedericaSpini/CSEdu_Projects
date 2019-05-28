@@ -4,11 +4,11 @@
         <attribute name="name" value=""/>
         <attribute name="authors" value="andre"/>
         <attribute name="about" value=""/>
-        <attribute name="saved" value="2019-05-26 12:54:26 "/>
+        <attribute name="saved" value="2019-05-28 10:33:13 "/>
         <attribute name="created" value="YW5kcmU7REVTS1RPUC1PUzc5VDMwOzIwMTktMDUtMjM7IjAxOjI4OjI3ICI7Mjc1OQ=="/>
         <attribute name="edited" value="RmVkZXJpY2E7REVTS1RPUC0wT0FQVTZTOzIwMTktMDUtMjU7IjEyOjIxOjQ5ICI7NDtGZWRlcmljYTtERVNLVE9QLTBPQVBVNlM7MjAxOS0wNS0yMjsiMTA6Mjk6NTEgIjtsaWJyb0dhbWVfZWRpcG8uZnByZzs4MzY0"/>
-        <attribute name="edited" value="RmVkZXJpY2E7REVTS1RPUC0wT0FQVTZTOzIwMTktMDUtMjU7IjEyOjQ3OjE5ICI7MjszMTc2"/>
         <attribute name="edited" value="YW5kcmU7REVTS1RPUC1PUzc5VDMwOzIwMTktMDUtMjY7IjEyOjU0OjI2ICI7OTsyODc4"/>
+        <attribute name="edited" value="RmVkZXJpY2E7REVTS1RPUC0wT0FQVTZTOzIwMTktMDUtMjg7IjEwOjMzOjEzICI7MzszMTY3"/>
     </attributes>
     <function name="Main" type="None" variable="">
         <parameters/>
@@ -27,7 +27,10 @@
             <declare name="vino" type="Boolean" array="False" size=""/>
             <assign variable="vino" expression="false"/>
             <declare name="scelta" type="Integer" array="False" size=""/>
+            <declare name="numeroMarinai" type="Integer" array="False" size=""/>
             <declare name="treOpzioni" type="String" array="True" size="3"/>
+            <declare name="dueOpzioni" type="String" array="True" size="2"/>
+            <assign variable="numeroMarinai" expression="12"/>
             <output expression="&quot;Ulisse e i suoi uomini sbarcarono e si avventurarono per quelle terre sconosciute. Dopo aver camminato un bel po' trovarono una caverna il cui interno era colmo di cibo: gigantesche forme di formaggio...&quot;" newline="True"/>
             <output expression="&quot;Marinaio2: Signore, entriamo e approfittiamo di questo dono degli Dei!&quot;" newline="True"/>
             <call expression="impostaTreOpzioni(&quot;0 Non mi sembra una buona idea...Potrebbe essere una trappola&quot;, &quot;1 Ma certo uomini! Io stesso ho una gran fame&quot;, &quot;2 Forse &#232; il caso di non entrare a mani vuote visto che potrebbe esserci il proprietario dentro, voi due tornate alla nave a prendere le scorte di vino&quot;, treOpzioni)"/>
@@ -44,9 +47,26 @@
                         <else>
                             <output expression="&quot;Marinaio2: &#200; una grandissima idea capitano (cos&#236; nemmeno rischiamo di strozzarci mentre ci abbuffiamo)&quot;" newline="True"/>
                             <assign variable="vino" expression="true"/>
+                            <output expression="&quot;Dopo essere tornati alle navi e aver preso anfore di vino in abbondanza, Ulisse e i suoi uomini tornarono alla gigantesca caverna per abbuffarsi&quot;" newline="True"/>
                         </else>
                     </if>
                 </else>
+            </if>
+            <output expression="&quot;Mentre Ulisse e tutti gli altri si godevano quel cibo fresco e delizioso, il pavimento inizi&#242; a tremare e una figura gigantesca oscur&#242; l'ingresso, metre entravano con lui delle pecore. Il gigante, dopo essere entrato chiuse l'ingresso con un masso gigantesco. Quando si volt&#242; ad Ulisse e i suoi si gel&#242; il sangue vedendo l'unico occhio sul suo volto.... Era un ciclope. Terrorizzati, Ulisse e i suoi si nascosero&quot;" newline="True"/>
+            <output expression="&quot;Polifemo: ....(annusando l'aria e guardandosi intorno)&quot;" newline="True"/>
+            <output expression="&quot;Improvvisamente il gigante afferr&#242; uno degli uomini di Ulisse che non aveva fatto in tempo a nascondersi &lt;&lt;Voi, siete venuti qui a derubarmi perch&#233; trovavate succulento il formaggio delle mie pecore, ma non sapete quanto io trovi succulenti gli uomini&gt;&gt; grid&#242; furioso e mangi&#242; in un paio di bocconi il marinaio&quot;" newline="True"/>
+            <assign variable="numeroMarinai" expression="numeroMarinai-1"/>
+            <call expression="impostaDueOpzioni(&quot;0 Ulisse agghiacciato, rimase nascosto dietro l'enorma cassapanca del ciclope&quot;, &quot;1 Ulisse non avrebbe visto morire un altro dei suomini! Prese coraggio e si fece avanti&quot;, dueOpzioni)"/>
+            <assign variable="scelta" expression="controllaRispostaIntero(Size(dueOpzioni))"/>
+            <while expression="(scelta != 1) and (numeroMarinai!=0)">
+                <assign variable="numeroMarinai" expression="numeroMarinai-1"/>
+                <output expression="&quot;Il gigante cerc&#242; ancora e trov&#242; un altro dei marinai... Come se fosse stato fatto di pane divor&#242; anche lui senza piet&#224;... solo &quot;&amp;numeroMarinai&amp;&quot; marinai erano rimasti in vita&quot;" newline="True"/>
+                <call expression="impostaDueOpzioni(&quot;0 Ulisse agghiacciato, rimase nascosto dietro l'enorma cassapanca del ciclope&quot;, &quot;1 Ulisse non avrebbe visto morire un altro dei suomini! Prese coraggio e si fece avanti&quot;, dueOpzioni)"/>
+                <assign variable="scelta" expression="controllaRispostaIntero(Size(dueOpzioni))"/>
+            </while>
+            <if expression="numeroMarinai==0">
+                <then/>
+                <else/>
             </if>
         </body>
     </function>

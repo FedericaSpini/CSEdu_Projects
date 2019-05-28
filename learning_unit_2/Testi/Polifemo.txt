@@ -1,15 +1,18 @@
--Non andiamo nella caverna
--Andiamo nella caverna
--Ricambiamo col vino e andiamo  -> pezzo narrativo da aggiungere in cui si portano il vino (metti a true un booleano, perché sennò polifemo non si ubriaco)
+-OK-	Non andiamo nella caverna
+-OK-	Andiamo nella caverna
+-OK-	Ricambiamo col vino e andiamo  -> 
+										-OK-	pezzo narrativo da aggiungere in cui si portano il vino (metti a true un booleano, perché sennò polifemo non si ubriaco)
 
 
 
--pezzo narrativo in cui arriva polifemo: alcuni riescono a nascondersi, altri no e marinaio2 rip
-
--Ulisse si palesa (dialogo con Polifemo in cui gli chiede come si chiama) ---> variabile con il nome di ulisse (quello giusto è nessuno)
+--OK-	pezzo narrativo in cui arriva polifemo: alcuni riescono a nascondersi, altri no e marinaio2 rip
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
 SCELTA
+
+
+-Ulisse si palesa (dialogo con Polifemo in cui gli chiede come si chiama) ---> variabile con il nome di ulisse (quello giusto è nessuno)
+
 	-Cerca di scappare
 	-Cerca di ingannare (lo convinci a mandarti sulla nave, scappi, ma abbandoni i tuoi uomini....sei un infame) FINALE
 	-(!solo se hai preso il vino)Invita a bere ---> LOOP tra continua a far bere Polifemo (se lo fai 5 volte poi è finito il vino e Polifemo si addormenta)
