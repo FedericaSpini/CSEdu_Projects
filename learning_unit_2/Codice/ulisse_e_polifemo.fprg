@@ -4,11 +4,11 @@
         <attribute name="name" value=""/>
         <attribute name="authors" value="andre"/>
         <attribute name="about" value=""/>
-        <attribute name="saved" value="2019-05-28 10:33:13 "/>
+        <attribute name="saved" value="2019-05-28 10:42:07 "/>
         <attribute name="created" value="YW5kcmU7REVTS1RPUC1PUzc5VDMwOzIwMTktMDUtMjM7IjAxOjI4OjI3ICI7Mjc1OQ=="/>
         <attribute name="edited" value="RmVkZXJpY2E7REVTS1RPUC0wT0FQVTZTOzIwMTktMDUtMjU7IjEyOjIxOjQ5ICI7NDtGZWRlcmljYTtERVNLVE9QLTBPQVBVNlM7MjAxOS0wNS0yMjsiMTA6Mjk6NTEgIjtsaWJyb0dhbWVfZWRpcG8uZnByZzs4MzY0"/>
         <attribute name="edited" value="YW5kcmU7REVTS1RPUC1PUzc5VDMwOzIwMTktMDUtMjY7IjEyOjU0OjI2ICI7OTsyODc4"/>
-        <attribute name="edited" value="RmVkZXJpY2E7REVTS1RPUC0wT0FQVTZTOzIwMTktMDUtMjg7IjEwOjMzOjEzICI7MzszMTY3"/>
+        <attribute name="edited" value="RmVkZXJpY2E7REVTS1RPUC0wT0FQVTZTOzIwMTktMDUtMjg7IjEwOjQyOjA3ICI7NDszMTcx"/>
     </attributes>
     <function name="Main" type="None" variable="">
         <parameters/>
@@ -27,6 +27,7 @@
             <declare name="vino" type="Boolean" array="False" size=""/>
             <assign variable="vino" expression="false"/>
             <declare name="scelta" type="Integer" array="False" size=""/>
+            <declare name="finaleRaggiunto" type="Boolean" array="False" size=""/>
             <declare name="numeroMarinai" type="Integer" array="False" size=""/>
             <declare name="treOpzioni" type="String" array="True" size="3"/>
             <declare name="dueOpzioni" type="String" array="True" size="2"/>
@@ -65,7 +66,10 @@
                 <assign variable="scelta" expression="controllaRispostaIntero(Size(dueOpzioni))"/>
             </while>
             <if expression="numeroMarinai==0">
-                <then/>
+                <then>
+                    <output expression="&quot;Ulisse disperato per aver visto morire tutti i suoi compagni url&#242; di disperazione. Polifemo lo trov&#242; per questo e trionfante, mangi&#242; anche lui&quot;" newline="True"/>
+                    <assign variable="finaleRaggiunto" expression="true"/>
+                </then>
                 <else/>
             </if>
         </body>
