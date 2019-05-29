@@ -4,11 +4,11 @@
         <attribute name="name" value=""/>
         <attribute name="authors" value="Federica"/>
         <attribute name="about" value=""/>
-        <attribute name="saved" value="2019-05-29 06:31:01 "/>
+        <attribute name="saved" value="2019-05-29 09:49:27 "/>
         <attribute name="created" value="RmVkZXJpY2E7REVTS1RPUC0wT0FQVTZTOzIwMTktMDUtMjI7IjEwOjI5OjUxICI7MzA1OA=="/>
         <attribute name="edited" value="YW5kcmU7REVTS1RPUC1PUzc5VDMwOzIwMTktMDUtMjI7IjA4OjM4OjU3ICI7MTsyODc3"/>
         <attribute name="edited" value="RmVkZXJpY2E7REVTS1RPUC0wT0FQVTZTOzIwMTktMDUtMjQ7IjA0OjI4OjM1ICI7MjthbmRyZTtERVNLVE9QLU9TNzlUMzA7MjAxOS0wNS0yMzsiMDE6Mjg6MjcgIjtwcm9sb2dvdGVzdC5mcHJnOzc3NDU="/>
-        <attribute name="edited" value="RmVkZXJpY2E7REVTS1RPUC0wT0FQVTZTOzIwMTktMDUtMjk7IjA2OjMxOjAxICI7MTQ7MzIxOA=="/>
+        <attribute name="edited" value="RmVkZXJpY2E7REVTS1RPUC0wT0FQVTZTOzIwMTktMDUtMjk7IjA5OjQ5OjI3ICI7MTU7MzIzOQ=="/>
     </attributes>
     <function name="Main" type="None" variable="">
         <parameters/>
@@ -27,7 +27,7 @@
             <assign variable="testo8" expression="&quot;Compiaciuta perch&#233; il ragazzo aveva accettato la sfida, la Sfinge sorrise enigmatica &lt;&lt;Qual &#232; l'animale che di mattina cammina con quattro zampe, di giorno con due e la sera con tre zampe?&gt;&gt; chiese&quot;"/>
             <declare name="opzione0, opzione1, opzione2, opzione3, opzione4, opzione5, opzione6, opzione7, opzione8, opzione9, opzione10, opzione11, opzione12" type="String" array="False" size=""/>
             <assign variable="opzione0" expression="&quot;0 per iniziare a giocare&quot;"/>
-            <assign variable="opzione1" expression="&quot;0 Edipo lasci&#242; Corinto...L&#236; non c'era pi&#249; nulla per lui&quot;"/>
+            <assign variable="opzione1" expression="&quot;0 Edipo lasci&#242; quelle terre...L&#236; non c'era pi&#249; nulla per lui&quot;"/>
             <assign variable="opzione2" expression="&quot;1 Edipo si rec&#242; dall'Oracolo di Delfi...forse avrebbe avuto delle certezze&quot;"/>
             <assign variable="opzione3" expression="&quot;2 Il trono di Corinto gli spettava dopo tutti quegli anni: se lo sarebbe preso con la forza&quot;"/>
             <assign variable="opzione4" expression="&quot;1 Edipo pens&#242; fosse destino: torn&#242; a casa, a Corinto, per uccidere suo padre e prendersi il trono che gli spettava&quot;"/>
@@ -154,7 +154,23 @@
                                         </then>
                                         <else>
                                             <assign variable="punteggio" expression="punteggio+3"/>
-                                            <assign variable="finaleSelezionato" expression="finale5"/>
+                                            <output expression="finale5" newline="True"/>
+                                            <comment text="Arrivati a questo punto il finale varier&#224; in base al fatto se la profezia &#232; stata sentita, o se &#232; stato ucciso l'uomo per la strada. Decisioni che sul momento sembravano non aver cambiato nulla"/>
+                                            <if expression="uccisoRe==true">
+                                                <then>
+                                                    <if expression="ascoltataProfezia">
+                                                        <then>
+                                                            <assign variable="finaleSelezionato" expression="&quot;Edipo venne a sapere anche che il re di Tebe, corso fuori con degli uomini per cercare aiuto contro la Sfinge, era morto. Per questo Creonte, il re provvisorio, invest&#236; il ragazzo del titolo di sovrano e gli fece sposare la regina Giocasta... Solo anni dopo Edipo capir&#224; che la profezia si era avverata perch&#233; il re era l'uomo che lui aveva ucciso lungo la via ed era anche il suo vero padre. Giocasta invece era sua madre.&quot;"/>
+                                                        </then>
+                                                        <else>
+                                                            <assign variable="finaleSelezionato" expression="&quot;Edipo venne a sapere anche che il re di Tebe, corso fuori con degli uomini per cercare aiuto contro la Sfinge, era morto. Per questo Creonte, il re provvisorio, invest&#236; il ragazzo del titolo di sovrano e gli fece sposare la regina Giocasta&quot;"/>
+                                                        </else>
+                                                    </if>
+                                                </then>
+                                                <else>
+                                                    <assign variable="finaleSelezionato" expression="&quot;Il re di Tebe si rivel&#242; essere l'uomo sul carro che aveva intimato ad Edipo di togliersi dalla strada... Grato per quello che il giovane aveva fatto si scus&#242; e disse che era stata la fretta e l'ansia per il suo popolo a parlare ed invit&#242; Edipo a rimanere per sempre a Tebe come cittadino onorario&quot;"/>
+                                                </else>
+                                            </if>
                                         </else>
                                     </if>
                                 </else>
