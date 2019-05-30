@@ -4,11 +4,11 @@
         <attribute name="name" value=""/>
         <attribute name="authors" value="andre"/>
         <attribute name="about" value=""/>
-        <attribute name="saved" value="2019-05-30 03:40:13 "/>
+        <attribute name="saved" value="2019-05-30 03:59:08 "/>
         <attribute name="created" value="YW5kcmU7REVTS1RPUC1PUzc5VDMwOzIwMTktMDUtMjM7IjAxOjI4OjI3ICI7Mjc1OQ=="/>
         <attribute name="edited" value="RmVkZXJpY2E7REVTS1RPUC0wT0FQVTZTOzIwMTktMDUtMjU7IjEyOjIxOjQ5ICI7NDtGZWRlcmljYTtERVNLVE9QLTBPQVBVNlM7MjAxOS0wNS0yMjsiMTA6Mjk6NTEgIjtsaWJyb0dhbWVfZWRpcG8uZnByZzs4MzY0"/>
         <attribute name="edited" value="YW5kcmU7REVTS1RPUC1PUzc5VDMwOzIwMTktMDUtMjY7IjEyOjU0OjI2ICI7OTsyODc4"/>
-        <attribute name="edited" value="RmVkZXJpY2E7REVTS1RPUC0wT0FQVTZTOzIwMTktMDUtMzA7IjAzOjQwOjEzICI7MTQ7MzIxMA=="/>
+        <attribute name="edited" value="RmVkZXJpY2E7REVTS1RPUC0wT0FQVTZTOzIwMTktMDUtMzA7IjAzOjU5OjA4ICI7MTU7MzIyNQ=="/>
     </attributes>
     <function name="Main" type="None" variable="">
         <parameters/>
@@ -43,6 +43,7 @@
                             <assign variable="finaleRaggiunto" expression="capitolo5PolifemoBeve(nomeUlisse)"/>
                             <if expression="finaleRaggiunto==false">
                                 <then>
+                                    <comment text="Il capitolo 7 &#232; quello in cui, se &#232; rimasto un numero sufficiente di uomini, Ulisse e i suoi accecano Polifemo"/>
                                     <assign variable="finaleRaggiunto" expression="capitolo7IlPiano(numeroMarinai, nomeUlisse)"/>
                                     <if expression="finaleRaggiunto==false">
                                         <then/>
