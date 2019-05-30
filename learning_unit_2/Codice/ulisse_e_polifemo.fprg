@@ -4,11 +4,11 @@
         <attribute name="name" value=""/>
         <attribute name="authors" value="andre"/>
         <attribute name="about" value=""/>
-        <attribute name="saved" value="2019-05-30 03:59:08 "/>
+        <attribute name="saved" value="2019-05-30 09:14:41 "/>
         <attribute name="created" value="YW5kcmU7REVTS1RPUC1PUzc5VDMwOzIwMTktMDUtMjM7IjAxOjI4OjI3ICI7Mjc1OQ=="/>
         <attribute name="edited" value="RmVkZXJpY2E7REVTS1RPUC0wT0FQVTZTOzIwMTktMDUtMjU7IjEyOjIxOjQ5ICI7NDtGZWRlcmljYTtERVNLVE9QLTBPQVBVNlM7MjAxOS0wNS0yMjsiMTA6Mjk6NTEgIjtsaWJyb0dhbWVfZWRpcG8uZnByZzs4MzY0"/>
-        <attribute name="edited" value="YW5kcmU7REVTS1RPUC1PUzc5VDMwOzIwMTktMDUtMjY7IjEyOjU0OjI2ICI7OTsyODc4"/>
         <attribute name="edited" value="RmVkZXJpY2E7REVTS1RPUC0wT0FQVTZTOzIwMTktMDUtMzA7IjAzOjU5OjA4ICI7MTU7MzIyNQ=="/>
+        <attribute name="edited" value="YW5kcmU7REVTS1RPUC1PUzc5VDMwOzIwMTktMDUtMzA7IjA5OjE0OjQxICI7MTg7MjkyMA=="/>
     </attributes>
     <function name="Main" type="None" variable="">
         <parameters/>
@@ -33,7 +33,7 @@
                 </then>
                 <else/>
             </if>
-            <if expression="finaleRaggiunto==false">
+            <if expression="!finaleRaggiunto">
                 <then>
                     <comment text="&quot;Se non sono morti tutti i marinai, ma Ulisse ha deciso di intervenire, allora interagisce con polifemo: nel capitolo3 gli dice come si chiama, nel capitolo4 gli offre da bere e se non aveva preso il vino sar&#224; un problema&quot;"/>
                     <assign variable="nomeUlisse" expression="capitolo3UlisseDiceIlNome()"/>
@@ -167,11 +167,18 @@
             <output expression="&quot;Polifemo: ....(annusando l'aria e guardandosi intorno)&quot;" newline="True"/>
             <output expression="&quot;Improvvisamente il gigante afferr&#242; uno degli uomini di Ulisse che non aveva fatto in tempo a nascondersi &lt;&lt;Voi, siete venuti qui a derubarmi perch&#233; trovavate succulento il formaggio delle mie pecore, ma non sapete quanto io trovi succulenti gli uomini&gt;&gt; grid&#242; furioso e mangi&#242; in un paio di bocconi il marinaio&quot;" newline="True"/>
             <assign variable="numeroMarinai" expression="numeroMarinai-1"/>
-            <call expression="impostaDueOpzioni(&quot;0 Ulisse agghiacciato, rimase nascosto dietro l'enorma cassapanca del ciclope&quot;, &quot;1 Ulisse non avrebbe visto morire un altro dei suomini! Prese coraggio e si fece avanti&quot;, dueOpzioni)"/>
+            <call expression="impostaDueOpzioni(&quot;0 Ulisse agghiacciato, rimase nascosto dietro l'enorma cassapanca del ciclope&quot;, &quot;1 Ulisse non avrebbe visto morire un altro dei suoi uomini! Prese coraggio e si fece avanti&quot;, dueOpzioni)"/>
             <assign variable="scelta" expression="controllaRispostaIntero(Size(dueOpzioni))"/>
             <while expression="(scelta != 1) and (numeroMarinai!=0)">
-                <output expression="&quot;Il gigante cerc&#242; ancora e trov&#242; un altro dei marinai... Come se fosse stato fatto di pane divor&#242; anche lui senza piet&#224;... solo &quot;&amp;numeroMarinai&amp;&quot; marinai erano rimasti in vita&quot;" newline="True"/>
-                <call expression="impostaDueOpzioni(&quot;0 Ulisse agghiacciato, rimase nascosto dietro l'enorma cassapanca del ciclope&quot;, &quot;1 Ulisse non avrebbe visto morire un altro dei suomini! Prese coraggio e si fece avanti&quot;, dueOpzioni)"/>
+                <if expression="numeroMarinai &gt; 1">
+                    <then>
+                        <output expression="&quot;Il gigante cerc&#242; ancora e trov&#242; un altro dei marinai... Come se fosse stato fatto di pane divor&#242; anche lui senza piet&#224;... solo &quot;&amp;numeroMarinai&amp;&quot; marinai erano rimasti in vita&quot;" newline="True"/>
+                    </then>
+                    <else>
+                        <output expression="&quot;Il gigante cerc&#242; ancora e trov&#242; un altro dei marinai... Come se fosse stato fatto di pane divor&#242; anche lui senza piet&#224;... solo &quot;&amp;numeroMarinai&amp;&quot; marinaio erano rimasti in vita&quot;" newline="True"/>
+                    </else>
+                </if>
+                <call expression="impostaDueOpzioni(&quot;0 Ulisse agghiacciato, rimase nascosto dietro l'enorma cassapanca del ciclope&quot;, &quot;1 Ulisse non avrebbe visto morire un altro dei suoi uomini! Prese coraggio e si fece avanti&quot;, dueOpzioni)"/>
                 <assign variable="numeroMarinai" expression="numeroMarinai-1"/>
                 <assign variable="scelta" expression="controllaRispostaIntero(Size(dueOpzioni))"/>
             </while>
