@@ -4,11 +4,11 @@
         <attribute name="name" value=""/>
         <attribute name="authors" value="andre"/>
         <attribute name="about" value=""/>
-        <attribute name="saved" value="2019-05-28 06:22:04 "/>
+        <attribute name="saved" value="2019-05-30 12:20:10 "/>
         <attribute name="created" value="YW5kcmU7REVTS1RPUC1PUzc5VDMwOzIwMTktMDUtMjM7IjAxOjI4OjI3ICI7Mjc1OQ=="/>
         <attribute name="edited" value="RmVkZXJpY2E7REVTS1RPUC0wT0FQVTZTOzIwMTktMDUtMjU7IjEyOjIxOjQ5ICI7NDtGZWRlcmljYTtERVNLVE9QLTBPQVBVNlM7MjAxOS0wNS0yMjsiMTA6Mjk6NTEgIjtsaWJyb0dhbWVfZWRpcG8uZnByZzs4MzY0"/>
         <attribute name="edited" value="YW5kcmU7REVTS1RPUC1PUzc5VDMwOzIwMTktMDUtMjY7IjEyOjU0OjI2ICI7OTsyODc4"/>
-        <attribute name="edited" value="RmVkZXJpY2E7REVTS1RPUC0wT0FQVTZTOzIwMTktMDUtMjg7IjA2OjIyOjA0ICI7ODszMTc1"/>
+        <attribute name="edited" value="RmVkZXJpY2E7REVTS1RPUC0wT0FQVTZTOzIwMTktMDUtMzA7IjEyOjIwOjEwICI7MTE7MzIwMg=="/>
     </attributes>
     <function name="Main" type="None" variable="">
         <parameters/>
@@ -17,25 +17,106 @@
             <declare name="dueOpzioni" type="String" array="True" size="2"/>
             <declare name="vino" type="Boolean" array="False" size=""/>
             <assign variable="vino" expression="false"/>
+            <declare name="numeroMarinai" type="Integer" array="False" size=""/>
             <declare name="finaleRaggiunto" type="Boolean" array="False" size=""/>
             <assign variable="finaleRaggiunto" expression="false"/>
+            <declare name="nomeUlisse" type="String" array="False" size=""/>
             <comment text="L'introduzione &#232; un pezzo della storia messo in una funzione a parte: non varia il corso della storia, ma presenta comunque delle interazioni con il giocatore."/>
-            <call expression="introduzione()"/>
-            <assign variable="vino" expression="arrivoAllaGrotta()"/>
+            <comment text="&quot;Arrivo alla grotta che imposta la variabile vino a true o false a seconda delle scelte effettuate&quot;"/>
+            <assign variable="vino" expression="capitolo1ArrivoAllaGrotta()"/>
+            <comment text="Arrivo di Polifemo, che in questo capitolo mangia un certo numero di marinai... se i marinai rimasti saranno troppo pochi, non saranno in grado di attuare il piano di Ulisse"/>
+            <assign variable="numeroMarinai" expression="capitolo2ArrivaPolifemo()"/>
+            <if expression="numeroMarinai==0">
+                <then>
+                    <output expression="&quot;Ulisse disperato per aver visto morire tutti i suoi compagni url&#242; di disperazione. Polifemo lo trov&#242; per questo e trionfante, mangi&#242; anche lui&quot;" newline="True"/>
+                    <assign variable="finaleRaggiunto" expression="true"/>
+                </then>
+                <else/>
+            </if>
+            <if expression="finaleRaggiunto==false">
+                <then>
+                    <comment text="&quot;Se non sono morti tutti i marinai, ma Ulisse ha deciso di intervenire, allora interagisce con polifemo: nel capitolo3 gli dice come si chiama, nel capitolo4 gli offre da bere e se non aveva preso il vino sar&#224; un problema&quot;"/>
+                    <assign variable="nomeUlisse" expression="capitolo3UlisseDiceIlNome()"/>
+                    <assign variable="finaleRaggiunto" expression="capitolo4UlisseOffreDaBere(nomeUlisse, vino)"/>
+                    <if expression="finaleRaggiunto==false">
+                        <then>
+                            <assign variable="finaleRaggiunto" expression="capitolo5PolifemoBeve(nomeUlisse)"/>
+                        </then>
+                        <else>
+                            <comment text="E' gi&#224; stato raggiunto un finale, non fare niente"/>
+                        </else>
+                    </if>
+                </then>
+                <else>
+                    <comment text="E' gi&#224; stato raggiunto un finale, non fare niente"/>
+                </else>
+            </if>
         </body>
     </function>
-    <function name="arrivoAllaGrotta" type="Boolean" variable="vino">
+    <function name="capitolo0Introduzione" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="nome" type="String" array="False" size=""/>
+            <declare name="rispTesto" type="String" array="False" size=""/>
+            <declare name="opzioneSiNo" type="String" array="True" size="2"/>
+            <assign variable="opzioneSiNo[0]" expression="&quot;si&quot;"/>
+            <assign variable="opzioneSiNo[1]" expression="&quot;no&quot;"/>
+            <declare name="dueOpzioni" type="String" array="True" size="2"/>
+            <declare name="scelta" type="Integer" array="False" size=""/>
+            <output expression="&quot;Marinaio1: Heeey, si sta svegliando!&quot;" newline="True"/>
+            <output expression="&quot;Marinaio2: Hey capitano, ci sei? Sei con noi? rispondimi si o no.&quot;" newline="True"/>
+            <do expression="!controllaRisposta(opzioneSiNo,rispTesto, &quot;Eh? che hai detto?&quot;)">
+                <input variable="rispTesto"/>
+                <assign variable="rispTesto" expression="tuttominuscolo(rispTesto)"/>
+            </do>
+            <if expression="rispTesto == &quot;si&quot;">
+                <then>
+                    <output expression="&quot;Marinaio2: Bene, ti stai riprendendo!&quot;" newline="True"/>
+                </then>
+                <else>
+                    <output expression="&quot;Marinaio1: Capitano non &#232; il momento di scherzare!&quot;" newline="True"/>
+                </else>
+            </if>
+            <output expression="&quot;Marinaio3: Forza, alzati in piedi&quot;" newline="True"/>
+            <output expression="&quot;Marinaio1: Ora ti far&#242; tre semplici domande per vedere se ti sei ripreso con la testa capitano&quot;" newline="True"/>
+            <output expression="&quot;Marinaio1: Da dove siamo salpati?&quot;" newline="True"/>
+            <do expression="!controllaRispostaAperta(rispTesto, &quot;troia&quot;, &quot;Marinaio1: Sul serio non te lo ricordi? Guarda che finch&#232; non mi dici da dove siamo partiti non ti lascio andare.&quot;)">
+                <input variable="rispTesto"/>
+                <assign variable="rispTesto" expression="tuttominuscolo(rispTesto)"/>
+            </do>
+            <output expression="&quot;Bene, e invece dove siamo diretti per tornare a casa?&quot;" newline="True"/>
+            <do expression="!controllaRispostaAperta(rispTesto, &quot;itaca&quot;, &quot;Marinaio1: E dai su, lo so che pensi sempre a casa nostra a a tua moglie Penelope, dimmi come si chiama la nostra patria!&quot;)">
+                <input variable="rispTesto"/>
+                <assign variable="rispTesto" expression="tuttominuscolo(rispTesto)"/>
+            </do>
+            <output expression="&quot;Ottimo, ora l'ultima domanda, come ti chiami?&quot;" newline="True"/>
+            <do expression="!controllaRispostaAperta(rispTesto, &quot;ulisse&quot;, &quot;Marinaio2: Cavolo, se non ricorda il proprio nome deve essere pi&#249; grave del previsto...&quot;)">
+                <input variable="rispTesto"/>
+                <assign variable="rispTesto" expression="tuttominuscolo(rispTesto)"/>
+            </do>
+            <output expression="&quot;Marinaio1: Vedo che finalmente ti sei ripreso capitano Ulisse! Stiamo per attraccare per fare rifornimenti&quot;" newline="True"/>
+            <output expression="&quot;Ulisse e i suoi uomini sbarcarono e si avventurarono per quelle terre sconosciute. Dopo aver camminato un bel po' trovarono una caverna il cui interno era colmo di cibo: gigantesche forme di formaggio...&quot;" newline="True"/>
+            <output expression="&quot;Marinaio2: Signore, entriamo e approfittiamo di questo dono degli Dei!&quot;" newline="True"/>
+            <call expression="impostaDueOpzioni(&quot;0 Non mi sembra una buona idea...Potrebbe essere una trappola&quot;, &quot;1 Ma certo uomini! Io stesso ho una gran fame&quot;, dueOpzioni)"/>
+            <assign variable="scelta" expression="controllaRispostaIntero(2)"/>
+            <if expression="scelta==0">
+                <then>
+                    <output expression="&quot;Nonostante gli avvertimenti del loro capitano i marinai, che da mesi non vedevano cibo fresco, si precipitarono nella grotta a banchettare. Ulisse, dubbioso, li segu&#236;.&quot;" newline="True"/>
+                </then>
+                <else>
+                    <output expression="&quot;Gioendo per la fortuna che avevano avuto Ulisse e i suoi si precipitarono nella grotta per abbuffarsi&quot;" newline="True"/>
+                </else>
+            </if>
+        </body>
+    </function>
+    <function name="capitolo1ArrivoAllaGrotta" type="Boolean" variable="vino">
         <parameters/>
         <body>
             <declare name="vino" type="Boolean" array="False" size=""/>
             <assign variable="vino" expression="false"/>
             <declare name="scelta" type="Integer" array="False" size=""/>
-            <declare name="finaleRaggiunto" type="Boolean" array="False" size=""/>
-            <assign variable="finaleRaggiunto" expression="false"/>
-            <declare name="numeroMarinai" type="Integer" array="False" size=""/>
             <declare name="treOpzioni" type="String" array="True" size="3"/>
             <declare name="dueOpzioni" type="String" array="True" size="2"/>
-            <assign variable="numeroMarinai" expression="12"/>
             <output expression="&quot;Ulisse e i suoi uomini sbarcarono e si avventurarono per quelle terre sconosciute. Dopo aver camminato un bel po' trovarono una caverna il cui interno era colmo di cibo: gigantesche forme di formaggio...&quot;" newline="True"/>
             <output expression="&quot;Marinaio2: Signore, entriamo e approfittiamo di questo dono degli Dei!&quot;" newline="True"/>
             <call expression="impostaTreOpzioni(&quot;0 Non mi sembra una buona idea...Potrebbe essere una trappola&quot;, &quot;1 Ma certo uomini! Io stesso ho una gran fame&quot;, &quot;2 Forse &#232; il caso di non entrare a mani vuote visto che potrebbe esserci il proprietario dentro, voi due tornate alla nave a prendere le scorte di vino&quot;, treOpzioni)"/>
@@ -57,6 +138,16 @@
                     </if>
                 </else>
             </if>
+        </body>
+    </function>
+    <function name="capitolo2ArrivaPolifemo" type="Integer" variable="numeroMarinai">
+        <parameters/>
+        <body>
+            <declare name="numeroMarinai" type="Integer" array="False" size=""/>
+            <assign variable="numeroMarinai" expression="12"/>
+            <declare name="scelta" type="Integer" array="False" size=""/>
+            <declare name="treOpzioni" type="String" array="True" size="3"/>
+            <declare name="dueOpzioni" type="String" array="True" size="2"/>
             <output expression="&quot;Mentre Ulisse e tutti gli altri si godevano quel cibo fresco e delizioso, il pavimento inizi&#242; a tremare e una figura gigantesca oscur&#242; l'ingresso, metre entravano con lui delle pecore. Il gigante, dopo essere entrato chiuse l'ingresso con un masso gigantesco. Quando si volt&#242; ad Ulisse e i suoi si gel&#242; il sangue vedendo l'unico occhio sul suo volto.... Era un ciclope. Terrorizzati, Ulisse e i suoi si nascosero&quot;" newline="True"/>
             <output expression="&quot;Polifemo: ....(annusando l'aria e guardandosi intorno)&quot;" newline="True"/>
             <output expression="&quot;Improvvisamente il gigante afferr&#242; uno degli uomini di Ulisse che non aveva fatto in tempo a nascondersi &lt;&lt;Voi, siete venuti qui a derubarmi perch&#233; trovavate succulento il formaggio delle mie pecore, ma non sapete quanto io trovi succulenti gli uomini&gt;&gt; grid&#242; furioso e mangi&#242; in un paio di bocconi il marinaio&quot;" newline="True"/>
@@ -64,24 +155,96 @@
             <call expression="impostaDueOpzioni(&quot;0 Ulisse agghiacciato, rimase nascosto dietro l'enorma cassapanca del ciclope&quot;, &quot;1 Ulisse non avrebbe visto morire un altro dei suomini! Prese coraggio e si fece avanti&quot;, dueOpzioni)"/>
             <assign variable="scelta" expression="controllaRispostaIntero(Size(dueOpzioni))"/>
             <while expression="(scelta != 1) and (numeroMarinai!=0)">
-                <assign variable="numeroMarinai" expression="numeroMarinai-1"/>
                 <output expression="&quot;Il gigante cerc&#242; ancora e trov&#242; un altro dei marinai... Come se fosse stato fatto di pane divor&#242; anche lui senza piet&#224;... solo &quot;&amp;numeroMarinai&amp;&quot; marinai erano rimasti in vita&quot;" newline="True"/>
                 <call expression="impostaDueOpzioni(&quot;0 Ulisse agghiacciato, rimase nascosto dietro l'enorma cassapanca del ciclope&quot;, &quot;1 Ulisse non avrebbe visto morire un altro dei suomini! Prese coraggio e si fece avanti&quot;, dueOpzioni)"/>
+                <assign variable="numeroMarinai" expression="numeroMarinai-1"/>
                 <assign variable="scelta" expression="controllaRispostaIntero(Size(dueOpzioni))"/>
             </while>
-            <if expression="numeroMarinai==0">
+        </body>
+    </function>
+    <function name="capitolo3UlisseDiceIlNome" type="String" variable="nomeUlisse">
+        <parameters/>
+        <body>
+            <declare name="nomeUlisse" type="String" array="False" size=""/>
+            <output expression="&quot;Ulisse avanz&#242;, fuori dal suo nascondiglio, verso il ciclope...&quot;" newline="True"/>
+            <output expression="&quot;Polifemo: E tu chi saresti, omino?&quot;" newline="True"/>
+            <input variable="nomeUlisse"/>
+            <output expression="&quot;Polifemo: &quot;&amp;nomeUlisse&amp;&quot; ,che nome patetico... Credo che sarai proprio il mio prossimo spuntino! Poi mi occuper&#242; degli altri tuoi amici ladruncoli, cheancora si nascondono nella mia grotta&quot;" newline="True"/>
+        </body>
+    </function>
+    <function name="capitolo4UlisseOffreDaBere" type="Boolean" variable="finaleRaggiunto">
+        <parameters>
+            <parameter name="nomeUlisse" type="String" array="False"/>
+            <parameter name="vino" type="Boolean" array="False"/>
+        </parameters>
+        <body>
+            <declare name="scelta" type="Integer" array="False" size=""/>
+            <declare name="finaleRaggiunto" type="Boolean" array="False" size=""/>
+            <assign variable="finaleRaggiunto" expression="false"/>
+            <declare name="treOpzioni" type="String" array="True" size="3"/>
+            <call expression="impostaTreOpzioni(&quot;0 Ulisse cerc&#242; di scappare: magari l'uscita della grotta non era chiusa cos&#236; bene&quot;, &quot;1 Ulisse decise di provare ad ingannare Polifemo per mandarlo sulla sua nave&quot;, &quot;2 Ulisse decise di offrire a Polifemo il vino che avevano portato&quot;, treOpzioni)"/>
+            <assign variable="scelta" expression="controllaRispostaIntero(Size(treOpzioni))"/>
+            <if expression="scelta==0">
                 <then>
-                    <output expression="&quot;Ulisse disperato per aver visto morire tutti i suoi compagni url&#242; di disperazione. Polifemo lo trov&#242; per questo e trionfante, mangi&#242; anche lui&quot;" newline="True"/>
+                    <output expression="&quot;Ulisse, in preda al panico, tent&#242; di correre verso l'uscita della caverna, ma Polifemo lo afferr&#242; &lt;&lt;Hahahaha&gt;&gt; grid&#242; trionfante &lt;&lt;Sei proprio patetico caro il mio &quot;&amp;nomeUlisse&amp; &quot;!&gt;&gt; Quindi lo divor&#242;&quot;" newline="True"/>
                     <assign variable="finaleRaggiunto" expression="true"/>
                 </then>
-                <else/>
+                <else>
+                    <if expression="scelta==1">
+                        <then>
+                            <output expression="&quot;&lt;&lt;Perch&#233; non mi lasci tornare alla mia nave?&gt;&gt; grid&#242; Ulisse, mentre il gigante lo fissava con l'unico occhio &lt;&lt;Potrei portarti...&gt;&gt;&quot;" newline="True"/>
+                            <output expression="&quot;&lt;&lt;CREDI FORSE CHE IL CICLOPE POLIFEMO, FIGLIO DEL GRANDE POSEIDONE, SI LASCI INGANNARE DA UNA NULLITA' COME TE?!&gt;&gt; Tuono il mostro facendo gelare il sangue nelle vene di Ulisse. Poi lo afferr&#242; e lo divor&#242;&quot;" newline="True"/>
+                            <assign variable="finaleRaggiunto" expression="true"/>
+                        </then>
+                        <else>
+                            <if expression="vino==true">
+                                <then/>
+                                <else>
+                                    <assign variable="finaleRaggiunto" expression="true"/>
+                                    <output expression="&quot;Solo in quel momento Ulisse si ricordo di non essere andato a prendere il vino con i suoi uomini... Polifemo accett&#242; la proposta, ma quando cap&#236; che il re di Itaca gli aveva mentito lo divor&#242;.&quot;" newline="True"/>
+                                </else>
+                            </if>
+                        </else>
+                    </if>
+                </else>
             </if>
-            <if expression="finaleRaggiunto==false">
+        </body>
+    </function>
+    <function name="capitolo5PolifemoBeve" type="Boolean" variable="finaleRaggiunto">
+        <parameters>
+            <parameter name="nomeUlisse" type="String" array="False"/>
+        </parameters>
+        <body>
+            <declare name="finaleRaggiunto" type="Boolean" array="False" size=""/>
+            <assign variable="finaleRaggiunto" expression="false"/>
+            <declare name="numeroBevute" type="Integer" array="False" size=""/>
+            <assign variable="numeroBevute" expression="0"/>
+            <declare name="scelta" type="Integer" array="False" size=""/>
+            <declare name="treOpzioni" type="String" array="True" size="3"/>
+            <declare name="dueOpzioni" type="String" array="True" size="2"/>
+            <assign variable="scelta" expression="-1"/>
+            <output expression="&quot;Polifemo accett&#242; di buon grado la proposta di Ulisse di bere e si scol&#242; un'intera botte d vino&quot;" newline="True"/>
+            <while expression="scelta!=0 and scelta!=2 and numeroBevute&lt;=5">
+                <assign variable="numeroBevute" expression="numeroBevute+1"/>
+                <output expression="&quot;Per la miseria se beveva di gusto!&quot;" newline="True"/>
+                <call expression="impostaTreOpzioni(&quot;0 Ulisse tent&#242; di fuggire dal gigante, mentre questo beveva&quot;, &quot;1 Ulisse offr&#236; altro vino a Polifemo&quot;, &quot;2 Ulisse inizi&#242; a parlare con il ciclope&quot;, treOpzioni)"/>
+                <assign variable="scelta" expression="controllaRispostaIntero(Size(treOpzioni))"/>
+            </while>
+            <if expression="scelta==1">
                 <then>
-                    <assign variable="finaleRaggiunto" expression="ulisseParlaConPolifemo(vino)"/>
+                    <output expression="&quot;Alla fine dell'ennesima bevuta, il ciclope croll&#242; a terra, profondamente addormentato&quot;" newline="True"/>
                 </then>
                 <else>
-                    <comment text="E' gi&#224; stato raggiunto un finale, non fare niente"/>
+                    <if expression="scelta==0">
+                        <then>
+                            <assign variable="finaleRaggiunto" expression="true"/>
+                            <output expression="&quot;Tentando di approfittare della distrazione di Polifemo Ulisse inizi&#242; ad aggirarsi per la caverna in cerca di una via di fuga, ma il gigante, non ancora ubriaco, lo vide &lt;&lt;CERCARVI DI FREGARMI!&gt;&gt; tuon&#242;. Quindi afferr&#242; l'uomo e lo divor&#242;&quot;" newline="True"/>
+                        </then>
+                        <else>
+                            <assign variable="finaleRaggiunto" expression="true"/>
+                            <call expression="discorsi()"/>
+                        </else>
+                    </if>
                 </else>
             </if>
         </body>
@@ -188,100 +351,6 @@
             </for>
         </body>
     </function>
-    <function name="introduzione" type="None" variable="">
-        <parameters/>
-        <body>
-            <declare name="nome" type="String" array="False" size=""/>
-            <declare name="rispTesto" type="String" array="False" size=""/>
-            <declare name="opzioneSiNo" type="String" array="True" size="2"/>
-            <assign variable="opzioneSiNo[0]" expression="&quot;si&quot;"/>
-            <assign variable="opzioneSiNo[1]" expression="&quot;no&quot;"/>
-            <declare name="dueOpzioni" type="String" array="True" size="2"/>
-            <declare name="scelta" type="Integer" array="False" size=""/>
-            <output expression="&quot;Marinaio1: Heeey, si sta svegliando!&quot;" newline="True"/>
-            <output expression="&quot;Marinaio2: Hey capitano, ci sei? Sei con noi? rispondimi si o no.&quot;" newline="True"/>
-            <do expression="!controllaRisposta(opzioneSiNo,rispTesto, &quot;Eh? che hai detto?&quot;)">
-                <input variable="rispTesto"/>
-                <assign variable="rispTesto" expression="tuttominuscolo(rispTesto)"/>
-            </do>
-            <if expression="rispTesto == &quot;si&quot;">
-                <then>
-                    <output expression="&quot;Marinaio2: Bene, ti stai riprendendo!&quot;" newline="True"/>
-                </then>
-                <else>
-                    <output expression="&quot;Marinaio1: Capitano non &#232; il momento di scherzare!&quot;" newline="True"/>
-                </else>
-            </if>
-            <output expression="&quot;Marinaio3: Forza, alzati in piedi&quot;" newline="True"/>
-            <output expression="&quot;Marinaio1: Ora ti far&#242; tre semplici domande per vedere se ti sei ripreso con la testa capitano&quot;" newline="True"/>
-            <output expression="&quot;Marinaio1: Da dove siamo salpati?&quot;" newline="True"/>
-            <do expression="!controllaRispostaAperta(rispTesto, &quot;troia&quot;, &quot;Marinaio1: Sul serio non te lo ricordi? Guarda che finch&#232; non mi dici da dove siamo partiti non ti lascio andare.&quot;)">
-                <input variable="rispTesto"/>
-                <assign variable="rispTesto" expression="tuttominuscolo(rispTesto)"/>
-            </do>
-            <output expression="&quot;Bene, e invece dove siamo diretti per tornare a casa?&quot;" newline="True"/>
-            <do expression="!controllaRispostaAperta(rispTesto, &quot;itaca&quot;, &quot;Marinaio1: E dai su, lo so che pensi sempre a casa nostra a a tua moglie Penelope, dimmi come si chiama la nostra patria!&quot;)">
-                <input variable="rispTesto"/>
-                <assign variable="rispTesto" expression="tuttominuscolo(rispTesto)"/>
-            </do>
-            <output expression="&quot;Ottimo, ora l'ultima domanda, come ti chiami?&quot;" newline="True"/>
-            <do expression="!controllaRispostaAperta(rispTesto, &quot;ulisse&quot;, &quot;Marinaio2: Cavolo, se non ricorda il proprio nome deve essere pi&#249; grave del previsto...&quot;)">
-                <input variable="rispTesto"/>
-                <assign variable="rispTesto" expression="tuttominuscolo(rispTesto)"/>
-            </do>
-            <output expression="&quot;Marinaio1: Vedo che finalmente ti sei ripreso capitano Ulisse! Stiamo per attraccare per fare rifornimenti&quot;" newline="True"/>
-            <output expression="&quot;Ulisse e i suoi uomini sbarcarono e si avventurarono per quelle terre sconosciute. Dopo aver camminato un bel po' trovarono una caverna il cui interno era colmo di cibo: gigantesche forme di formaggio...&quot;" newline="True"/>
-            <output expression="&quot;Marinaio2: Signore, entriamo e approfittiamo di questo dono degli Dei!&quot;" newline="True"/>
-            <call expression="impostaDueOpzioni(&quot;0 Non mi sembra una buona idea...Potrebbe essere una trappola&quot;, &quot;1 Ma certo uomini! Io stesso ho una gran fame&quot;, dueOpzioni)"/>
-            <assign variable="scelta" expression="controllaRispostaIntero(2)"/>
-            <if expression="scelta==0">
-                <then>
-                    <output expression="&quot;Nonostante gli avvertimenti del loro capitano i marinai, che da mesi non vedevano cibo fresco, si precipitarono nella grotta a banchettare. Ulisse, dubbioso, li segu&#236;.&quot;" newline="True"/>
-                </then>
-                <else>
-                    <output expression="&quot;Gioendo per la fortuna che avevano avuto Ulisse e i suoi si precipitarono nella grotta per abbuffarsi&quot;" newline="True"/>
-                </else>
-            </if>
-        </body>
-    </function>
-    <function name="polifemoBeve" type="None" variable="">
-        <parameters>
-            <parameter name="raggiuntoFinale" type="Boolean" array="False"/>
-            <parameter name="nomeUlisse" type="String" array="False"/>
-        </parameters>
-        <body>
-            <declare name="numeroBevute" type="Integer" array="False" size=""/>
-            <assign variable="numeroBevute" expression="0"/>
-            <declare name="scelta" type="Integer" array="False" size=""/>
-            <declare name="treOpzioni" type="String" array="True" size="3"/>
-            <declare name="dueOpzioni" type="String" array="True" size="2"/>
-            <assign variable="scelta" expression="-1"/>
-            <output expression="&quot;Polifemo accett&#242; di buon grado la proposta di Ulisse di bere e si scol&#242; un'intera botte d vino&quot;" newline="True"/>
-            <while expression="scelta!=0 and scelta!=2 and numeroBevute&lt;=5">
-                <assign variable="numeroBevute" expression="numeroBevute+1"/>
-                <output expression="&quot;Per la miseria se beveva di gusto!&quot;" newline="True"/>
-                <call expression="impostaTreOpzioni(&quot;0 Ulisse tent&#242; di fuggire dal gigante, mentre questo beveva&quot;, &quot;1 Ulisse offr&#236; altro vino a Polifemo&quot;, &quot;2 Ulisse inizi&#242; a parlare con il ciclope&quot;, treOpzioni)"/>
-                <assign variable="scelta" expression="controllaRispostaIntero(Size(treOpzioni))"/>
-            </while>
-            <if expression="scelta==1">
-                <then>
-                    <output expression="&quot;Alla fine dell'ennesima bevuta, il ciclope croll&#242; a terra, profondamente addormentato&quot;" newline="True"/>
-                </then>
-                <else>
-                    <if expression="scelta==0">
-                        <then>
-                            <assign variable="raggiuntoFinale" expression="true"/>
-                            <output expression="&quot;Tentando di approfittare della distrazione di Polifemo Ulisse inizi&#242; ad aggirarsi per la caverna in cerca di una via di fuga, ma il gigante, non ancora ubriaco, lo vide &lt;&lt;CERCARVI DI FREGARMI!&gt;&gt; tuon&#242;. Quindi afferr&#242; l'uomo e lo divor&#242;&quot;" newline="True"/>
-                        </then>
-                        <else>
-                            <assign variable="raggiuntoFinale" expression="true"/>
-                            <call expression="discorsi()"/>
-                        </else>
-                    </if>
-                </else>
-            </if>
-        </body>
-    </function>
     <function name="tuttominuscolo" type="String" variable="minstringa">
         <parameters>
             <parameter name="stringa" type="String" array="False"/>
@@ -304,50 +373,6 @@
                 </if>
                 <assign variable="minstringa" expression="minstringa &amp; carattereCorrente"/>
             </for>
-        </body>
-    </function>
-    <function name="ulisseParlaConPolifemo" type="Boolean" variable="raggiuntoFinale">
-        <parameters>
-            <parameter name="vino" type="Boolean" array="False"/>
-        </parameters>
-        <body>
-            <declare name="scelta" type="Integer" array="False" size=""/>
-            <declare name="raggiuntoFinale" type="Boolean" array="False" size=""/>
-            <assign variable="raggiuntoFinale" expression="false"/>
-            <declare name="nomeUlisse" type="String" array="False" size=""/>
-            <declare name="treOpzioni" type="String" array="True" size="3"/>
-            <output expression="&quot;Ulisse avanz&#242;, fuori dal suo nascondiglio, verso il ciclope...&quot;" newline="True"/>
-            <output expression="&quot;Polifemo: E tu chi saresti, omino?&quot;" newline="True"/>
-            <input variable="nomeUlisse"/>
-            <output expression="&quot;Polifemo: &quot;&amp;nomeUlisse&amp;&quot; ,che nome patetico... Credo che sarai proprio il mio prossimo spuntino! Poi mi occuper&#242; degli altri tuoi amici ladruncoli, cheancora si nascondono nella mia grotta&quot;" newline="True"/>
-            <call expression="impostaTreOpzioni(&quot;0 Ulisse cerc&#242; di scappare: magari l'uscita della grotta non era chiusa cos&#236; bene&quot;, &quot;1 Ulisse decise di provare ad ingannare Polifemo per mandarlo sulla sua nave&quot;, &quot;2 Ulisse decise di offrire a Polifemo il vino che avevano portato&quot;, treOpzioni)"/>
-            <assign variable="scelta" expression="controllaRispostaIntero(Size(treOpzioni))"/>
-            <if expression="scelta==0">
-                <then>
-                    <output expression="&quot;Ulisse, in preda al panico, tent&#242; di correre verso l'uscita della caverna, ma Polifemo lo afferr&#242; &lt;&lt;Hahahaha&gt;&gt; grid&#242; trionfante &lt;&lt;Sei proprio patetico caro il mio &quot;&amp;nomeUlisse&amp; &quot;!&gt;&gt; Quindi lo divor&#242;&quot;" newline="True"/>
-                    <assign variable="raggiuntoFinale" expression="true"/>
-                </then>
-                <else>
-                    <if expression="scelta==1">
-                        <then>
-                            <output expression="&quot;&lt;&lt;Perch&#233; non mi lasci tornare alla mia nave?&gt;&gt; grid&#242; Ulisse, mentre il gigante lo fissava con l'unico occhio &lt;&lt;Potrei portarti...&gt;&gt;&quot;" newline="True"/>
-                            <output expression="&quot;&lt;&lt;CREDI FORSE CHE IL CICLOPE POLIFEMO, FIGLIO DEL GRANDE POSEIDONE, SI LASCI INGANNARE DA UNA NULLITA' COME TE?!&gt;&gt; Tuono il mostro facendo gelare il sangue nelle vene di Ulisse. Poi lo afferr&#242; e lo divor&#242;&quot;" newline="True"/>
-                            <assign variable="raggiuntoFinale" expression="true"/>
-                        </then>
-                        <else>
-                            <if expression="vino==true">
-                                <then>
-                                    <call expression="polifemoBeve(raggiuntoFinale, nomeUlisse)"/>
-                                </then>
-                                <else>
-                                    <assign variable="raggiuntoFinale" expression="true"/>
-                                    <output expression="&quot;Solo in quel momento Ulisse si ricordo di non essere andato a prendere il vino con i suoi uomini... Polifemo accett&#242; la proposta, ma quando cap&#236; che il re di Itaca gli aveva mentito lo divor&#242;.&quot;" newline="True"/>
-                                </else>
-                            </if>
-                        </else>
-                    </if>
-                </else>
-            </if>
         </body>
     </function>
 </flowgorithm>
