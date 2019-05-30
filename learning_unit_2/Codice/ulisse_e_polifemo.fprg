@@ -4,11 +4,11 @@
         <attribute name="name" value=""/>
         <attribute name="authors" value="andre"/>
         <attribute name="about" value=""/>
-        <attribute name="saved" value="2019-05-30 02:46:06 "/>
+        <attribute name="saved" value="2019-05-30 03:40:13 "/>
         <attribute name="created" value="YW5kcmU7REVTS1RPUC1PUzc5VDMwOzIwMTktMDUtMjM7IjAxOjI4OjI3ICI7Mjc1OQ=="/>
         <attribute name="edited" value="RmVkZXJpY2E7REVTS1RPUC0wT0FQVTZTOzIwMTktMDUtMjU7IjEyOjIxOjQ5ICI7NDtGZWRlcmljYTtERVNLVE9QLTBPQVBVNlM7MjAxOS0wNS0yMjsiMTA6Mjk6NTEgIjtsaWJyb0dhbWVfZWRpcG8uZnByZzs4MzY0"/>
         <attribute name="edited" value="YW5kcmU7REVTS1RPUC1PUzc5VDMwOzIwMTktMDUtMjY7IjEyOjU0OjI2ICI7OTsyODc4"/>
-        <attribute name="edited" value="RmVkZXJpY2E7REVTS1RPUC0wT0FQVTZTOzIwMTktMDUtMzA7IjAyOjQ2OjA2ICI7MTM7MzIxNg=="/>
+        <attribute name="edited" value="RmVkZXJpY2E7REVTS1RPUC0wT0FQVTZTOzIwMTktMDUtMzA7IjAzOjQwOjEzICI7MTQ7MzIxMA=="/>
     </attributes>
     <function name="Main" type="None" variable="">
         <parameters/>
@@ -41,6 +41,20 @@
                     <if expression="finaleRaggiunto==false">
                         <then>
                             <assign variable="finaleRaggiunto" expression="capitolo5PolifemoBeve(nomeUlisse)"/>
+                            <if expression="finaleRaggiunto==false">
+                                <then>
+                                    <assign variable="finaleRaggiunto" expression="capitolo7IlPiano(numeroMarinai, nomeUlisse)"/>
+                                    <if expression="finaleRaggiunto==false">
+                                        <then/>
+                                        <else>
+                                            <comment text="E' gi&#224; stato raggiunto un finale, non fare niente"/>
+                                        </else>
+                                    </if>
+                                </then>
+                                <else>
+                                    <comment text="E' gi&#224; stato raggiunto un finale, non fare niente"/>
+                                </else>
+                            </if>
                         </then>
                         <else>
                             <comment text="E' gi&#224; stato raggiunto un finale, non fare niente"/>
@@ -259,6 +273,30 @@
             <output expression="&quot;Polifemo: (sob!) Io vorrei viaggiare e vedere il mondo... Ma poi gli uomini mi additano come un mostro e allora ho voglia di fargliela pagare e me li mangio&quot;" newline="True"/>
             <call expression="impostaTreOpzioni(&quot;0 Non dire cos&#236;, a me non sembri un mostro&quot;, &quot;1 E grazie che ti trattano come un mostro! Mangi la gente appena la vedi&quot;, &quot;2 Dovresti pensare a cambiare vita anzi che piangerti addosso&quot;, treOpzioni)"/>
             <assign variable="scelta" expression="controllaRispostaIntero(Size(treOpzioni))"/>
+        </body>
+    </function>
+    <function name="capitolo7IlPiano" type="Boolean" variable="finaleRaggiunto">
+        <parameters>
+            <parameter name="numeroMarinai" type="Integer" array="False"/>
+            <parameter name="nomeUlisse" type="String" array="False"/>
+        </parameters>
+        <body>
+            <declare name="scelta" type="Integer" array="False" size=""/>
+            <declare name="finaleRaggiunto" type="Boolean" array="False" size=""/>
+            <assign variable="finaleRaggiunto" expression="false"/>
+            <declare name="treOpzioni" type="String" array="True" size="3"/>
+            <output expression="&quot;Poich&#233; ormai il ciclope russava sonoramente, Ulisse e gli &quot;&amp;numeroMarinai&amp; &quot; rimasti uscirono allo scoperto.&quot;" newline="True"/>
+            <output expression="&quot;Ulisse aveva un piano e sottovoce lo spieg&#242; ai marinai: c'era un lungo palo nella grotta che avrebbero preso e intagliato in modo da renderlo appuntito. Quindi avrebbero arroventato la punta sul fuoco che ancora scoppiettava nella grotta e infine l'avrebbero usato per accecare Polifemo&quot;" newline="True"/>
+            <if expression="numeroMarinai&gt;3">
+                <then>
+                    <output expression="&quot;Determinati ad uscire da l&#236; i greci seguirono il piano del loro capo: il vino che Polifemo aveva bevuto era terribilmente forte se non veniva diluito con dell'acqua, per cui il gigante non si accorse di nulla.&quot;" newline="True"/>
+                    <output expression="&quot;Polifemo url&#242; di dolore appena il palo arroventato gli venne spinto nell'unico occhio e coprendosi il viso si alz&#242;, tastando per tutta la caverna furibondo&quot;" newline="True"/>
+                </then>
+                <else>
+                    <assign variable="finaleRaggiunto" expression="true"/>
+                    <output expression="&quot;Purtroppo troppi tra loro erano stati uccisi da Polifemo e non riuscirono a sollevare l'enorme palo per affilarne la punta... Il gigante si svegli&#242;, li tenne chiusi l&#236; dentro e li mangio uno ad uno nei giorni successivi.&quot;" newline="True"/>
+                </else>
+            </if>
         </body>
     </function>
     <function name="controllaRisposta" type="Boolean" variable="controllo">
