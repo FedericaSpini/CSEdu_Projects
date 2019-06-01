@@ -1,0 +1,11 @@
+Le parti del codice da fare notare  e spiegare agli studenti, che sono state aggiunte rispetto ad "Edipo e la Sfinge" sono invece:
+\medskip
+\begin{tcolorbox}[
+	title=\textbf{Cosa far notare nel codice di "Ulisse e Polifemo"}, colback=alicegreen, colframe =ultradarkgreen]
+\begin{itemize}
+	\item La logica utilizzata per controllare risposte che siano stringhe: questa opzione è davvero molto utile per controllare se uno studente ha studiato perché non si può andare avanti finché non riesce ad inserire la risposta corretta
+	\item La logica utilizzata per fare inserire una stringa, ad esempio un nome alla domanda "Come ti chiami?" che da quel momento verrà utilizzata nei testi del gioco
+	\item Utilizzare cicli per riproporre sempre le stesse opzioni, che, solo dopo un certo numero di volte cambieranno
+\end{itemize}
+\end{tcolorbox}
+\medskip
