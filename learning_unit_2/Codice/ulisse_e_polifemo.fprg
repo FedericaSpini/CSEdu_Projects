@@ -4,11 +4,11 @@
         <attribute name="name" value=""/>
         <attribute name="authors" value="andre"/>
         <attribute name="about" value=""/>
-        <attribute name="saved" value="2019-05-30 10:07:48 "/>
+        <attribute name="saved" value="2019-06-01 01:03:03 "/>
         <attribute name="created" value="YW5kcmU7REVTS1RPUC1PUzc5VDMwOzIwMTktMDUtMjM7IjAxOjI4OjI3ICI7Mjc1OQ=="/>
         <attribute name="edited" value="RmVkZXJpY2E7REVTS1RPUC0wT0FQVTZTOzIwMTktMDUtMjU7IjEyOjIxOjQ5ICI7NDtGZWRlcmljYTtERVNLVE9QLTBPQVBVNlM7MjAxOS0wNS0yMjsiMTA6Mjk6NTEgIjtsaWJyb0dhbWVfZWRpcG8uZnByZzs4MzY0"/>
-        <attribute name="edited" value="RmVkZXJpY2E7REVTS1RPUC0wT0FQVTZTOzIwMTktMDUtMzA7IjAzOjU5OjA4ICI7MTU7MzIyNQ=="/>
         <attribute name="edited" value="YW5kcmU7REVTS1RPUC1PUzc5VDMwOzIwMTktMDUtMzA7IjEwOjA3OjQ4ICI7Mjc7MjkyMQ=="/>
+        <attribute name="edited" value="RmVkZXJpY2E7REVTS1RPUC0wT0FQVTZTOzIwMTktMDYtMDE7IjAxOjAzOjAzICI7MTc7MzIwOA=="/>
     </attributes>
     <function name="Main" type="None" variable="">
         <parameters/>
@@ -47,7 +47,17 @@
                                     <assign variable="finaleRaggiunto" expression="capitolo7IlPiano(numeroMarinai, nomeUlisse)"/>
                                     <if expression="finaleRaggiunto==false">
                                         <then>
-                                            <call expression="capitolo8PolifemoArrabiato(nomeUlisse)"/>
+                                            <comment text="Nel capitolo 8 Polifemo grida che Ulisse lo ha accecato e per farlo lo chiama con il nome che Ulisse gli ha dato nei capitoli precedenti. Solo se il nome dato corrisponde a &quot;nessuno&quot; Ulisse gli altri ciclopi non accorreranno a vendicare Polifemo"/>
+                                            <assign variable="finaleRaggiunto" expression="capitolo8PolifemoArrabiato(nomeUlisse)"/>
+                                            <if expression="finaleRaggiunto==false">
+                                                <then>
+                                                    <comment text="Nel capitolo 9 si raggiunge necessariamente un finale ed &#232; il capitolo in cui Ulisse e i suoi fuggono aggrappandosi sotto la pancia delle pecore"/>
+                                                    <assign variable="finaleRaggiunto" expression="capitolo9Fuga()"/>
+                                                </then>
+                                                <else>
+                                                    <comment text="E' gi&#224; stato raggiunto un finale, non fare niente"/>
+                                                </else>
+                                            </if>
                                         </then>
                                         <else>
                                             <comment text="E' gi&#224; stato raggiunto un finale, non fare niente"/>
@@ -315,7 +325,7 @@
         </parameters>
         <body>
             <declare name="finaleRaggiunto" type="Boolean" array="False" size=""/>
-            <assign variable="finaleRaggiunto" expression="true"/>
+            <assign variable="finaleRaggiunto" expression="false"/>
             <output expression="&quot;Polifemo: IL MIO OCCHIO, IL MIO OCCHIO, &quot; &amp; nomeUlisse &amp; &quot; HA  ACCECATO IL MIO OCCHIO&quot;" newline="True"/>
             <declare name="minNomeUlisse" type="String" array="False" size=""/>
             <assign variable="minNomeUlisse" expression="tuttoMinuscolo(nomeUlisse)"/>
@@ -328,6 +338,28 @@
                     <assign variable="finaleRaggiunto" expression="true"/>
                 </else>
             </if>
+        </body>
+    </function>
+    <function name="capitolo9Fuga" type="Boolean" variable="finaleRaggiunto">
+        <parameters/>
+        <body>
+            <declare name="scelta" type="Integer" array="False" size=""/>
+            <declare name="finaleRaggiunto" type="Boolean" array="False" size=""/>
+            <assign variable="finaleRaggiunto" expression="false"/>
+            <declare name="treOpzioni" type="String" array="True" size="3"/>
+            <output expression="&quot;I greci restarono nascosti: ormai il gigante accecato non poteva pi&#249; vederli. Il mattino seguente Polifemo apr&#236; l'entrata della grotta per mandare le pecore a pascolare&quot;" newline="True"/>
+            <call expression="impostaTreOpzioni(&quot;0 Ulisse e i suoi uomini si aggrapparono al ventre delle pecore che stavano uscendo&quot;, &quot;1 Ulisse e i suoi uomini corsero veloci verso l'uscita, ora aperta&quot;, &quot;2 Trionfanti per il successo Ulisse e i suoi uomini si misero a cavallo delle pecore che stavano uscendo&quot;, treOpzioni)"/>
+            <assign variable="scelta" expression="controllaRispostaIntero(Size(treOpzioni))"/>
+            <if expression="scelta==0">
+                <then>
+                    <output expression="&quot;Il gigante tast&#242; le pecore per evitare che i greci fuggissero, ma fu impossibile trovarli aggrappati com'erano. Cos&#236; Ulisse e i suoi uomini poterono finalmente imbarcarsi per continuare il viaggio verso Itaca. Non sapevano che da quel momento Poseidone, il dio del mare, li avrebbe perseguitati per aver accecato suo figlio Polifemo&quot;" newline="True"/>
+                    <output expression="&quot;Ottimo! Sei riuscito a percorrere la storia, proprio come la tramand&#242; Omero!&quot;" newline="True"/>
+                </then>
+                <else>
+                    <output expression="&quot;Il gigante tast&#242; le pecore e tra loro trov&#242; anche i greci. Capendo che stavano fuggendo li affer&#242; e li uccise tutti, uno dopo l'altro&quot;" newline="True"/>
+                </else>
+            </if>
+            <assign variable="finaleRaggiunto" expression="true"/>
         </body>
     </function>
     <function name="controllaRisposta" type="Boolean" variable="controllo">
