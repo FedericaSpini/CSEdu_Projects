@@ -4,11 +4,11 @@
         <attribute name="name" value=""/>
         <attribute name="authors" value="andre"/>
         <attribute name="about" value=""/>
-        <attribute name="saved" value="2019-06-01 01:03:03 "/>
+        <attribute name="saved" value="2019-06-02 01:40:36 "/>
         <attribute name="created" value="YW5kcmU7REVTS1RPUC1PUzc5VDMwOzIwMTktMDUtMjM7IjAxOjI4OjI3ICI7Mjc1OQ=="/>
         <attribute name="edited" value="RmVkZXJpY2E7REVTS1RPUC0wT0FQVTZTOzIwMTktMDUtMjU7IjEyOjIxOjQ5ICI7NDtGZWRlcmljYTtERVNLVE9QLTBPQVBVNlM7MjAxOS0wNS0yMjsiMTA6Mjk6NTEgIjtsaWJyb0dhbWVfZWRpcG8uZnByZzs4MzY0"/>
-        <attribute name="edited" value="YW5kcmU7REVTS1RPUC1PUzc5VDMwOzIwMTktMDUtMzA7IjEwOjA3OjQ4ICI7Mjc7MjkyMQ=="/>
         <attribute name="edited" value="RmVkZXJpY2E7REVTS1RPUC0wT0FQVTZTOzIwMTktMDYtMDE7IjAxOjAzOjAzICI7MTc7MzIwOA=="/>
+        <attribute name="edited" value="YW5kcmU7REVTS1RPUC1PUzc5VDMwOzIwMTktMDYtMDI7IjAxOjQwOjM2ICI7MzI7MjkxMQ=="/>
     </attributes>
     <function name="Main" type="None" variable="">
         <parameters/>
@@ -38,18 +38,18 @@
                     <comment text="&quot;Se non sono morti tutti i marinai, ma Ulisse ha deciso di intervenire, allora interagisce con polifemo: nel capitolo3 gli dice come si chiama, nel capitolo4 gli offre da bere e se non aveva preso il vino sar&#224; un problema&quot;"/>
                     <assign variable="nomeUlisse" expression="capitolo3UlisseDiceIlNome()"/>
                     <assign variable="finaleRaggiunto" expression="capitolo4UlisseOffreDaBere(nomeUlisse, vino)"/>
-                    <if expression="finaleRaggiunto==false">
+                    <if expression="!finaleRaggiunto">
                         <then>
                             <assign variable="finaleRaggiunto" expression="capitolo5PolifemoBeve(nomeUlisse)"/>
-                            <if expression="finaleRaggiunto==false">
+                            <if expression="!finaleRaggiunto">
                                 <then>
                                     <comment text="Il capitolo 7 &#232; quello in cui, se &#232; rimasto un numero sufficiente di uomini, Ulisse e i suoi accecano Polifemo"/>
                                     <assign variable="finaleRaggiunto" expression="capitolo7IlPiano(numeroMarinai, nomeUlisse)"/>
-                                    <if expression="finaleRaggiunto==false">
+                                    <if expression="!finaleRaggiunto">
                                         <then>
                                             <comment text="Nel capitolo 8 Polifemo grida che Ulisse lo ha accecato e per farlo lo chiama con il nome che Ulisse gli ha dato nei capitoli precedenti. Solo se il nome dato corrisponde a &quot;nessuno&quot; Ulisse gli altri ciclopi non accorreranno a vendicare Polifemo"/>
                                             <assign variable="finaleRaggiunto" expression="capitolo8PolifemoArrabiato(nomeUlisse)"/>
-                                            <if expression="finaleRaggiunto==false">
+                                            <if expression="!finaleRaggiunto">
                                                 <then>
                                                     <comment text="Nel capitolo 9 si raggiunge necessariamente un finale ed &#232; il capitolo in cui Ulisse e i suoi fuggono aggrappandosi sotto la pancia delle pecore"/>
                                                     <assign variable="finaleRaggiunto" expression="capitolo9Fuga()"/>
@@ -276,7 +276,7 @@
                         </then>
                         <else>
                             <assign variable="finaleRaggiunto" expression="true"/>
-                            <call expression="capitolo6Spinoff()"/>
+                            <call expression="capitolo6Spinoff(nomeUlisse)"/>
                         </else>
                     </if>
                 </else>
@@ -284,15 +284,55 @@
         </body>
     </function>
     <function name="capitolo6Spinoff" type="None" variable="">
-        <parameters/>
+        <parameters>
+            <parameter name="nomeUlisse" type="String" array="False"/>
+        </parameters>
         <body>
             <declare name="treOpzioni" type="String" array="True" size="3"/>
             <declare name="scelta" type="Integer" array="False" size=""/>
+            <declare name="sfiduciaPolifemo" type="Integer" array="False" size=""/>
+            <assign variable="sfiduciaPolifemo" expression="0"/>
             <call expression="impostaTreOpzioni(&quot;0 Ma non pensi di essere sprecato per passare la tua vita a badare alle pecore?&quot;, &quot;1 In realt&#224;, cos&#236; da vicino, sembri uno in gamba&quot;, &quot;2 Secondo me dovresti smetterla di mangiare gli uomini&quot;, treOpzioni)"/>
             <assign variable="scelta" expression="controllaRispostaIntero(Size(treOpzioni))"/>
-            <output expression="&quot;Polifemo: (sob!) Io vorrei viaggiare e vedere il mondo... Ma poi gli uomini mi additano come un mostro e allora ho voglia di fargliela pagare e me li mangio&quot;" newline="True"/>
-            <call expression="impostaTreOpzioni(&quot;0 Non dire cos&#236;, a me non sembri un mostro&quot;, &quot;1 E grazie che ti trattano come un mostro! Mangi la gente appena la vedi&quot;, &quot;2 Dovresti pensare a cambiare vita anzi che piangerti addosso&quot;, treOpzioni)"/>
-            <assign variable="scelta" expression="controllaRispostaIntero(Size(treOpzioni))"/>
+            <if expression="scelta == 2">
+                <then>
+                    <output expression="&quot;Polifemo: Forse hai ragione, gli uomini mi fanno ingrassare, smetter&#242; proprio con te che sembri appetitoso&quot;" newline="True"/>
+                    <output expression="&quot;Il ciclope afferr&#242; Ulisse e lo divor&#242; in un sol boccone&quot;" newline="True"/>
+                </then>
+                <else>
+                    <if expression="scelta == 0">
+                        <then>
+                            <output expression="&quot;Polifemo: (sob!) Io vorrei viaggiare e vedere il mondo... Ma poi gli uomini mi additano come un mostro e allora ho voglia di fargliela pagare e me li mangio&quot;" newline="True"/>
+                        </then>
+                        <else>
+                            <output expression="&quot;Lo pensi davvero? Non &#232; che lo dici solo per convincermi a lasciarti andare?&quot;" newline="True"/>
+                            <assign variable="sfiduciaPolifemo" expression="sfiduciaPolifemo + 1"/>
+                            <output expression="&quot;Polifemo: Figurati se lo pensi veramente, probabilmente come tutti gli uomini per te sono solo un mostro mangia uomini&quot;" newline="True"/>
+                        </else>
+                    </if>
+                    <call expression="impostaTreOpzioni(&quot;0 Non dire cos&#236;, a me non sembri un mostro&quot;, &quot;1 E grazie che ti trattano come un mostro! Mangi la gente appena la vedi&quot;, &quot;2 Dovresti pensare a cambiare vita anzi che piangerti addosso&quot;, treOpzioni)"/>
+                    <assign variable="scelta" expression="controllaRispostaIntero(Size(treOpzioni))"/>
+                    <if expression="scelta == 0">
+                        <then>
+                            <output expression="&quot;Polifemo: Certo come no...&quot;" newline="True"/>
+                            <assign variable="sfiduciaPolifemo" expression="sfiduciaPolifemo + 1"/>
+                            <output expression="&quot;Polifemo: Intanto il mostro qui presente &#232; figlio di un dio omuncolo.&quot;" newline="True"/>
+                        </then>
+                        <else>
+                            <if expression="scelta == 1">
+                                <then>
+                                    <output expression="&quot;Polifemo: Apprezzo la tua sincerit&#224; &quot; &amp; nomeUlisse &amp; &quot;&quot;" newline="True"/>
+                                </then>
+                                <else/>
+                            </if>
+                        </else>
+                    </if>
+                </else>
+            </if>
+            <if expression="">
+                <then/>
+                <else/>
+            </if>
         </body>
     </function>
     <function name="capitolo7IlPiano" type="Boolean" variable="finaleRaggiunto">
