@@ -4,11 +4,11 @@
         <attribute name="name" value=""/>
         <attribute name="authors" value="andre"/>
         <attribute name="about" value=""/>
-        <attribute name="saved" value="2019-06-02 01:40:36 "/>
+        <attribute name="saved" value="2019-06-03 02:48:55 "/>
         <attribute name="created" value="YW5kcmU7REVTS1RPUC1PUzc5VDMwOzIwMTktMDUtMjM7IjAxOjI4OjI3ICI7Mjc1OQ=="/>
         <attribute name="edited" value="RmVkZXJpY2E7REVTS1RPUC0wT0FQVTZTOzIwMTktMDUtMjU7IjEyOjIxOjQ5ICI7NDtGZWRlcmljYTtERVNLVE9QLTBPQVBVNlM7MjAxOS0wNS0yMjsiMTA6Mjk6NTEgIjtsaWJyb0dhbWVfZWRpcG8uZnByZzs4MzY0"/>
         <attribute name="edited" value="RmVkZXJpY2E7REVTS1RPUC0wT0FQVTZTOzIwMTktMDYtMDE7IjAxOjAzOjAzICI7MTc7MzIwOA=="/>
-        <attribute name="edited" value="YW5kcmU7REVTS1RPUC1PUzc5VDMwOzIwMTktMDYtMDI7IjAxOjQwOjM2ICI7MzI7MjkxMQ=="/>
+        <attribute name="edited" value="YW5kcmU7REVTS1RPUC1PUzc5VDMwOzIwMTktMDYtMDM7IjAyOjQ4OjU1ICI7NDM7MjkyNA=="/>
     </attributes>
     <function name="Main" type="None" variable="">
         <parameters/>
@@ -288,7 +288,13 @@
             <parameter name="nomeUlisse" type="String" array="False"/>
         </parameters>
         <body>
+            <declare name="opzionePoseidone" type="String" array="True" size="4"/>
+            <assign variable="opzionePoseidone[0]" expression="&quot;mare&quot;"/>
+            <assign variable="opzionePoseidone[1]" expression="&quot;cielo&quot;"/>
+            <assign variable="opzionePoseidone[3]" expression="&quot;vino&quot;"/>
+            <assign variable="opzionePoseidone[4]" expression="&quot;sole&quot;"/>
             <declare name="treOpzioni" type="String" array="True" size="3"/>
+            <declare name="dueOpzioni" type="String" array="True" size="2"/>
             <declare name="scelta" type="Integer" array="False" size=""/>
             <declare name="sfiduciaPolifemo" type="Integer" array="False" size=""/>
             <assign variable="sfiduciaPolifemo" expression="0"/>
@@ -310,28 +316,70 @@
                             <output expression="&quot;Polifemo: Figurati se lo pensi veramente, probabilmente come tutti gli uomini per te sono solo un mostro mangia uomini&quot;" newline="True"/>
                         </else>
                     </if>
-                    <call expression="impostaTreOpzioni(&quot;0 Non dire cos&#236;, a me non sembri un mostro&quot;, &quot;1 E grazie che ti trattano come un mostro! Mangi la gente appena la vedi&quot;, &quot;2 Dovresti pensare a cambiare vita anzi che piangerti addosso&quot;, treOpzioni)"/>
-                    <assign variable="scelta" expression="controllaRispostaIntero(Size(treOpzioni))"/>
+                    <call expression="impostaDueOpzioni(&quot;0 Non dire cos&#236;, a me non sembri un mostro&quot;, &quot;1 E grazie che ti trattano come un mostro! Mangi la gente appena la vedi&quot;, dueOpzioni)"/>
+                    <assign variable="scelta" expression="controllaRispostaIntero(Size(dueOpzioni))"/>
                     <if expression="scelta == 0">
                         <then>
                             <output expression="&quot;Polifemo: Certo come no...&quot;" newline="True"/>
                             <assign variable="sfiduciaPolifemo" expression="sfiduciaPolifemo + 1"/>
-                            <output expression="&quot;Polifemo: Intanto il mostro qui presente &#232; figlio di un dio omuncolo.&quot;" newline="True"/>
+                            <output expression="&quot;Polifemo: Intanto il mostro qui presente &#232; figlio di un dio, omuncolo.&quot;" newline="True"/>
+                        </then>
+                        <else>
+                            <output expression="&quot;Polifemo: Apprezzo la tua sincerit&#224; &quot; &amp; nomeUlisse &amp; &quot;, sicuramente saresti simpatico a mio padre, sai &#232; un dio.&quot;" newline="True"/>
+                        </else>
+                    </if>
+                    <output expression="&quot;Ulisse, incuriosito, chiese a Polifemo chi fosse il padre&quot;" newline="True"/>
+                    <output expression="&quot;Sono figlio di Poseidone, sai di cosa &#232; dio si?&quot;" newline="True"/>
+                    <output expression="&quot;Ulisse, forse per la stanchezza e lo stress, ebbe il pi&#249; classico dei vuoti mentali, e non si ricordava se Poseidone fosse il dio del cielo, mare, vino o sole&quot;" newline="True"/>
+                    <output expression="&quot;Ulisse: Certo che lo so, &#232; il dio del...&quot;" newline="True"/>
+                    <do expression="!controllaRisposta(opzionePoseidone,rispTesto, &quot;Ulisse era sicuro che il suo dubbio era fra cielo, mare, vino o sole&quot;)">
+                        <input variable="rispTesto"/>
+                        <assign variable="rispTesto" expression="tuttominuscolo(rispTesto)"/>
+                    </do>
+                    <output expression="&quot;Ulisse: Certo che lo so, &#232; il dio del &quot; &amp; rispTesto" newline="True"/>
+                    <if expression="rispTesto == mare">
+                        <then>
+                            <output expression="&quot;Polifemo: Eheheheh, mio padre &#232; decisamente famoso&quot;" newline="True"/>
+                        </then>
+                        <else>
+                            <output expression="&quot;Polifemo: Cio&#232; veramente non sai che Poseidone &#232; il dio del MARE?&quot;" newline="True"/>
+                            <assign variable="sfiduciaPolifemo" expression="sfiduciaPolifemo + 2"/>
+                        </else>
+                    </if>
+                    <output expression="&quot;Ulisse in quel momento cap&#236; che diventando amico di Polifemo si sarebbe guadagnato la benevolenza di Poseidone&quot;" newline="True"/>
+                    <output expression="&quot;Ulisse: Stavo pensando che uno con la tua forza nel mio equipaggio farebbe molto comodo&quot;" newline="True"/>
+                    <output expression="&quot;Polifemo: Mi piacerebbe molto viaggiare e lasciare questa grotta, ma come posso fidarmi di un uomo? Non &#232; che come sbarchiamo mi fai uccidere da un esercito?&quot;" newline="True"/>
+                    <call expression="impostaTreOpzioni(&quot;0 No ma non ti nascondo che potremmo doverne affrontare qualcuno, insieme&quot;, &quot;1 Ma quali eserciti, insieme andremo alla ricerca di tesori, donne e avventure leggendarie.&quot;, &quot;2 Tranquillo, ci penso io a convincere gli uomini che sotto sotto sei un bonaccione&quot;, treOpzioni)"/>
+                    <assign variable="scelta" expression="controllaRispostaIntero(Size(treOpzioni))"/>
+                    <if expression="scelta == 0">
+                        <then>
+                            <output expression="&quot;Polifemo, proprio di un amico con cui sterminare eserciti avrei bisogno, mi piace la tua proposta!&quot;" newline="True"/>
                         </then>
                         <else>
                             <if expression="scelta == 1">
                                 <then>
-                                    <output expression="&quot;Polifemo: Apprezzo la tua sincerit&#224; &quot; &amp; nomeUlisse &amp; &quot;&quot;" newline="True"/>
+                                    <output expression="&quot;Polifemo: Pensi che io sia attratto da cose futili come i tesori? E poi cosa sono le donne?&quot;" newline="True"/>
                                 </then>
-                                <else/>
+                                <else>
+                                    <output expression="&quot;Polifemo: Ma io non sono un bonaccione, sono pi&#249; duro del granito!&quot;" newline="True"/>
+                                </else>
                             </if>
+                            <assign variable="sfiduciaPolifemo" expression="sfiduciaPolifemo + 1"/>
+                        </else>
+                    </if>
+                    <if expression="sfiduciaPolifemo &lt; 3">
+                        <then>
+                            <output expression="&quot;La conversazione appena avuta aveva convinto Polifemo a fidarsi di Ulisse e accett&#242; di buon cuore la sua offerta&quot;" newline="True"/>
+                            <output expression="&quot;Si imbarcarono insieme e grazie anche all'aiuto di Poseidone tornarono ad Itaca in pochi&quot;" newline="True"/>
+                            <output expression="&quot;Ad Itaca Polifemo fu decisivo per annientare i proci che cercavano di conquistare la moglie di Ulisse, tra Ulisse e Polifemo poi nacque una sincera e duratura amicizia.&quot;" newline="True"/>
+                        </then>
+                        <else>
+                            <output expression="&quot;Polifemo pens&#242; alla proposta di Ulisse ma la conversazione appena avuta lo aveva insospettito&quot;" newline="True"/>
+                            <output expression="&quot;Polifemo: Questa tua proposta mi sembra soltanto un blando tentativo di scappare e farti amico Poseidone, meriti la giusta punizione per aver tentato di prenderti gioco di me.&quot;" newline="True"/>
+                            <output expression="&quot;Polifemo quindi afferr&#242; Ulisse e lo divor&#242;&quot;" newline="True"/>
                         </else>
                     </if>
                 </else>
-            </if>
-            <if expression="">
-                <then/>
-                <else/>
             </if>
         </body>
     </function>
