@@ -4,11 +4,11 @@
         <attribute name="name" value=""/>
         <attribute name="authors" value="andre"/>
         <attribute name="about" value=""/>
-        <attribute name="saved" value="2019-06-03 02:48:55 "/>
+        <attribute name="saved" value="2019-06-03 04:24:26 "/>
         <attribute name="created" value="YW5kcmU7REVTS1RPUC1PUzc5VDMwOzIwMTktMDUtMjM7IjAxOjI4OjI3ICI7Mjc1OQ=="/>
         <attribute name="edited" value="RmVkZXJpY2E7REVTS1RPUC0wT0FQVTZTOzIwMTktMDUtMjU7IjEyOjIxOjQ5ICI7NDtGZWRlcmljYTtERVNLVE9QLTBPQVBVNlM7MjAxOS0wNS0yMjsiMTA6Mjk6NTEgIjtsaWJyb0dhbWVfZWRpcG8uZnByZzs4MzY0"/>
         <attribute name="edited" value="RmVkZXJpY2E7REVTS1RPUC0wT0FQVTZTOzIwMTktMDYtMDE7IjAxOjAzOjAzICI7MTc7MzIwOA=="/>
-        <attribute name="edited" value="YW5kcmU7REVTS1RPUC1PUzc5VDMwOzIwMTktMDYtMDM7IjAyOjQ4OjU1ICI7NDM7MjkyNA=="/>
+        <attribute name="edited" value="YW5kcmU7REVTS1RPUC1PUzc5VDMwOzIwMTktMDYtMDM7IjA0OjI0OjI2ICI7NDU7MjkyMA=="/>
     </attributes>
     <function name="Main" type="None" variable="">
         <parameters/>
@@ -288,11 +288,12 @@
             <parameter name="nomeUlisse" type="String" array="False"/>
         </parameters>
         <body>
+            <declare name="rispTesto" type="String" array="False" size=""/>
             <declare name="opzionePoseidone" type="String" array="True" size="4"/>
             <assign variable="opzionePoseidone[0]" expression="&quot;mare&quot;"/>
             <assign variable="opzionePoseidone[1]" expression="&quot;cielo&quot;"/>
-            <assign variable="opzionePoseidone[3]" expression="&quot;vino&quot;"/>
-            <assign variable="opzionePoseidone[4]" expression="&quot;sole&quot;"/>
+            <assign variable="opzionePoseidone[2]" expression="&quot;vino&quot;"/>
+            <assign variable="opzionePoseidone[3]" expression="&quot;sole&quot;"/>
             <declare name="treOpzioni" type="String" array="True" size="3"/>
             <declare name="dueOpzioni" type="String" array="True" size="2"/>
             <declare name="scelta" type="Integer" array="False" size=""/>
@@ -337,7 +338,7 @@
                         <assign variable="rispTesto" expression="tuttominuscolo(rispTesto)"/>
                     </do>
                     <output expression="&quot;Ulisse: Certo che lo so, &#232; il dio del &quot; &amp; rispTesto" newline="True"/>
-                    <if expression="rispTesto == mare">
+                    <if expression="rispTesto == &quot;mare&quot;">
                         <then>
                             <output expression="&quot;Polifemo: Eheheheh, mio padre &#232; decisamente famoso&quot;" newline="True"/>
                         </then>
