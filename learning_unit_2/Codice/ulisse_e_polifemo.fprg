@@ -4,11 +4,11 @@
         <attribute name="name" value=""/>
         <attribute name="authors" value="andre"/>
         <attribute name="about" value=""/>
-        <attribute name="saved" value="2019-06-03 04:24:26 "/>
+        <attribute name="saved" value="2019-06-03 11:04:27 "/>
         <attribute name="created" value="YW5kcmU7REVTS1RPUC1PUzc5VDMwOzIwMTktMDUtMjM7IjAxOjI4OjI3ICI7Mjc1OQ=="/>
         <attribute name="edited" value="RmVkZXJpY2E7REVTS1RPUC0wT0FQVTZTOzIwMTktMDUtMjU7IjEyOjIxOjQ5ICI7NDtGZWRlcmljYTtERVNLVE9QLTBPQVBVNlM7MjAxOS0wNS0yMjsiMTA6Mjk6NTEgIjtsaWJyb0dhbWVfZWRpcG8uZnByZzs4MzY0"/>
-        <attribute name="edited" value="RmVkZXJpY2E7REVTS1RPUC0wT0FQVTZTOzIwMTktMDYtMDE7IjAxOjAzOjAzICI7MTc7MzIwOA=="/>
         <attribute name="edited" value="YW5kcmU7REVTS1RPUC1PUzc5VDMwOzIwMTktMDYtMDM7IjA0OjI0OjI2ICI7NDU7MjkyMA=="/>
+        <attribute name="edited" value="RmVkZXJpY2E7REVTS1RPUC0wT0FQVTZTOzIwMTktMDYtMDM7IjExOjA0OjI3ICI7MTg7MzIxOQ=="/>
     </attributes>
     <function name="Main" type="None" variable="">
         <parameters/>
@@ -312,7 +312,7 @@
                             <output expression="&quot;Polifemo: (sob!) Io vorrei viaggiare e vedere il mondo... Ma poi gli uomini mi additano come un mostro e allora ho voglia di fargliela pagare e me li mangio&quot;" newline="True"/>
                         </then>
                         <else>
-                            <output expression="&quot;Lo pensi davvero? Non &#232; che lo dici solo per convincermi a lasciarti andare?&quot;" newline="True"/>
+                            <output expression="&quot;Polifemo: Lo pensi davvero? Non &#232; che lo dici solo per convincermi a lasciarti andare?&quot;" newline="True"/>
                             <assign variable="sfiduciaPolifemo" expression="sfiduciaPolifemo + 1"/>
                             <output expression="&quot;Polifemo: Figurati se lo pensi veramente, probabilmente come tutti gli uomini per te sono solo un mostro mangia uomini&quot;" newline="True"/>
                         </else>
@@ -350,11 +350,11 @@
                     <output expression="&quot;Ulisse in quel momento cap&#236; che diventando amico di Polifemo si sarebbe guadagnato la benevolenza di Poseidone&quot;" newline="True"/>
                     <output expression="&quot;Ulisse: Stavo pensando che uno con la tua forza nel mio equipaggio farebbe molto comodo&quot;" newline="True"/>
                     <output expression="&quot;Polifemo: Mi piacerebbe molto viaggiare e lasciare questa grotta, ma come posso fidarmi di un uomo? Non &#232; che come sbarchiamo mi fai uccidere da un esercito?&quot;" newline="True"/>
-                    <call expression="impostaTreOpzioni(&quot;0 No ma non ti nascondo che potremmo doverne affrontare qualcuno, insieme&quot;, &quot;1 Ma quali eserciti, insieme andremo alla ricerca di tesori, donne e avventure leggendarie.&quot;, &quot;2 Tranquillo, ci penso io a convincere gli uomini che sotto sotto sei un bonaccione&quot;, treOpzioni)"/>
+                    <call expression="impostaTreOpzioni(&quot;0 No, ma non ti nascondo che potremmo doverne affrontare qualcuno, insieme&quot;, &quot;1 Ma quali eserciti, insieme andremo alla ricerca di tesori, donne e avventure leggendarie.&quot;, &quot;2 Tranquillo, ci penso io a convincere gli uomini che sotto sotto sei un bonaccione&quot;, treOpzioni)"/>
                     <assign variable="scelta" expression="controllaRispostaIntero(Size(treOpzioni))"/>
                     <if expression="scelta == 0">
                         <then>
-                            <output expression="&quot;Polifemo, proprio di un amico con cui sterminare eserciti avrei bisogno, mi piace la tua proposta!&quot;" newline="True"/>
+                            <output expression="&quot;Polifemo: Proprio di un amico con cui sterminare eserciti avrei bisogno, mi piace la tua proposta!&quot;" newline="True"/>
                         </then>
                         <else>
                             <if expression="scelta == 1">
