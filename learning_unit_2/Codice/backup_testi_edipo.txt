@@ -1,0 +1,5 @@
+testo2: "Non sapendo bene dove andare, Edipo si mise in cammnino per Tebe non sapendo che si trattava della sua città natale. Lungo la via, un carro percorreva la strada in senso contrario e un uomo di mezza età, palesemente un passeggero molto ricco, gli disse di farsi da parte per lasciarli passare con disprezzo e arroganza. Edipo protestò, dicendo che la strada era di tutti, ma l'uomo lo minaccia di farlo uccidere dai propri uomini. Allora Edipo..."
+
+testo3: "Una volta a Delfi però la profezia fu tutt'altro che buona! Ohimé, Edipo seppe che il proprio destino era quello di uccidere il proprio padre e di sposare la propria madre. Sconfortato da queste amare notizie Edipo..."
+
+testo4: "Edipo, nel corso della notte, andò armato nella camera di quelli che credeva fossero i suoi genitori. Mentre quelli dormivano levò la spada, ma suo fratello, il vero erede del trono di Corinto entrò e con una freccia lo uccise."
