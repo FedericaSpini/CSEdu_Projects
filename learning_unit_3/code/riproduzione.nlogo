@@ -3,20 +3,25 @@
 breed [ females female ]
 breed [ males male ]
 
-turtles-own [ age energy]
+turtles-own [ age energy allele-capelli1 allele-capelli2]
 
 to setup
   clear-all
-  ask patches [ set pcolor white ]
+  ask patches [
+    set pcolor white ]
 
     create-females initial-female-number
   [
     set shape  "turtle"
     set size 4
     set label-color blue - 2
-    set color red
     set age 0
     set energy 0
+    set allele-capelli1 random 2
+    set allele-capelli2 random 2
+    ifelse allele-capelli1 = 0 or allele-capelli2 = 0
+    [set color brown]
+    [set color yellow]
     setxy random-xcor random-ycor
   ]
       create-males initial-male-number
@@ -24,8 +29,12 @@ to setup
     set shape  "turtle"
     set size 4
     set label-color blue - 2
-    set color blue
     set age 0
+    set allele-capelli1 random 2
+    set allele-capelli2 random 2
+        ifelse allele-capelli1 = 0 or allele-capelli2 = 0
+    [set color brown]
+    [set color yellow]
     setxy random-xcor random-ycor
   ]
   display-labels
@@ -57,22 +66,48 @@ to move  ; turtle procedure
 end
 
 to reproduce
-  ask females[
+ ask females[
     if age > 15 and energy > 7 [
     let companion one-of males-here
     if companion != nobody [
+
       set energy 0
       let p random 100
       if p < 50 [hatch-males 1 [rt random-float 360 fd 1
-      set color blue - 1
-      set age 0]]
+          set color blue - 1
+          set energy 0
+          set age 0
+      ]]
       if p > 50 [hatch-females 1 [rt random-float 360 fd 1
-      set color red - 1
-      set age 0]]
+          set color red - 1
+          set energy 0
+          set age 0
+          ]]
     ]
     ]
   ]
 end
+
+;to patch-reproduce
+ ; let man one-of males-here
+ ; let woman one-of females-here
+  ;print pcolor
+  ;if man != nobody and woman != nobody[
+   ; print pcolor
+ ; if [ age ] of woman > 15 and [ age ] of man > 15 and [ energy ] of woman > 7 and [ energy ] of man > 7
+  ;[
+   ;   print [ energy ] of woman
+    ;  print [ energy ] of man
+     ; let p random 100
+     ; if p < 50 [sprout-males 1 [rt random-float 360 fd 1
+      ;set color blue - 1
+    ;  set age 0]]
+    ;  if p > 50 [sprout-females 1 [rt random-float 360 fd 1
+     ; set color red - 1
+     ; set age 0]]
+  ;]
+  ;]
+;end
 
 
 
@@ -139,7 +174,7 @@ initial-female-number
 initial-female-number
 0
 100
-44.0
+100.0
 1
 1
 NIL
@@ -154,7 +189,7 @@ initial-male-number
 initial-male-number
 0
 100
-44.0
+100.0
 1
 1
 NIL
@@ -169,7 +204,7 @@ max-population-number
 max-population-number
 0
 10000
-1000.0
+494.0
 1
 1
 NIL
