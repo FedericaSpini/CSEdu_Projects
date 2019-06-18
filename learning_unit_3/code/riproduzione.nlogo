@@ -1,5 +1,4 @@
 
-
 breed [ females female ]
 breed [ males male ]
 
@@ -32,7 +31,7 @@ to setup
     set age 0
     set allele-capelli1 random 2
     set allele-capelli2 random 2
-        ifelse allele-capelli1 = 0 or allele-capelli2 = 0
+    ifelse allele-capelli1 = 0 or allele-capelli2 = 0
     [set color brown]
     [set color yellow]
     setxy random-xcor random-ycor
@@ -68,48 +67,42 @@ end
 to reproduce
  ask females[
     if age > 15 and energy > 7 [
-    let companion one-of males-here
-    if companion != nobody [
-
-      set energy 0
-      let p random 100
-      if p < 50 [hatch-males 1 [rt random-float 360 fd 1
+      let companion one-of males-here
+      if companion != nobody [
+        set energy 0
+        let allele-capelli random 2 ; prende un allele casuale della madre
+        let allele-capelli-madre 0
+        ifelse allele-capelli = 0 [set allele-capelli-madre allele-capelli1]
+                                  [set allele-capelli-madre allele-capelli2]
+        set allele-capelli random 2 ; prende un allele casuale della madre
+        let allele-capelli-padre 0
+        ifelse allele-capelli = 0 [set allele-capelli-padre [ allele-capelli1 ] of companion ]
+                          [set allele-capelli-padre [allele-capelli2] of companion ]
+        let p random 100
+        ifelse p <= 50 [hatch-males 1 [rt random-float 360 fd 1
           set color blue - 1
           set energy 0
           set age 0
+          set allele-capelli1 allele-capelli-madre
+          set allele-capelli2 allele-capelli-padre
+          ifelse allele-capelli1 = 0 or allele-capelli2 = 0
+          [set color brown]
+          [set color yellow]
       ]]
-      if p > 50 [hatch-females 1 [rt random-float 360 fd 1
+        [hatch-females 1 [rt random-float 360 fd 1
           set color red - 1
           set energy 0
           set age 0
+          set allele-capelli1 allele-capelli-madre
+          set allele-capelli2 allele-capelli-padre
+          ifelse allele-capelli1 = 0 or allele-capelli2 = 0
+          [set color brown]
+          [set color yellow]
           ]]
-    ]
+      ]
     ]
   ]
 end
-
-;to patch-reproduce
- ; let man one-of males-here
- ; let woman one-of females-here
-  ;print pcolor
-  ;if man != nobody and woman != nobody[
-   ; print pcolor
- ; if [ age ] of woman > 15 and [ age ] of man > 15 and [ energy ] of woman > 7 and [ energy ] of man > 7
-  ;[
-   ;   print [ energy ] of woman
-    ;  print [ energy ] of man
-     ; let p random 100
-     ; if p < 50 [sprout-males 1 [rt random-float 360 fd 1
-      ;set color blue - 1
-    ;  set age 0]]
-    ;  if p > 50 [sprout-females 1 [rt random-float 360 fd 1
-     ; set color red - 1
-     ; set age 0]]
-  ;]
-  ;]
-;end
-
-
 
 to death  ; turtle procedure (i.e. both wolf and sheep procedure)
   if age > 85 [ die ]
@@ -174,7 +167,7 @@ initial-female-number
 initial-female-number
 0
 100
-100.0
+45.0
 1
 1
 NIL
@@ -189,7 +182,7 @@ initial-male-number
 initial-male-number
 0
 100
-100.0
+45.0
 1
 1
 NIL
@@ -204,7 +197,7 @@ max-population-number
 max-population-number
 0
 10000
-494.0
+252.0
 1
 1
 NIL
@@ -226,6 +219,47 @@ NIL
 NIL
 NIL
 1
+
+MONITOR
+35
+160
+92
+205
+Blonds
+count turtles with [color = yellow]
+17
+1
+11
+
+MONITOR
+130
+170
+187
+215
+Brown
+count turtles with [color = brown]
+17
+1
+11
+
+PLOT
+40
+270
+355
+485
+popolazione
+time
+numero
+0.0
+1000.0
+0.0
+252.0
+true
+true
+"" ""
+PENS
+"biondi" 1.0 0 -1184463 true "" "plot count turtles with [color = yellow]"
+"castani" 1.0 0 -10402772 true "" "plot count turtles with [color = brown]"
 
 @#$#@#$#@
 ## WHAT IS IT?
@@ -434,6 +468,17 @@ false
 0
 Circle -7500403 true true 90 90 120
 
+f-person
+false
+0
+Circle -7500403 true true 110 5 80
+Polygon -7500403 true true 105 90 120 195 90 285 105 300 135 300 150 225 165 300 195 300 210 285 180 195 195 90
+Rectangle -7500403 true true 127 79 172 94
+Polygon -7500403 true true 195 90 240 150 225 180 165 105
+Polygon -7500403 true true 105 90 60 150 75 180 135 105
+Polygon -7500403 true true 120 150 75 255 210 255 180 150
+Polygon -7500403 true true 180 255 225 255 165 120
+
 face happy
 false
 0
@@ -520,15 +565,6 @@ pentagon
 false
 0
 Polygon -7500403 true true 150 15 15 120 60 285 240 285 285 120
-
-person
-false
-0
-Circle -7500403 true true 110 5 80
-Polygon -7500403 true true 105 90 120 195 90 285 105 300 135 300 150 225 165 300 195 300 210 285 180 195 195 90
-Rectangle -7500403 true true 127 79 172 94
-Polygon -7500403 true true 195 90 240 150 225 180 165 105
-Polygon -7500403 true true 105 90 60 150 75 180 135 105
 
 plant
 false
