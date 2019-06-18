@@ -114,10 +114,27 @@ ticks
 30.0
 
 BUTTON
-240
-65
-315
-98
+40
+140
+109
+173
+setup
+setup
+NIL
+1
+T
+OBSERVER
+NIL
+NIL
+NIL
+NIL
+1
+
+BUTTON
+115
+140
+190
+173
 go
 go
 T
@@ -174,23 +191,6 @@ max-population-number
 1
 NIL
 HORIZONTAL
-
-BUTTON
-245
-30
-314
-63
-setup
-setup
-NIL
-1
-T
-OBSERVER
-NIL
-NIL
-NIL
-NIL
-1
 
 @#$#@#$#@
 ## WHAT IS IT?
