@@ -1,0 +1,263 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Federica"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2019-06-14 11:53:10 "/>
+        <attribute name="created" value="RmVkZXJpY2E7REVTS1RPUC0wT0FQVTZTOzIwMTktMDUtMjI7IjEwOjI5OjUxICI7MzA1OA=="/>
+        <attribute name="edited" value="YW5kcmU7REVTS1RPUC1PUzc5VDMwOzIwMTktMDUtMjI7IjA4OjM4OjU3ICI7MTsyODc3"/>
+        <attribute name="edited" value="RmVkZXJpY2E7REVTS1RPUC0wT0FQVTZTOzIwMTktMDUtMjQ7IjA0OjI4OjM1ICI7MjthbmRyZTtERVNLVE9QLU9TNzlUMzA7MjAxOS0wNS0yMzsiMDE6Mjg6MjcgIjtwcm9sb2dvdGVzdC5mcHJnOzc3NDU="/>
+        <attribute name="edited" value="RmVkZXJpY2E7REVTS1RPUC0wT0FQVTZTOzIwMTktMDYtMTQ7IjExOjUzOjEwICI7MjA7MzIxMA=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="scelta" type="Integer" array="False" size=""/>
+            <declare name="opzione" type="String" array="True" size="1"/>
+            <declare name="treOpzioni" type="String" array="True" size="3"/>
+            <declare name="dueOpzioni" type="String" array="True" size="2"/>
+            <declare name="oInizio, oLasciaCorinto, oDelfi, oPrendiCorinto, oRassegnatoPrendiCorinto, oPassaOltre, oAttaccaLUomo, oCambiaStrada, oBattitiConSfinge, oAscoltaQuesito, oNonRispondiEVaiVia, oRispondiPolipo, oRispondiUomo" type="String" array="False" size=""/>
+            <assign variable="oInizio" expression="&quot;0 per iniziare a giocare&quot;"/>
+            <assign variable="oLasciaCorinto" expression="&quot;0 Edipo lasci&#242; quelle terre...L&#236; non c'era pi&#249; nulla per lui&quot;"/>
+            <assign variable="oDelfi" expression="&quot;1 Edipo si rec&#242; dall'Oracolo di Delfi...forse avrebbe avuto delle certezze&quot;"/>
+            <assign variable="oPrendiCorinto" expression="&quot;2 Il trono di Corinto gli spettava dopo tutti quegli anni: se lo sarebbe preso con la forza&quot;"/>
+            <assign variable="oRassegnatoPrendiCorinto" expression="&quot;1 Edipo pens&#242; fosse destino: torn&#242; a casa, a Corinto, per uccidere suo padre e prendersi il trono che gli spettava&quot;"/>
+            <assign variable="oPassaOltre" expression="&quot;0 fece un po' di trainig autogeno e si fece da parte: gi&#224; la sua vita era un disastro, non aveva senso attaccare briga. L'avrebbe data vinta allo straniero&quot;"/>
+            <assign variable="oAttaccaLUomo" expression="&quot;1 decise di insegnare cosa fosse il buoncostume a quell'arrogante e sfoder&#242; la spada per battersi spavaldamente&quot;"/>
+            <assign variable="oCambiaStrada" expression="&quot;0 Edipo decise di cambiare strada: ci doveva essere un altro modo per giungere a Tebe&quot;"/>
+            <assign variable="oBattitiConSfinge" expression="&quot;1 Edipo non voleva perdere tempo con dei giochetti: si sarebbe battuto con la creatura!&quot;"/>
+            <assign variable="oAscoltaQuesito" expression="&quot;2 Edipo non seppe resistere alla sfida ed accett&#242; di ascoltare l'indovinello&quot;"/>
+            <assign variable="oNonRispondiEVaiVia" expression="&quot;0 Edipo non aveva idea di quale fosse la risposta: era meglio andarsene e cercare un'altra strada per Tebe&quot;"/>
+            <assign variable="oRispondiPolipo" expression="&quot;1 &lt;&lt;Il polipo&gt;&gt; rispose Edipo &lt;&lt;Solo lui &#232; un animale dal numero di zampe cos&#236; mutevole&gt;&gt;&quot;"/>
+            <assign variable="oRispondiUomo" expression="&quot;2 &lt;&lt;L'uomo?&gt;&gt; rispose Edipo&quot;"/>
+            <declare name="finaleSelezionato, fStrage, fFuga, fSconfitta, fRispostaErrata, fVittoria" type="String" array="False" size=""/>
+            <assign variable="fStrage" expression="&quot;Edipo &#232; morto, ma il vero personaggio mitologico non avrebbe mai fatto una simile strage! Rileggi come &#232; andata e gioca ancora&quot;"/>
+            <assign variable="fFuga" expression="&quot;La Sfinge era una creatura mitologica dalla forza incredibile! Non appena Edipo si volt&#242; gli salt&#242; alle spalle e lo divor&#242;, perch&#233; solo un uomo abbastanza acuto da indovinare la risposta dell'enigma sarebbe stato risparmiato! In realt&#224; Edipo sarebbe dovuto essere quell'uomo... Sicuro di aver studiato?&quot;"/>
+            <assign variable="fSconfitta" expression="&quot;La Sfinge era una creatura mitologica dalla forza incredibile! Non appena Edipo estrasse la spada dal fodero gli salt&#242; contro e lo divor&#242;, perch&#233; solo un uomo abbastanza acuto da indovinare la risposta dell'enigma sarebbe stato risparmiato! In realt&#224; Edipo sarebbe dovuto essere quell'uomo... Sicuro di aver studiato?&quot;"/>
+            <assign variable="fRispostaErrata" expression="&quot;La Sfinge rise con aria vittoriosa &lt;&lt;Anche tu, come tutti gli altri, sei stato solo un povero stolto! La risposta giusta &#232; un'altra!&gt;&gt; quindi, prima che Edipo se ne potesse rendere conto, gli fu addosso e lo divor&#242;. Tuttavia, nella vera storia, Edipo risponde in modo corretto...Io andrei a rileggere come &#232; andata davvero al tuo posto&quot;"/>
+            <assign variable="fVittoria" expression="&quot;La Sfinge guard&#242; Edipo con un misto di incredulit&#224; e di rabbia, poi rugg&#236; forte e vol&#242; via, furiosa perch&#233; Edipo aveva risolto il suo enigma. Quando giunse a Tebe scopr&#236; di aver liberato la citt&#224; dal mostro che divorava i cittadini da mesi.&quot;"/>
+            <assign variable="finaleSelezionato" expression="&quot;Non hai raggiunto un finale&quot;"/>
+            <declare name="punteggio" type="Integer" array="False" size=""/>
+            <declare name="ascoltataProfezia, uccisoRe" type="Boolean" array="False" size=""/>
+            <assign variable="ascoltataProfezia" expression="false"/>
+            <assign variable="uccisoRe" expression="false"/>
+            <assign variable="punteggio" expression="0"/>
+            <comment text="Introduzione"/>
+            <output expression="&quot;EDIPO E LA SFINGE&quot;" newline="True"/>
+            <output expression="&quot;Anni or sono Laio, re di Tebe, ebbe un terribile responso dall'oracolo di Delfi... Il figlio avuto dalla moglie Giocasta lo avrebbe ucciso! Per evitare l'avverarsi della profezia nefasta consegn&#242; il bimbo, ancora in fasce, ad un pastore affinch&#233; lo abbandonasse sul Monte Citerone. Il bambino venne per&#242; trovato e cresciuto da Polibo, il re di Corinto e non seppe nulla di tutto ci&#242;, almeno finora...&quot;" newline="True"/>
+            <comment text="Si descrive qual &#232; l'unica opzione disponibile"/>
+            <assign variable="opzione[0]" expression="oInizio"/>
+            <comment text="La funzione &quot;scegli&quot; permette all'utente di effettuare una scelta, tra l'ultima lista di opzioni mostrata. Il parametro all'interno &#232; il numero di opzioni presenti e serve per controllare che il numero dell'opzione selezionata sia valido."/>
+            <output expression="opzione[0]" newline="True"/>
+            <assign variable="scelta" expression="scegli(1)"/>
+            <output expression="&quot;Il giovane principe Edipo fu molto turbato quando, quelli che credeva essere i suoi genitori, gli rivelarono che non era cos&#236;. Lo avevano trovato ancora in fasce su di un monte e lo avevano allevato, ma per questo il trono di Corinto, non sarebbe spettato a lui. Adesso cosa avrebbe dovuto fare il ragazzo?&quot;" newline="True"/>
+            <comment text="Stavolta l'utente dovr&#224; scegliere tra 3 opzioni differenti. La funzione &quot;impostaTreOpzioni&quot; serve per registrare e mostrare quali sono le opzioni disponibili."/>
+            <call expression="impostaTreOpzioni(oLasciaCorinto, oDelfi, oPrendiCorinto, treOpzioni)"/>
+            <assign variable="scelta" expression="scegli(3)"/>
+            <comment text="Adesso, a seconda di quale delle tre opzioni &#232; stata scelta, la storia andr&#224; avanti in diversi modi."/>
+            <if expression="scelta == 0">
+                <then>
+                    <output expression="&quot;Non sapendo bene dove andare, Edipo si mise in cammnino per Tebe non sapendo che si trattava della sua citt&#224; natale. Lungo la via, un carro percorreva la strada in senso contrario e un uomo di mezza et&#224;, palesemente un passeggero molto ricco, gli disse di farsi da parte per lasciarli passare con disprezzo e arroganza. Edipo protest&#242;, dicendo che la strada era di tutti, ma l'uomo lo minaccia di farlo uccidere dai propri uomini. Allora Edipo...&quot;" newline="True"/>
+                    <assign variable="punteggio" expression="punteggio+1"/>
+                </then>
+                <else>
+                    <if expression="scelta==1">
+                        <then>
+                            <comment text="La seconda opzione, al bivio precedente, fa in modo che il giocatore abbia un'opzione in pi&#249;. Ci&#242; vuol dire che non tutti i percorsi possibili sono della stessa lunghezza. Inoltre, in questa decisione aggiuntiva, si presenta una delle opzioni presenti al passo precedente, questo perch&#233; le situazioni possono ripetersi e quindi essere &quot;riciclate&quot;. C'&#232; comunque un maggiore score finale se Edipo sceglie di andare a sentire la profezia, perch&#233; &#232; pi&#249; coerente con la storia originale."/>
+                            <assign variable="ascoltataProfezia" expression="true"/>
+                            <assign variable="punteggio" expression="punteggio+3"/>
+                            <output expression="&quot;Una volta a Delfi per&#242; la profezia fu tutt'altro che buona! Ohim&#233;, Edipo seppe che il proprio destino era quello di uccidere il proprio padre e di sposare la propria madre. Sconfortato da queste amare notizie Edipo...&quot;" newline="True"/>
+                            <call expression="impostaDueOpzioni(oLasciaCorinto, oRassegnatoPrendiCorinto, dueOpzioni)"/>
+                            <assign variable="scelta" expression="scegli(2)"/>
+                            <if expression="scelta==0">
+                                <then>
+                                    <output expression="&quot;Non sapendo bene dove andare, Edipo si mise in cammnino per Tebe non sapendo che si trattava della sua citt&#224; natale. Lungo la via, un carro percorreva la strada in senso contrario e un uomo di mezza et&#224;, palesemente un passeggero molto ricco, gli disse di farsi da parte per lasciarli passare con disprezzo e arroganza. Edipo protest&#242;, dicendo che la strada era di tutti, ma l'uomo lo minaccia di farlo uccidere dai propri uomini. Allora Edipo...&quot;" newline="True"/>
+                                    <assign variable="punteggio" expression="punteggio+3"/>
+                                </then>
+                                <else>
+                                    <output expression="&quot;Edipo, nel corso della notte, and&#242; armato nella camera di quelli che credeva fossero i suoi genitori. Mentre quelli dormivano lev&#242; la spada, ma suo fratello, il vero erede del trono di Corinto entr&#242; e con una freccia lo uccise.&quot;" newline="True"/>
+                                    <assign variable="finaleSelezionato" expression="fStrage"/>
+                                    <assign variable="punteggio" expression="punteggio-2"/>
+                                </else>
+                            </if>
+                        </then>
+                        <else>
+                            <comment text="Se si sceglie la terza opzione al precedente bivio si arriva qui. Dopo aver mostrato un testo si seleziona il finale: il gioco &#232; finito, nel resto del diagramma verranno effettuati dei controlli e nel caso in cui sia stato impostato un finale non si far&#224; pi&#249; nulla."/>
+                            <output expression="&quot;Edipo, nel corso della notte, and&#242; armato nella camera di quelli che credeva fossero i suoi genitori. Mentre quelli dormivano lev&#242; la spada, ma suo fratello, il vero erede del trono di Corinto entr&#242; e con una freccia lo uccise.&quot;" newline="True"/>
+                            <assign variable="finaleSelezionato" expression="fStrage"/>
+                            <assign variable="punteggio" expression="punteggio-1"/>
+                        </else>
+                    </if>
+                </else>
+            </if>
+            <comment text="La storia continua solo se non &#232; stato raggiunto un finale."/>
+            <if expression="finaleSelezionato==&quot;Non hai raggiunto un finale&quot;">
+                <then>
+                    <comment text="Nel caso del prossimo bivio le decisioni influiscono solo sul punteggio ottenuto."/>
+                    <call expression="impostaDueOpzioni(oPassaOltre, oAttaccaLUomo, dueOpzioni)"/>
+                    <assign variable="scelta" expression="scegli(2)"/>
+                    <if expression="scelta==0">
+                        <then>
+                            <assign variable="punteggio" expression="punteggio-1"/>
+                            <output expression="&quot;Edipo continu&#242; per la sua strada verso la citt&#224; di Tebe. Quell'uomo gli ricordava qualcuno, ma proprio non avrebbe saputo dire chi.&quot;" newline="True"/>
+                        </then>
+                        <else>
+                            <assign variable="uccisoRe" expression="true"/>
+                            <assign variable="punteggio" expression="punteggio+3"/>
+                            <output expression="&quot;Edipo era un valoroso guerriero e si batt&#233; contro gli avversari eliminandoli uno ad uno. Alla fine uccise anche l'uomo arrogante che gli aveva intimato di togliersi dalla strada. Passando oltre il carro Edipo continu&#242; verso la citt&#224; di Tebe, ignaro di aver gi&#224; compiuto parte della profezia, poich&#233; l'uomo era suo padre...&quot;" newline="True"/>
+                        </else>
+                    </if>
+                    <output expression="&quot;Edipo arriv&#242; a percorrere la via, in mezzo ad una valle, che portava a Tebe quando una terribile creatura gli si par&#242; davanti: era un mostro con testa di donna, il corpo di leone, una coda di serpente e delle ali di rapace. Edipo non lo sapeva, ma quella creatura, la Sfinge, divorava la gente di Tebe da mesi e non sapevano pi&#249; come liberarsene. La creatura tuttavia non attacc&#242; Edipo, ma gli disse che lo avrebbe lasciato andare se lui avesse risolto il suo enigma:&quot;" newline="True"/>
+                    <call expression="impostaTreOpzioni(oCambiaStrada, oBattitiConSfinge, oAscoltaQuesito, treOpzioni)"/>
+                    <assign variable="scelta" expression="scegli(3)"/>
+                    <if expression="scelta==0">
+                        <then>
+                            <assign variable="finaleSelezionato" expression="fFuga"/>
+                            <assign variable="punteggio" expression="punteggio-2"/>
+                        </then>
+                        <else>
+                            <if expression="scelta==1">
+                                <then>
+                                    <assign variable="punteggio" expression="punteggio-2"/>
+                                    <assign variable="finaleSelezionato" expression="fSconfitta"/>
+                                </then>
+                                <else>
+                                    <assign variable="punteggio" expression="punteggio+3"/>
+                                    <output expression="&quot;Compiaciuta perch&#233; il ragazzo aveva accettato la sfida, la Sfinge sorrise enigmatica &lt;&lt;Qual &#232; l'animale che di mattina cammina con quattro zampe, di giorno con due e la sera con tre zampe?&gt;&gt; chiese&quot;" newline="True"/>
+                                    <call expression="impostaTreOpzioni(oNonRispondiEVaiVia, oRispondiPolipo, oRispondiUomo, treOpzioni)"/>
+                                    <assign variable="scelta" expression="scegli(3)"/>
+                                    <if expression="scelta==0">
+                                        <then>
+                                            <assign variable="punteggio" expression="punteggio-2"/>
+                                            <assign variable="finaleSelezionato" expression="fFuga"/>
+                                        </then>
+                                        <else>
+                                            <if expression="scelta==1">
+                                                <then>
+                                                    <assign variable="punteggio" expression="punteggio+1"/>
+                                                    <assign variable="finaleSelezionato" expression="fRispostaErrata"/>
+                                                </then>
+                                                <else>
+                                                    <assign variable="punteggio" expression="punteggio+3"/>
+                                                    <output expression="finale5" newline="True"/>
+                                                    <comment text="Arrivati a questo punto il finale varier&#224; in base al fatto se la profezia &#232; stata sentita, o se &#232; stato ucciso l'uomo per la strada. Decisioni che sul momento sembravano non aver cambiato nulla"/>
+                                                    <if expression="uccisoRe==true">
+                                                        <then>
+                                                            <if expression="ascoltataProfezia">
+                                                                <then>
+                                                                    <assign variable="finaleSelezionato" expression="&quot;Edipo venne a sapere anche che il re di Tebe, corso fuori con degli uomini per cercare aiuto contro la Sfinge, era morto. Per questo Creonte, il re provvisorio, invest&#236; il ragazzo del titolo di sovrano e gli fece sposare la regina Giocasta... Solo anni dopo Edipo capir&#224; che la profezia si era avverata perch&#233; il re era l'uomo che lui aveva ucciso lungo la via ed era anche il suo vero padre. Giocasta invece era sua madre.&quot;"/>
+                                                                </then>
+                                                                <else>
+                                                                    <assign variable="finaleSelezionato" expression="&quot;Edipo venne a sapere anche che il re di Tebe, corso fuori con degli uomini per cercare aiuto contro la Sfinge, era morto. Per questo Creonte, il re provvisorio, invest&#236; il ragazzo del titolo di sovrano e gli fece sposare la regina Giocasta&quot;"/>
+                                                                </else>
+                                                            </if>
+                                                        </then>
+                                                        <else>
+                                                            <assign variable="finaleSelezionato" expression="&quot;Il re di Tebe si rivel&#242; essere l'uomo sul carro che aveva intimato ad Edipo di togliersi dalla strada... Grato per quello che il giovane aveva fatto si scus&#242; e disse che era stata la fretta e l'ansia per il suo popolo a parlare ed invit&#242; Edipo a rimanere per sempre a Tebe come cittadino onorario&quot;"/>
+                                                        </else>
+                                                    </if>
+                                                </else>
+                                            </if>
+                                        </else>
+                                    </if>
+                                </else>
+                            </if>
+                        </else>
+                    </if>
+                </then>
+                <else/>
+            </if>
+            <comment text="A questo punto, se non abbiamo fatto errori, sar&#224; sicuramente stato selezionato un finale."/>
+            <output expression="finaleSelezionato" newline="True"/>
+            <output expression="&quot;Hai fatto &quot;&amp;punteggio&amp;&quot; punti&quot;" newline="True"/>
+        </body>
+    </function>
+    <function name="impostaDueOpzioni" type="None" variable="">
+        <parameters>
+            <parameter name="primaOpzione" type="String" array="False"/>
+            <parameter name="secondaOpzione" type="String" array="False"/>
+            <parameter name="dueOpzioni" type="String" array="True"/>
+        </parameters>
+        <body>
+            <assign variable="dueOpzioni[0]" expression="primaOpzione"/>
+            <assign variable="dueOpzioni[1]" expression="secondaOpzione"/>
+            <declare name="numeroOpzione" type="Integer" array="False" size=""/>
+            <for variable="numeroOpzione" start="0" end="1" direction="inc" step="1">
+                <output expression="dueOpzioni[numeroOpzione]" newline="True"/>
+            </for>
+        </body>
+    </function>
+    <function name="impostaTreOpzioni" type="None" variable="">
+        <parameters>
+            <parameter name="primaOpzione" type="String" array="False"/>
+            <parameter name="secondaOpzione" type="String" array="False"/>
+            <parameter name="terzaOpzione" type="String" array="False"/>
+            <parameter name="treOpzioni" type="String" array="True"/>
+        </parameters>
+        <body>
+            <assign variable="treOpzioni[0]" expression="primaOpzione"/>
+            <assign variable="treOpzioni[1]" expression="secondaOpzione"/>
+            <assign variable="treOpzioni[2]" expression="terzaOpzione"/>
+            <declare name="numeroOpzione" type="Integer" array="False" size=""/>
+            <for variable="numeroOpzione" start="0" end="2" direction="inc" step="1">
+                <output expression="treOpzioni[numeroOpzione]" newline="True"/>
+            </for>
+        </body>
+    </function>
+    <function name="scegli" type="Integer" variable="opzioneSelezionata">
+        <parameters>
+            <parameter name="numeroOpzioni" type="Integer" array="False"/>
+        </parameters>
+        <body>
+            <declare name="opzioneSelezionata" type="Integer" array="False" size=""/>
+            <input variable="opzioneSelezionata"/>
+            <while expression="opzioneSelezionata&lt;0 or opzioneSelezionata&gt;=numeroOpzioni">
+                <output expression="&quot;Opzione selezionata non valida&quot;" newline="True"/>
+                <input variable="opzioneSelezionata"/>
+            </while>
+        </body>
+    </function>
+    <function name="selezionaOpzione" type="None" variable="">
+        <parameters>
+            <parameter name="primoResponso" type="String" array="False"/>
+            <parameter name="secondoResponso" type="String" array="False"/>
+            <parameter name="terzoResponso" type="String" array="False"/>
+            <parameter name="treResponsi" type="String" array="True"/>
+            <parameter name="opzioneSelezionata" type="Integer" array="False"/>
+        </parameters>
+        <body>
+            <assign variable="treResponsi[0]" expression="primoResponso"/>
+            <assign variable="treResponsi[1]" expression="secondoResponso"/>
+            <assign variable="treResponsi[2]" expression="terzoResponso"/>
+            <output expression="treResponsi[opzioneSelezionata]" newline="True"/>
+            <assign variable="opzioneSelezionata" expression="-1"/>
+        </body>
+    </function>
+    <function name="tuttominuscolo" type="String" variable="minstringa">
+        <parameters>
+            <parameter name="stringa" type="String" array="False"/>
+        </parameters>
+        <body>
+            <declare name="minstringa" type="String" array="False" size=""/>
+            <assign variable="minStringa" expression="&quot;&quot;"/>
+            <declare name="i" type="Integer" array="False" size=""/>
+            <for variable="i" start="0" end="len(stringa) - 1" direction="inc" step="1">
+                <declare name="carattereCorrente" type="String" array="False" size=""/>
+                <output expression="char(stringa, i)" newline="True"/>
+                <assign variable="carattereCorrente" expression="char(stringa, i)"/>
+                <if expression="ToCode(carattereCorrente) &lt; 97">
+                    <then>
+                        <declare name="nuovoCarattere" type="Integer" array="False" size=""/>
+                        <assign variable="nuovoCarattere" expression="0"/>
+                        <assign variable="nuovoCarattere" expression="ToCode(carattereCorrente) + 32"/>
+                        <assign variable="carattereCorrente" expression="ToChar(nuovoCarattere)"/>
+                    </then>
+                    <else/>
+                </if>
+                <assign variable="minstringa" expression="minstringa &amp; carattereCorrente"/>
+            </for>
+            <output expression="minstringa" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>
