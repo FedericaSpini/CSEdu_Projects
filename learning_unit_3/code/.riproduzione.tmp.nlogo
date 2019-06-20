@@ -119,13 +119,11 @@ to generate-son-genotype [mother father]
   let allele-index random 2   ; variabile che memorizza l'indice di un allele
   ifelse allele-index = 0     ; si scegli un allele casuale dalla madre
       [set hair-allele1 [hair-allele1] of mother]
-      [set hair-allele1 [hair-allele2] of mother]
+      [set hair-allele2 [hair-allele2] of mother]
   ifelse allele-index = 0     ; si scegli un allele casuale dal padre
-    [set hair-allele2 [hair-allele1] of father]
+    [set hair-allele1 [hair-allele1] of father]
     [set hair-allele2 [hair-allele2] of father]
-  ifelse hair-allele1 = 0 or hair-allele2 = 0
-    [set color brown]
-    [set color yellow]
+
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
