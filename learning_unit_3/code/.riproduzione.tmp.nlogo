@@ -30,7 +30,7 @@ end
 
 
 to born     ; le caratteristiche principali degli individui vengono definite
-  set size 2
+  set size
   set label-color blue - 2
   set age 0
   set energy 0
@@ -38,18 +38,34 @@ end
 
 
 to define-hair-genetic       ; viene stabilito il genotipo e di conseguenza il
-                             ; fenotipo degli individui iniziali, che non hanno genitori
+                             ; fenotipo degli individui iniziali, che non hanno genitori, in accordo con le probabilità
+                             ; dell'interfaccia
+  let genotype random 101
+  if genotype < starting-blonds-prob [    ; il caso in cui l'individuo sia di omozigote biondo
+    set hair-allele1 1
+    set hair-allele2 1
+    set color yellow
+  ]
+  if genotype >= starting-blonds-prob and genotype < starting-blonds-prob + starting-browns-prob [    ; il caso in cui l'individuo sia di omozigote castano
+    set hair-allele1 0
+    set hair-allele2 0
+    set color brown
+  ]
+  if genotype >= starting-blonds-prob + starting-browns-prob [    ; il caso in cui l'individuo sia di eterozigote (il fenotipo di conseguenza è castano)
     set hair-allele1 random 2
-    set hair-allele2 random 2
-    ifelse hair-allele1 = 0 or hair-allele2 = 0 ; il genotipo sono due alleli casuali e il fenotipo è castano
-                                              ;se c'è almeno un allele con valore 0 (dominante), altrimenti è biondo
-    [set color brown]
-    [set color yellow]
+    ifelse hair-allele1 = 0 [ set hair-allele2 1 ][ set hair-allele2 0 ]
+    set color brown
+  ]
 end
 
 
 to go                       ; tutte le tartarughe si muovono casualmente
   if not any? turtles [ stop ]
+  if  starting-blonds-prob + starting-browns-prob + starting-etrozigote-prob != 100
+        [
+         user-message "La somma delle probabilità iniziali del genotipo deve essere 100"
+         stop
+        ]
   ask turtles [
     move
     if count turtles < max-population-number ;se non è stato raggiunto il massimo numero di abitanti le coppie
@@ -88,9 +104,9 @@ to reproduce
       let companion one-of males-here
       if companion != nobody and [age] of companion < 50 and [age] of companion > 15[
 
-        set energy 0
+        ;set energy 0
         let p random 100
-        let mother myself
+        let mother self
         ifelse p <= 50
         [hatch-males 1
           [
@@ -119,11 +135,13 @@ to generate-son-genotype [mother father]
   let allele-index random 2   ; variabile che memorizza l'indice di un allele
   ifelse allele-index = 0     ; si scegli un allele casuale dalla madre
       [set hair-allele1 [hair-allele1] of mother]
-      [set hair-allele2 [hair-allele2] of mother]
+      [set hair-allele1 [hair-allele2] of mother]
   ifelse allele-index = 0     ; si scegli un allele casuale dal padre
-    [set hair-allele1 [hair-allele1] of father]
+    [set hair-allele2 [hair-allele1] of father]
     [set hair-allele2 [hair-allele2] of father]
-
+  ifelse hair-allele1 = 0 or hair-allele2 = 0
+    [set color brown]
+    [set color yellow]
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
@@ -154,10 +172,10 @@ ticks
 30.0
 
 BUTTON
-240
-65
-315
-98
+260
+50
+335
+83
 go
 go
 T
@@ -171,10 +189,10 @@ NIL
 0
 
 SLIDER
-35
-30
-207
-63
+5
+10
+177
+43
 initial-female-number
 initial-female-number
 0
@@ -186,10 +204,10 @@ NIL
 HORIZONTAL
 
 SLIDER
-35
-75
-207
-108
+5
+45
+177
+78
 initial-male-number
 initial-male-number
 0
@@ -201,10 +219,10 @@ NIL
 HORIZONTAL
 
 SLIDER
-35
-115
-212
-148
+5
+195
+182
+228
 max-population-number
 max-population-number
 0
@@ -216,10 +234,10 @@ NIL
 HORIZONTAL
 
 BUTTON
-245
-30
-314
-63
+265
+15
+334
+48
 setup
 setup
 NIL
@@ -233,10 +251,10 @@ NIL
 1
 
 MONITOR
-35
-160
-92
-205
+40
+500
+97
+545
 Blonds
 count turtles with [color = yellow]
 17
@@ -244,10 +262,10 @@ count turtles with [color = yellow]
 11
 
 MONITOR
-130
-170
-187
-215
+115
+500
+172
+545
 Brown
 count turtles with [color = brown]
 17
@@ -272,6 +290,66 @@ true
 PENS
 "biondi" 1.0 0 -1184463 true "" "plot count turtles with [color = yellow]"
 "castani" 1.0 0 -10402772 true "" "plot count turtles with [color = brown]"
+
+SLIDER
+5
+85
+202
+118
+starting-blonds-prob
+starting-blonds-prob
+0
+100
+10.0
+1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+5
+120
+222
+153
+starting-etrozigote-prob
+starting-etrozigote-prob
+0
+100
+65.0
+1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+5
+155
+207
+188
+starting-browns-prob
+starting-browns-prob
+0
+100
+25.0
+1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+5
+230
+177
+261
+turtle-size
+turtle-size
+0
+10
+4.0
+1
+1
+NIL
+HORIZONTAL
 
 @#$#@#$#@
 ## WHAT IS IT?
