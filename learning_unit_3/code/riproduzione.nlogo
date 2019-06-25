@@ -81,17 +81,20 @@ to move  ; come si muovono le tartarughe e cosa succede quando lo fanno
 
   set age age + 1
   set energy energy + 1
-  ifelse energy > 7
-  [ifelse breed = males [let partner one-of females
-    if partner != nobody
-    [face partner]]
-    [let partner one-of males
-      if partner != nobody
-      [face partner] ]]
+  ;ifelse energy > 7
+  ;[ifelse breed = males [let partner one-of females
+   ; if partner != nobody
+    ;[face partner]]
+    ;[let partner one-of males
+     ; if partner != nobody
+      ;[face partner] ]]
 
-  [rt random 50
-  lt random 50]
+  ;[rt random 50
+  ;lt random 50]
 
+
+  rt random 50
+  lt random 50
   fd 1
   death
 end
@@ -207,7 +210,7 @@ initial-female-number
 initial-female-number
 0
 500
-40.0
+200.0
 10
 1
 NIL
@@ -222,7 +225,7 @@ initial-male-number
 initial-male-number
 0
 500
-40.0
+200.0
 10
 1
 NIL
@@ -237,7 +240,7 @@ max-population-number
 max-population-number
 0
 10000
-700.0
+1660.0
 20
 1
 NIL
@@ -310,7 +313,7 @@ starting-blonds-prob
 starting-blonds-prob
 0
 100
-33.0
+0.0
 1
 1
 NIL
@@ -325,7 +328,7 @@ starting-etrozigote-prob
 starting-etrozigote-prob
 0
 100
-33.0
+50.0
 1
 1
 NIL
@@ -340,7 +343,7 @@ starting-browns-prob
 starting-browns-prob
 0
 100
-34.0
+50.0
 1
 1
 NIL
@@ -355,7 +358,7 @@ turtle-size
 turtle-size
 0
 10
-3.0
+4.0
 1
 1
 NIL
