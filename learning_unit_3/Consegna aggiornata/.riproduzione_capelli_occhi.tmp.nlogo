@@ -341,7 +341,7 @@ starting-blonds-prob
 starting-blonds-prob
 0
 100
-40.0
+0.0
 1
 1
 NIL
@@ -356,7 +356,7 @@ starting-browns-prob
 starting-browns-prob
 0
 100
-40.0
+100.0
 1
 1
 NIL
@@ -405,7 +405,7 @@ starting-blue-eye-prob
 starting-blue-eye-prob
 0
 100
-40.0
+0.0
 1
 1
 NIL
@@ -420,7 +420,7 @@ starting-brown-eye-prob
 starting-brown-eye-prob
 0
 100
-40.0
+43.0
 1
 1
 NIL
@@ -442,7 +442,7 @@ true
 false
 "" ""
 PENS
-"castani occhi neri" 1.0 0 -16777216 true "" "plot count turtles with [ shape = arrow]"
+"castani occhi neri" 1.0 0 -16777216 true "" "plot count turtles with [ hair-allele1 = 0 or hair-allele2 = 0 and  hair-allele1 = 0 or hair-allele2 = 0 ]"
 "castani occhi blu" 1.0 0 -13345367 true "" ""
 "biondi occhi neri" 1.0 0 -2674135 true "" ""
 "biondi occhi blu" 1.0 0 -817084 true "" ""
