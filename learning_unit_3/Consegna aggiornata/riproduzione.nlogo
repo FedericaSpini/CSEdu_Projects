@@ -9,6 +9,10 @@ turtles-own [ age energy hair-allele1 hair-allele2]
 
 to setup
   clear-all
+  set min-fertility-age 15
+  set max-fertility-age 55
+  set death-age 90
+
   ask patches [
     set pcolor white ] ; in questo progetto le patch non sono rilevanti
 
@@ -35,7 +39,7 @@ to born     ; le caratteristiche principali degli individui vengono definite
   set size turtle-size
   set label-color blue - 2
   set age random 36
-  set energy 0
+  set energy random 15
 end
 
 
@@ -103,7 +107,7 @@ end
 
 
 to death  ; procedura che gestisce la morte delle tartarughe
-  if age > 85 [ die ]
+  if age > death-age [ die ]
 end
 
 
@@ -211,7 +215,7 @@ initial-female-number
 initial-female-number
 0
 500
-300.0
+150.0
 10
 1
 NIL
@@ -226,7 +230,7 @@ initial-male-number
 initial-male-number
 0
 500
-200.0
+150.0
 10
 1
 NIL
@@ -241,7 +245,7 @@ max-population-number
 max-population-number
 0
 10000
-1660.0
+1000.0
 20
 1
 NIL
@@ -344,7 +348,7 @@ turtle-size
 turtle-size
 0
 10
-4.0
+10.0
 1
 1
 NIL
