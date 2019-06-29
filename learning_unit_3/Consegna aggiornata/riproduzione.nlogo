@@ -163,10 +163,10 @@ to generate-son-genotype [mother father]
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-355
-10
-873
-529
+350
+15
+868
+534
 -1
 -1
 10.0
@@ -190,9 +190,9 @@ ticks
 30.0
 
 BUTTON
-260
+250
 50
-335
+325
 83
 go
 go
@@ -238,9 +238,9 @@ HORIZONTAL
 
 SLIDER
 5
-195
+175
 182
-228
+208
 max-population-number
 max-population-number
 0
@@ -252,9 +252,9 @@ NIL
 HORIZONTAL
 
 BUTTON
-265
+255
 15
-334
+324
 48
 setup
 setup
@@ -269,10 +269,10 @@ NIL
 1
 
 MONITOR
-40
-500
-97
-545
+5
+255
+62
+300
 Blonds
 count turtles with [color = yellow]
 17
@@ -280,10 +280,10 @@ count turtles with [color = yellow]
 11
 
 MONITOR
-115
-500
-172
-545
+80
+255
+137
+300
 Brown
 count turtles with [color = brown]
 17
@@ -291,10 +291,10 @@ count turtles with [color = brown]
 11
 
 PLOT
-40
-270
-355
-485
+5
+330
+320
+545
 popolazione
 time
 numero
@@ -318,7 +318,7 @@ starting-blonds-prob
 starting-blonds-prob
 0
 100
-0.0
+34.0
 1
 1
 NIL
@@ -326,14 +326,14 @@ HORIZONTAL
 
 SLIDER
 5
-155
+135
 207
-188
+168
 starting-browns-prob
 starting-browns-prob
 0
 100
-50.0
+24.0
 1
 1
 NIL
@@ -341,24 +341,24 @@ HORIZONTAL
 
 SLIDER
 5
-230
+210
 177
-263
+243
 turtle-size
 turtle-size
 0
 10
-10.0
+4.0
 1
 1
 NIL
 HORIZONTAL
 
 PLOT
-960
-10
-1355
-225
+5
+555
+400
+770
 genere popolazione
 NIL
 NIL
@@ -372,6 +372,17 @@ true
 PENS
 "Numero di uomini" 1.0 0 -13345367 true "" "plot count males"
 "Numero di donne" 1.0 0 -4699768 true "" "plot count females"
+
+MONITOR
+215
+95
+340
+140
+starting hair etero prob
+100 - starting-blonds-prob - starting-browns-prob
+17
+1
+11
 
 @#$#@#$#@
 ## WHAT IS IT?

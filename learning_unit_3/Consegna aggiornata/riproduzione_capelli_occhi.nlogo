@@ -184,9 +184,9 @@ to generate-son-genotype [mother father]
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-355
+365
 10
-873
+883
 529
 -1
 -1
@@ -236,7 +236,7 @@ initial-female-number
 initial-female-number
 0
 500
-200.0
+210.0
 10
 1
 NIL
@@ -251,17 +251,17 @@ initial-male-number
 initial-male-number
 0
 500
-200.0
+210.0
 10
 1
 NIL
 HORIZONTAL
 
 SLIDER
-5
-485
-182
-518
+15
+370
+192
+403
 max-population-number
 max-population-number
 0
@@ -341,7 +341,7 @@ starting-blonds-prob
 starting-blonds-prob
 0
 100
-40.0
+42.0
 1
 1
 NIL
@@ -363,10 +363,10 @@ NIL
 HORIZONTAL
 
 SLIDER
-5
-520
-177
-553
+15
+405
+187
+438
 turtle-size
 turtle-size
 0
@@ -405,7 +405,7 @@ starting-blue-eye-prob
 starting-blue-eye-prob
 0
 100
-40.0
+46.0
 1
 1
 NIL
@@ -431,7 +431,7 @@ PLOT
 350
 1350
 525
-plot 1
+Combinazioni di geni
 NIL
 NIL
 0.0
@@ -439,13 +439,57 @@ NIL
 0.0
 10.0
 true
-false
+true
 "" ""
 PENS
-"castani occhi neri" 1.0 0 -16777216 true "" "plot count turtles with [ shape = arrow]"
-"castani occhi blu" 1.0 0 -13345367 true "" ""
-"biondi occhi neri" 1.0 0 -2674135 true "" ""
-"biondi occhi blu" 1.0 0 -817084 true "" ""
+"castani occhi neri" 1.0 0 -16777216 true "" "plot count turtles with [ shape = \"2-castano-neri\"]"
+"castani occhi blu" 1.0 0 -13345367 true "" "plot count turtles with [ shape = \"1-castano-azzurri\"]"
+"biondi occhi neri" 1.0 0 -2674135 true "" "plot count turtles with [ shape = \"3-biondo-neri\"]"
+"biondi occhi blu" 1.0 0 -817084 true "" "plot count turtles with [ shape = \"0-biondo-azzurri\"]"
+
+MONITOR
+215
+100
+357
+145
+starting hair etero prob
+100 - starting-blonds-prob - starting-browns-prob
+0
+1
+11
+
+MONITOR
+210
+170
+357
+215
+starting etero eyes prob
+100 - starting-blue-eye-prob - starting-brown-eye-prob
+0
+1
+11
+
+MONITOR
+890
+125
+952
+170
+Blue eyes
+count turtles with [ eye-allele1 = 1 and eye-allele2 = 1 ]
+17
+1
+11
+
+MONITOR
+890
+185
+957
+230
+Black eyes
+count turtles with [ eye-allele1 = 0 or eye-allele2 = 0 ]
+17
+1
+11
 
 @#$#@#$#@
 ## WHAT IS IT?
