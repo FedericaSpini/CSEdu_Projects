@@ -184,9 +184,9 @@ to generate-son-genotype [mother father]
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-365
+375
 10
-883
+893
 529
 -1
 -1
@@ -258,10 +258,10 @@ NIL
 HORIZONTAL
 
 SLIDER
-15
-370
-192
-403
+5
+250
+182
+283
 max-population-number
 max-population-number
 0
@@ -290,10 +290,10 @@ NIL
 1
 
 MONITOR
-890
-15
-947
-60
+785
+540
+842
+585
 Blonds
 count turtles with [ hair-allele1 = 1 and hair-allele2 = 1 ]
 17
@@ -301,10 +301,10 @@ count turtles with [ hair-allele1 = 1 and hair-allele2 = 1 ]
 11
 
 MONITOR
-890
-70
-947
-115
+785
+590
+842
+635
 Brown
 count turtles with [ hair-allele1 = 0 or hair-allele2 = 0 ]
 17
@@ -312,10 +312,10 @@ count turtles with [ hair-allele1 = 0 or hair-allele2 = 0 ]
 11
 
 PLOT
-960
-150
-1350
-335
+380
+540
+755
+735
 popolazione
 time
 numero
@@ -363,10 +363,10 @@ NIL
 HORIZONTAL
 
 SLIDER
-15
-405
-187
-438
+5
+285
+177
+318
 turtle-size
 turtle-size
 0
@@ -378,10 +378,10 @@ NIL
 HORIZONTAL
 
 PLOT
-960
-10
-1355
-140
+0
+330
+370
+505
 genere popolazione
 NIL
 NIL
@@ -427,10 +427,10 @@ NIL
 HORIZONTAL
 
 PLOT
-960
-350
-1350
-525
+0
+550
+375
+735
 Combinazioni di geni
 NIL
 NIL
@@ -470,10 +470,10 @@ starting etero eyes prob
 11
 
 MONITOR
-890
-125
-952
-170
+785
+640
+847
+685
 Blue eyes
 count turtles with [ eye-allele1 = 1 and eye-allele2 = 1 ]
 17
@@ -481,10 +481,10 @@ count turtles with [ eye-allele1 = 1 and eye-allele2 = 1 ]
 11
 
 MONITOR
-890
-185
-957
-230
+785
+690
+852
+735
 Black eyes
 count turtles with [ eye-allele1 = 0 or eye-allele2 = 0 ]
 17
